@@ -1,0 +1,1787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hafao Pet Shop - Everything Your Pet Loves, In One Place</title>
+<meta name="description" content="Hafao Pet Shop, Narayanganj Bangladesh. Premium pets, food, clothing, accessories and care.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{
+--cream:#FAF4EA;--cream2:#FFFDF8;--lav:#EFEAF7;--lav2:#DDD2EE;--peach:#FBDFC9;--peach2:#F4C9A8;
+--sage:#9DB38C;--sage2:#7E9A73;--brown:#7A5A44;--brown2:#5E4331;--choc:#43301F;--gold:#C9A24B;--gold2:#E7CD8F;
+--ink:#4A3A2C;--muted:#8B7A69;--pink:#F2A9A9;--line:#EBDFD0;
+--r:22px;--rs:14px;
+--shadow:0 18px 40px -18px rgba(94,67,49,.28);--shadow2:0 10px 26px -12px rgba(94,67,49,.22);
+--paw:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90' viewBox='0 0 90 90'%3E%3Cg fill='%237a5a44' fill-opacity='.05'%3E%3Cellipse cx='33' cy='28' rx='6' ry='8'/%3E%3Cellipse cx='47' cy='24' rx='6' ry='8'/%3E%3Cellipse cx='60' cy='32' rx='5' ry='7'/%3E%3Cellipse cx='24' cy='36' rx='5' ry='7'/%3E%3Cpath d='M45 36c11 0 20 9 20 18 0 8-7 12-20 12s-20-4-20-12c0-9 9-18 20-18z'/%3E%3C/g%3E%3C/svg%3E");
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--ink);line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}
+h1,h2,h3,h4,.baloo{font-family:'Baloo 2',cursive;line-height:1.2;color:var(--choc)}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+input,select,textarea{font-family:inherit;font-size:15px;color:var(--ink)}
+a{color:inherit;text-decoration:none}
+.container{width:min(1200px,92%);margin:0 auto}
+::selection{background:var(--gold2)}
+/* loader */
+#loader{position:fixed;inset:0;background:var(--cream);z-index:9999;display:flex;flex-direction:column;gap:18px;align-items:center;justify-content:center;transition:opacity .5s}
+#loader.off{opacity:0;pointer-events:none}
+#loader .paws{display:flex;gap:14px}
+#loader svg{width:34px;height:34px;color:var(--brown);animation:pawb 1s infinite ease-in-out}
+#loader svg:nth-child(2){animation-delay:.15s;color:var(--sage)}
+#loader svg:nth-child(3){animation-delay:.3s;color:var(--gold)}
+#loader p{font-family:'Baloo 2';color:var(--brown);letter-spacing:2px;text-transform:uppercase;font-size:14px}
+@keyframes pawb{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(-10px);opacity:1}}
+/* icons */
+.ic{width:22px;height:22px;flex:none}
+/* header */
+.topstrip{background:linear-gradient(90deg,var(--brown2),var(--brown));color:#F7EFE2;text-align:center;font-size:13px;font-weight:700;padding:7px 12px;letter-spacing:.4px}
+header{position:sticky;top:0;z-index:900;background:rgba(250,244,234,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);transition:box-shadow .3s}
+header.scrolled{box-shadow:0 10px 30px -18px rgba(94,67,49,.35)}
+.nav{display:flex;align-items:center;gap:18px;padding:12px 0}
+.logo{display:flex;align-items:center;gap:10px;flex:none}
+.logo img{width:46px;height:46px;border-radius:50%;object-fit:cover;box-shadow:var(--shadow2)}
+.logo .lt b{font-family:'Baloo 2';font-size:24px;color:var(--brown2);display:block;line-height:1}
+.logo .lt span{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);font-weight:800}
+.navlinks{display:flex;gap:4px;flex-wrap:wrap;margin:0 auto}
+.navlinks a{font-weight:700;font-size:14.5px;padding:8px 12px;border-radius:30px;color:var(--ink);transition:.25s;position:relative}
+.navlinks a:hover{background:var(--lav);color:var(--brown2)}
+.navlinks a.active{background:var(--brown);color:#fff}
+.navact{display:flex;align-items:center;gap:6px;flex:none}
+.iconbtn{position:relative;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;color:var(--brown2);background:var(--cream2);box-shadow:var(--shadow2);transition:.25s}
+.iconbtn:hover{background:var(--lav);transform:translateY(-2px)}
+.iconbtn .bdg{position:absolute;top:-4px;right:-4px;min-width:19px;height:19px;border-radius:20px;background:var(--gold);color:#fff;font-size:11px;font-weight:800;display:grid;place-items:center;padding:0 4px;box-shadow:0 3px 8px rgba(201,162,75,.5)}
+.burger{display:none}
+@media(max-width:1180px){.navlinks{display:none}.burger{display:grid}}
+/* mobile menu */
+#mmenu{position:fixed;top:0;right:-320px;width:300px;height:100vh;background:var(--cream2);z-index:1000;transition:right .35s cubic-bezier(.4,0,.2,1);padding:24px;overflow-y:auto;box-shadow:-20px 0 60px rgba(67,48,31,.2)}
+#mmenu.open{right:0}
+#mmenu a{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:14px;font-weight:700;color:var(--ink);transition:.2s}
+#mmenu a:hover,#mmenu a.active{background:var(--lav);color:var(--brown2)}
+#mmenu .mmhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+#backdrop{position:fixed;inset:0;background:rgba(67,48,31,.45);backdrop-filter:blur(3px);z-index:950;opacity:0;pointer-events:none;transition:.3s}
+#backdrop.on{opacity:1;pointer-events:auto}
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:'Baloo 2';font-weight:700;font-size:16px;padding:13px 28px;border-radius:40px;transition:.28s;position:relative;overflow:hidden}
+.btn-p{background:linear-gradient(135deg,var(--brown),var(--brown2));color:#fff;box-shadow:0 12px 26px -10px rgba(94,67,49,.55)}
+.btn-p:hover{transform:translateY(-3px);box-shadow:0 18px 32px -10px rgba(94,67,49,.6)}
+.btn-g{background:linear-gradient(135deg,var(--sage),var(--sage2));color:#fff;box-shadow:0 12px 26px -10px rgba(126,154,115,.55)}
+.btn-g:hover{transform:translateY(-3px)}
+.btn-gold{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#4A3510;box-shadow:0 12px 26px -10px rgba(201,162,75,.55)}
+.btn-gold:hover{transform:translateY(-3px)}
+.btn-o{border:2px solid var(--brown);color:var(--brown);background:transparent}
+.btn-o:hover{background:var(--brown);color:#fff;transform:translateY(-3px)}
+.btn:active{transform:scale(.96)}
+.btn.sm{font-size:14px;padding:9px 18px}
+.btn[disabled]{opacity:.45;pointer-events:none}
+/* sections */
+section{position:relative}
+.sec{padding:78px 0}
+.sec.alt{background:var(--lav)}
+.sec.peachy{background:linear-gradient(180deg,#FBEBDD,#FAF4EA)}
+.sec.dark{background:radial-gradient(1000px 500px at 80% -10%,#5A4433,#3B2C1E);color:#F2E7D6}
+.sec.dark h2,.sec.dark h3{color:#FBF3E4}
+.shead{text-align:center;max-width:640px;margin:0 auto 46px}
+.shead .kick{font-family:'Caveat',cursive;font-size:24px;color:var(--gold);display:block;margin-bottom:2px}
+.shead h2{font-size:clamp(28px,4vw,42px)}
+.shead p{color:var(--muted);margin-top:8px}
+.sec.dark .shead p{color:#CBB79C}
+/* reveal */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.3,1)}
+.reveal.in{opacity:1;transform:none}
+/* hero */
+.hero{overflow:hidden;background:
+ radial-gradient(700px 420px at 85% 10%,var(--lav),transparent 65%),
+ radial-gradient(600px 400px at 8% 90%,var(--peach),transparent 60%),var(--cream)}
+.hero::before{content:"";position:absolute;inset:0;background-image:var(--paw);pointer-events:none}
+.hero-in{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center;padding:64px 0 80px;min-height:560px}
+.hero h1{font-size:clamp(36px,5.2vw,62px);margin:10px 0 18px}
+.hero h1 em{font-style:normal;color:var(--brown);position:relative}
+.hero h1 em::after{content:"";position:absolute;left:0;right:0;bottom:4px;height:12px;background:var(--gold2);z-index:-1;border-radius:6px;opacity:.6}
+.hero .sub{font-size:18px;color:var(--muted);max-width:520px}
+.hero .cta{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
+.hero .hstats{display:flex;gap:34px;margin-top:44px;flex-wrap:wrap}
+.hstat b{font-family:'Baloo 2';font-size:26px;color:var(--brown2);display:block;line-height:1}
+.hstat span{font-size:13px;color:var(--muted);font-weight:700}
+.hero-visual{position:relative;height:520px}
+.hv-blob{position:absolute;inset:8% 4% 4%;background:linear-gradient(160deg,var(--peach),#F7E3D2 55%,var(--lav));border-radius:48% 52% 55% 45%/52% 46% 54% 48%;box-shadow:inset 0 0 0 10px rgba(255,255,255,.5),var(--shadow)}
+.hv-card{position:absolute;border-radius:26px;background:var(--cream2);box-shadow:var(--shadow);padding:8px;transition:transform .2s ease-out;will-change:transform}
+.hv-card svg{width:100%;height:100%}
+.hv-main{width:62%;left:18%;top:12%;border:5px solid #fff}
+.hv-cat{width:34%;left:-2%;top:38%;transform:rotate(-5deg);border:4px solid #fff}
+.hv-rab{width:30%;right:0;top:52%;transform:rotate(4deg);border:4px solid #fff}
+.hv-bird{width:24%;right:6%;top:6%;transform:rotate(6deg);border:4px solid #fff}
+.hv-badge{position:absolute;left:6%;bottom:6%;background:var(--cream2);border-radius:18px;padding:10px 16px;box-shadow:var(--shadow);display:flex;align-items:center;gap:10px;font-weight:800;font-size:14px;color:var(--brown2)}
+.hv-badge .stars{color:var(--gold);display:flex}
+.pawfloat{position:absolute;color:var(--brown);opacity:.22;animation:floaty 7s ease-in-out infinite}
+.pawfloat svg{width:100%;height:100%}
+@keyframes floaty{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-22px) rotate(12deg)}}
+@media(hover:none){.hero-visual *{transform:none!important}}
+/* trust */
+.trust{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px;margin-top:-40px;position:relative;z-index:5}
+.tcard{background:var(--cream2);border-radius:var(--r);padding:22px;display:flex;gap:14px;align-items:center;box-shadow:var(--shadow2);transition:.3s}
+.tcard:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.tcard .ti{width:50px;height:50px;border-radius:16px;display:grid;place-items:center;flex:none;color:#fff}
+.tcard b{display:block;font-family:'Baloo 2';font-size:16px;color:var(--choc)}
+.tcard span{font-size:13px;color:var(--muted)}
+/* category tiles */
+.cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px}
+.cat-tile{background:var(--cream2);border-radius:var(--r);padding:22px 12px;text-align:center;box-shadow:var(--shadow2);transition:.3s;cursor:pointer;border:2px solid transparent}
+.cat-tile:hover{transform:translateY(-6px) rotate(-1deg);border-color:var(--gold2);box-shadow:var(--shadow)}
+.cat-tile .cimg{width:74px;height:64px;margin:0 auto 10px;border-radius:20px;display:grid;place-items:center}
+.cat-tile .cimg svg{width:64px;height:52px}
+.cat-tile b{font-family:'Baloo 2';color:var(--choc);display:block}
+.cat-tile span{font-size:12px;color:var(--muted);font-weight:700}
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:22px}
+.pcard{background:var(--cream2);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow2);transition:.35s cubic-bezier(.2,.7,.3,1);display:flex;flex-direction:column;position:relative;border:1px solid rgba(235,223,208,.7)}
+.pcard:hover{transform:translateY(-8px);box-shadow:var(--shadow)}
+.pcard.flash{animation:flash 1.6s ease}
+@keyframes flash{0%,60%{box-shadow:0 0 0 4px var(--gold2),var(--shadow)}100%{box-shadow:var(--shadow2)}}
+.pimg{position:relative;height:190px;display:grid;place-items:center;overflow:hidden;cursor:pointer}
+.pimg svg.petart{width:82%;height:92%;transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+.pcard:hover .pimg svg.petart{transform:scale(1.09) rotate(-2deg)}
+.avail{position:absolute;top:12px;left:12px;font-size:11.5px;font-weight:800;padding:5px 11px;border-radius:20px;letter-spacing:.4px;color:#fff}
+.av-ok{background:var(--sage2)}.av-rs{background:var(--gold)}.av-no{background:#B4A399}
+.rarebdg{position:absolute;top:12px;right:44px;background:linear-gradient(135deg,var(--gold2),var(--gold));color:#4A3510;font-size:11px;font-weight:800;padding:5px 11px;border-radius:20px;letter-spacing:.5px}
+.newbdg{position:absolute;bottom:12px;left:12px;background:var(--lav2);color:var(--brown2);font-size:11px;font-weight:800;padding:4px 10px;border-radius:20px}
+.wbtn{position:absolute;top:10px;right:10px;width:36px;height:36px;border-radius:50%;background:rgba(255,253,248,.9);display:grid;place-items:center;color:var(--brown);transition:.25s;box-shadow:0 4px 12px rgba(67,48,31,.15)}
+.wbtn:hover{transform:scale(1.12);color:#E06A6A}
+.wbtn.on{color:#E06A6A}
+.wbtn.on svg{fill:#E06A6A}
+.pbody{padding:16px 18px 18px;display:flex;flex-direction:column;gap:7px;flex:1}
+.pcat{font-size:11.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--sage2)}
+.pbody h3{font-size:19px;cursor:pointer;transition:.2s}
+.pbody h3:hover{color:var(--brown)}
+.pdesc{font-size:13.5px;color:var(--muted);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.prow{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:8px}
+.price{font-family:'Baloo 2';font-weight:800;font-size:20px;color:var(--brown2)}
+.price s{font-size:13px;color:var(--muted);font-weight:600;margin-right:6px}
+.pbtns{display:flex;gap:8px;align-items:center}
+.addb{background:var(--brown);color:#fff;font-family:'Baloo 2';font-weight:700;font-size:14px;padding:9px 16px;border-radius:30px;transition:.25s;display:inline-flex;gap:7px;align-items:center}
+.addb:hover{background:var(--brown2);transform:translateY(-2px)}
+.addb[disabled]{opacity:.45;pointer-events:none}
+.minib{width:36px;height:36px;border-radius:50%;background:var(--lav);display:grid;place-items:center;color:var(--brown2);transition:.25s}
+.minib:hover{background:var(--lav2);transform:scale(1.08)}
+.minib.on{color:#E06A6A}.minib.on svg{fill:#E06A6A}
+.plink{align-self:flex-start;font-size:13px;font-weight:800;color:var(--gold);display:inline-flex;align-items:center;gap:5px;padding:0}
+.plink:hover{gap:9px}
+.plink{transition:gap .2s}
+.sizesel{border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:6px 8px;font-weight:700;font-size:13px}
+/* chips */
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}
+.chip{padding:9px 18px;border-radius:30px;background:var(--cream2);border:1.5px solid var(--line);font-weight:800;font-size:13.5px;color:var(--brown2);transition:.25s}
+.chip:hover{border-color:var(--gold)}
+.chip.on{background:var(--brown);color:#fff;border-color:var(--brown);box-shadow:0 8px 18px -8px rgba(94,67,49,.5)}
+.shopbar{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:20px}
+.selbox{border:1.5px solid var(--line);background:var(--cream2);border-radius:30px;padding:10px 16px;font-weight:700}
+.notice{background:linear-gradient(90deg,#FDF3E3,#FBEBDD);border:1.5px dashed var(--gold);border-radius:var(--rs);padding:14px 18px;font-size:14px;color:var(--brown2);font-weight:600;margin-bottom:26px;display:flex;gap:10px;align-items:flex-start}
+.notice .ic{color:var(--gold);margin-top:2px}
+/* carousel */
+.carwrap{position:relative}
+.car{display:flex;gap:20px;overflow-x:auto;scroll-behavior:smooth;padding:6px 4px 22px;scroll-snap-type:x mandatory;scrollbar-width:none}
+.car::-webkit-scrollbar{display:none}
+.car>*{scroll-snap-align:start;flex:0 0 262px}
+.carnav{position:absolute;top:-64px;right:0;display:flex;gap:10px}
+.carbtn{width:44px;height:44px;border-radius:50%;background:var(--cream2);box-shadow:var(--shadow2);display:grid;place-items:center;color:var(--brown2);transition:.25s}
+.carbtn:hover{background:var(--brown);color:#fff}
+/* rare dark */
+.rgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
+.rcard{background:rgba(255,255,255,.06);border:1px solid rgba(231,205,143,.25);backdrop-filter:blur(8px);border-radius:var(--r);overflow:hidden;transition:.35s;cursor:pointer}
+.rcard:hover{transform:translateY(-8px);border-color:var(--gold);box-shadow:0 20px 40px -16px rgba(0,0,0,.5)}
+.rcard .pimg{background:linear-gradient(160deg,rgba(255,255,255,.1),rgba(255,255,255,.03))}
+.rcard .pbody{background:transparent}
+.rcard .pcat{color:var(--gold2)}
+.rcard h3{color:#FBF3E4}
+.rcard .pdesc{color:#CBB79C}
+.rcard .price{color:var(--gold2)}
+.rcard .addb{background:var(--gold);color:#4A3510}
+.rcard .addb:hover{background:var(--gold2)}
+.rcard .minib{background:rgba(255,255,255,.12);color:#FBF3E4}
+.legalnote{margin-top:34px;background:rgba(201,162,75,.12);border:1px solid rgba(231,205,143,.4);border-radius:var(--rs);padding:16px 20px;font-size:13.5px;color:#EBDCBF;display:flex;gap:10px}
+.legalnote .ic{color:var(--gold2);flex:none;margin-top:2px}
+/* kit */
+.kitwrap{display:grid;grid-template-columns:1fr 340px;gap:26px;align-items:start}
+.kitslots{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+.kslot{background:var(--cream2);border-radius:var(--r);padding:18px;box-shadow:var(--shadow2);border:2px solid transparent;transition:.3s}
+.kslot:hover{border-color:var(--gold2)}
+.kslot .klabel{font-size:12px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--sage2);display:flex;gap:7px;align-items:center;margin-bottom:9px}
+.kslot select{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;font-weight:700;background:#fff}
+.kslot .kprice{margin-top:9px;font-family:'Baloo 2';font-weight:800;color:var(--brown2)}
+.kitbox{background:linear-gradient(160deg,var(--brown),var(--brown2));color:#F5EAD8;border-radius:var(--r);padding:26px;position:sticky;top:100px;box-shadow:var(--shadow)}
+.kitbox h3{color:#fff;margin-bottom:6px}
+.kitbox .kt{font-size:40px;font-family:'Baloo 2';font-weight:800;color:var(--gold2)}
+.kitbox ul{list-style:none;margin:14px 0 20px;display:flex;flex-direction:column;gap:7px;font-size:13.5px}
+.kitbox ul li{display:flex;justify-content:space-between;gap:10px;border-bottom:1px dashed rgba(255,255,255,.2);padding-bottom:6px}
+.kitbox ul li span:last-child{color:var(--gold2);font-weight:800}
+/* quiz banner */
+.quizban{background:linear-gradient(120deg,var(--lav),#F6E3EE 60%,var(--peach));border-radius:30px;padding:46px;display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap;box-shadow:var(--shadow2);position:relative;overflow:hidden}
+.quizban::after{content:"";position:absolute;right:-40px;top:-40px;width:220px;height:220px;background:var(--paw);border-radius:50%;opacity:.9}
+.quizban h2{font-size:clamp(24px,3vw,34px)}
+.quizban p{color:var(--muted);max-width:480px}
+/* size guide */
+.sgwrap{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start}
+.sgcard{background:var(--cream2);border-radius:var(--r);padding:26px;box-shadow:var(--shadow2)}
+.sgresult{text-align:center;padding:20px;border-radius:var(--rs);background:linear-gradient(140deg,var(--lav),#FBEBDD);margin-top:16px;transition:.4s;transform:scale(.9);opacity:0}
+.sgresult.show{transform:scale(1);opacity:1}
+.sgresult b{font-family:'Baloo 2';font-size:44px;color:var(--brown2)}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line)}
+th{font-family:'Baloo 2';color:var(--brown2)}
+tr.hl td{background:#FBF0DC;font-weight:800;color:var(--brown2)}
+/* tips */
+.tipbox{background:var(--cream2);border-radius:var(--r);box-shadow:var(--shadow2);padding:36px;text-align:center;max-width:720px;margin:0 auto;position:relative;min-height:170px;display:flex;flex-direction:column;justify-content:center;transition:opacity .4s,transform .4s}
+.tipbox.fade{opacity:0;transform:translateY(12px)}
+.tipbox .tic{width:56px;height:56px;border-radius:50%;background:var(--lav);display:grid;place-items:center;color:var(--brown2);margin:0 auto 14px}
+.tipbox h3{font-size:21px;margin-bottom:6px}
+.tipbox p{color:var(--muted)}
+.tipnav{display:flex;gap:10px;justify-content:center;margin-top:20px}
+.tipdots{display:flex;gap:6px;justify-content:center;margin-top:14px}
+.tipdots span{width:8px;height:8px;border-radius:10px;background:var(--lav2);transition:.3s}
+.tipdots span.on{background:var(--brown);width:22px}
+/* reviews */
+.rvgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}
+.rev{background:var(--cream2);border-radius:var(--r);padding:24px;box-shadow:var(--shadow2);transition:.3s;position:relative}
+.rev:hover{transform:translateY(-6px)}
+.rev .stars{color:var(--gold);display:flex;gap:2px;margin-bottom:10px}
+.rev .stars svg{width:17px;height:17px;fill:currentColor}
+.rev p{font-size:14.5px;color:var(--ink)}
+.rev .who{display:flex;align-items:center;gap:12px;margin-top:16px}
+.rev .who .av{width:48px;height:48px;border-radius:50%;overflow:hidden;border:3px solid var(--peach);flex:none}
+.rev .who .av svg{width:100%;height:100%}
+.rev .who b{font-family:'Baloo 2';display:block;line-height:1.2}
+.rev .who span{font-size:12.5px;color:var(--muted)}
+/* journal */
+.jgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}
+.jcard{background:var(--cream2);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow2);transition:.3s;cursor:pointer;display:flex;flex-direction:column}
+.jcard:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.jcard .jimg{height:130px;display:grid;place-items:center}
+.jcard .jimg svg{width:70px;height:60px;color:rgba(94,67,49,.55)}
+.jcard .jbody{padding:18px 20px 22px}
+.jtag{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--gold)}
+.jcard h3{font-size:18px;margin:5px 0 7px}
+.jcard p{font-size:13.5px;color:var(--muted)}
+.jmeta{margin-top:12px;font-size:12px;font-weight:700;color:var(--sage2)}
+/* shipping / delivery */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.glasscard{background:var(--cream2);border-radius:var(--r);padding:30px;box-shadow:var(--shadow2)}
+.flist{list-style:none;display:flex;flex-direction:column;gap:12px;margin-top:16px}
+.flist li{display:flex;gap:11px;font-size:14.5px}
+.flist li .ic{color:var(--sage2);flex:none;margin-top:2px}
+.citygrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px}
+.cityc{background:var(--cream2);border-radius:var(--rs);padding:16px;text-align:center;box-shadow:var(--shadow2);cursor:pointer;transition:.25s;border:2px solid transparent}
+.cityc:hover{transform:translateY(-4px)}
+.cityc.on{border-color:var(--gold);background:#FBF3E0}
+.cityc b{font-family:'Baloo 2';display:block;color:var(--choc)}
+.cityc span{font-size:13px;color:var(--sage2);font-weight:800}
+/* visit */
+.visit{display:grid;grid-template-columns:1.1fr 1fr;gap:26px;align-items:stretch}
+.mapbox{border-radius:var(--r);min-height:340px;position:relative;overflow:hidden;background:
+ linear-gradient(rgba(157,179,140,.16) 2px,transparent 2px),linear-gradient(90deg,rgba(157,179,140,.16) 2px,transparent 2px),linear-gradient(rgba(157,179,140,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(157,179,140,.09) 1px,transparent 1px),linear-gradient(160deg,#EAF0E2,#F7EDE0);background-size:70px 70px,70px 70px,14px 14px,14px 14px,cover;box-shadow:inset 0 0 0 1px var(--line)}
+.mapbox .road{position:absolute;background:#fff;box-shadow:0 2px 6px rgba(67,48,31,.12)}
+.mapbox .pin{position:absolute;left:50%;top:44%;transform:translate(-50%,-100%);color:var(--brown);animation:bounce 1.8s infinite;text-align:center}
+.mapbox .pin svg{width:44px;height:44px;filter:drop-shadow(0 8px 8px rgba(67,48,31,.3))}
+@keyframes bounce{0%,100%{transform:translate(-50%,-100%)}50%{transform:translate(-50%,-120%)}}
+.mlabel{position:absolute;left:50%;top:56%;transform:translateX(-50%);background:var(--cream2);border-radius:14px;padding:8px 14px;font-weight:800;font-size:13px;box-shadow:var(--shadow2);white-space:nowrap}
+.vinfo{display:flex;flex-direction:column;gap:14px}
+.vrow{display:flex;gap:13px;align-items:flex-start;background:var(--cream2);border-radius:var(--rs);padding:15px 17px;box-shadow:var(--shadow2)}
+.vrow .ic{color:var(--gold);margin-top:2px}
+.vrow b{font-family:'Baloo 2';display:block}
+.vrow span{font-size:14px;color:var(--muted)}
+/* footer */
+footer{background:var(--choc);color:#D9C8B2;margin-top:80px;position:relative}
+footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:26px;background:var(--cream);border-radius:0 0 50% 50%/0 0 26px 26px}
+.fmain{display:grid;grid-template-columns:1.3fr 1fr 1fr 1.3fr;gap:36px;padding:70px 0 40px}
+.fmain h4{color:#FBF3E4;font-size:17px;margin-bottom:16px}
+.fmain a{display:block;padding:5px 0;font-size:14px;transition:.2s}
+.fmain a:hover{color:var(--gold2);transform:translateX(4px)}
+.fbrand .logo .lt b{color:#FBF3E4}
+.socials{display:flex;gap:10px;margin-top:18px}
+.soc{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.08);display:grid;place-items:center;color:#F2E7D6;transition:.25s}
+.soc:hover{background:var(--gold);color:#4A3510;transform:translateY(-3px)}
+.newsbox{display:flex;background:rgba(255,255,255,.08);border-radius:40px;padding:5px;margin-top:8px}
+.newsbox input{flex:1;background:transparent;border:none;outline:none;color:#fff;padding:10px 16px;min-width:0}
+.newsbox input::placeholder{color:#B9A488}
+.newsbox button{background:var(--gold);color:#4A3510;border-radius:30px;padding:10px 20px;font-family:'Baloo 2';font-weight:800}
+.fnote{border-top:1px solid rgba(255,255,255,.1);padding:20px 0;font-size:12.5px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:#A08B70}
+/* drawer */
+#cartDrawer{position:fixed;top:0;right:-440px;width:min(420px,94vw);height:100vh;background:var(--cream2);z-index:1100;transition:right .4s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;box-shadow:-24px 0 60px rgba(67,48,31,.25)}
+#cartDrawer.open{right:0}
+.cd-head{display:flex;align-items:center;justify-content:space-between;padding:20px 22px;border-bottom:1px solid var(--line)}
+.cd-head h3{font-size:22px}
+.xbtn{width:38px;height:38px;border-radius:50%;background:var(--lav);display:grid;place-items:center;color:var(--brown2);transition:.2s}
+.xbtn:hover{background:var(--lav2);transform:rotate(90deg)}
+.cdBd{flex:1;overflow-y:auto;padding:18px 22px;display:flex;flex-direction:column;gap:14px}
+.cemp{text-align:center;color:var(--muted);padding:50px 20px}
+.cemp svg{width:64px;height:64px;color:var(--lav2);margin:0 auto 12px}
+.citem{display:flex;gap:13px;background:var(--cream);border-radius:var(--rs);padding:12px;align-items:center}
+.citem .cimg2{width:74px;height:64px;border-radius:12px;overflow:hidden;flex:none;display:grid;place-items:center}
+.citem .cimg2 svg{width:88%;height:88%}
+.citem b{font-family:'Baloo 2';font-size:15px;line-height:1.25;display:block;color:var(--choc)}
+.citem .csub{font-size:11.5px;color:var(--muted);font-weight:700}
+.citem .cprice{font-weight:800;color:var(--brown2);font-family:'Baloo 2'}
+.qty{display:flex;align-items:center;gap:8px;background:#fff;border-radius:20px;padding:3px 6px;box-shadow:var(--shadow2)}
+.qty button{width:24px;height:24px;border-radius:50%;background:var(--lav);color:var(--brown2);font-weight:800;display:grid;place-items:center;font-size:15px;line-height:1}
+.qty span{min-width:18px;text-align:center;font-weight:800;font-size:14px}
+.crm{color:#C97B7B;margin-left:auto;transition:.2s}
+.crm:hover{transform:scale(1.15);color:#E06A6A}
+.cdFt{border-top:1px solid var(--line);padding:16px 22px 20px;background:var(--cream)}
+.couprow{display:flex;gap:9px;margin-bottom:12px}
+.couprow input{flex:1;border:1.5px solid var(--line);border-radius:30px;padding:9px 16px;background:#fff;outline:none;font-weight:700;text-transform:uppercase}
+.couprow input:focus{border-color:var(--gold)}
+.couprow button{background:var(--brown);color:#fff;border-radius:30px;padding:9px 18px;font-family:'Baloo 2';font-weight:700}
+.chint{font-size:12px;color:var(--muted);margin-bottom:10px;font-weight:700}
+.srow{display:flex;justify-content:space-between;font-size:14px;padding:4px 0;color:var(--muted);font-weight:700}
+.srow.tot{font-family:'Baloo 2';font-size:20px;color:var(--choc);border-top:1.5px dashed var(--line);margin-top:8px;padding-top:10px}
+.srow.disc{color:var(--sage2)}
+.cdActions{display:flex;gap:10px;margin-top:14px}
+.cdActions .btn{flex:1;padding:12px 10px;font-size:15px}
+/* modals */
+.modal{position:fixed;inset:0;z-index:1200;display:grid;place-items:center;padding:20px;opacity:0;pointer-events:none;transition:.3s}
+.modal.open{opacity:1;pointer-events:auto}
+.modal .mpanel{background:var(--cream2);border-radius:28px;width:min(1000px,100%);max-height:92vh;overflow-y:auto;position:relative;transform:scale(.92) translateY(20px);transition:.35s cubic-bezier(.2,.7,.3,1);box-shadow:0 40px 80px -20px rgba(67,48,31,.45)}
+.modal.open .mpanel{transform:none}
+.mclose{position:sticky;top:14px;margin-left:calc(100% - 54px);z-index:5}
+/* pet detail */
+.pd{display:grid;grid-template-columns:1fr 1.1fr;gap:0}
+.pdgal{padding:30px}
+.pdmain{border-radius:24px;height:320px;display:grid;place-items:center;overflow:hidden;transition:background .4s}
+.pdmain svg{width:88%;height:96%}
+.pdthumbs{display:flex;gap:12px;margin-top:14px}
+.pdthumbs button{width:76px;height:64px;border-radius:16px;overflow:hidden;display:grid;place-items:center;border:3px solid transparent;transition:.25s}
+.pdthumbs button.on{border-color:var(--gold)}
+.pdthumbs svg{width:90%;height:90%}
+.pdinfo{padding:34px 34px 34px 12px}
+.pdinfo .avail{position:static;display:inline-block;margin-bottom:10px}
+.pdinfo h2{font-size:32px}
+.pdmeta{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0}
+.pdmeta div{background:var(--cream);border-radius:12px;padding:10px 14px;font-size:13.5px}
+.pdmeta b{color:var(--brown2);display:block;font-size:11px;text-transform:uppercase;letter-spacing:1px}
+.pdsec{margin-top:14px}
+.pdsec h4{font-size:16px;color:var(--brown2);margin-bottom:6px}
+.pdsec p,.pdsec ul{font-size:14px;color:var(--muted)}
+.pdsec ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+.pdsec ul li{display:flex;gap:8px}
+.pdsec ul li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold);flex:none;margin-top:8px}
+.temps{display:flex;gap:8px;flex-wrap:wrap}
+.temps span{background:var(--lav);color:var(--brown2);font-weight:800;font-size:12.5px;padding:6px 13px;border-radius:20px}
+.pdctas{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.contactbox{display:none;background:#FBF3E0;border-radius:14px;padding:14px 18px;margin-top:14px;font-size:14px;font-weight:700}
+.contactbox.show{display:block;animation:pop .3s}
+@keyframes pop{from{transform:scale(.94);opacity:0}}
+.relgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:16px;padding:0 30px 34px}
+.relcard{background:var(--cream);border-radius:var(--rs);overflow:hidden;cursor:pointer;transition:.3s;text-align:center}
+.relcard:hover{transform:translateY(-5px);box-shadow:var(--shadow2)}
+.relcard .ri{height:110px;display:grid;place-items:center}
+.relcard .ri svg{width:74%;height:92%}
+.relcard b{font-family:'Baloo 2';font-size:14.5px;display:block;padding:8px 8px 2px;color:var(--choc)}
+.relcard span{font-size:13px;color:var(--brown2);font-weight:800;display:block;padding-bottom:10px}
+/* checkout */
+.co{display:grid;grid-template-columns:1.4fr 1fr;gap:28px;align-items:start}
+.fcard{background:var(--cream2);border-radius:var(--r);padding:28px;box-shadow:var(--shadow2);margin-bottom:22px}
+.fcard h3{font-size:20px;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.fcard h3 .stepn{width:30px;height:30px;border-radius:50%;background:var(--brown);color:#fff;display:grid;place-items:center;font-size:15px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.frow.one{grid-template-columns:1fr}
+.fld label{font-size:12.5px;font-weight:800;color:var(--brown2);display:block;margin-bottom:5px;letter-spacing:.4px}
+.fld input,.fld select,.fld textarea{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:11px 14px;background:#fff;outline:none;transition:.25s}
+.fld input:focus,.fld select:focus,.fld textarea:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(201,162,75,.15)}
+.fld.err input,.fld.err select{border-color:#D96A6A;box-shadow:0 0 0 4px rgba(217,106,106,.12)}
+.radioseg{display:flex;gap:10px;flex-wrap:wrap}
+.radioseg label{flex:1;min-width:150px;border:2px solid var(--line);border-radius:14px;padding:13px;cursor:pointer;text-align:center;font-weight:800;font-size:14px;transition:.25s;color:var(--muted)}
+.radioseg input{display:none}
+.radioseg label.on{border-color:var(--brown);background:#FBF3E0;color:var(--brown2)}
+.radioseg label.on .ic{color:var(--gold)}
+.pays{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pays label{border:2px solid var(--line);border-radius:14px;padding:13px;cursor:pointer;font-weight:800;font-size:14px;display:flex;gap:9px;align-items:center;transition:.25s;color:var(--muted)}
+.pays input{display:none}
+.pays label.on{border-color:var(--sage2);background:#EEF3E8;color:var(--sage2)}
+.paynote{font-size:12.5px;color:var(--muted);margin-top:10px;background:var(--lav);padding:10px 14px;border-radius:10px}
+.cosum{background:linear-gradient(165deg,#FFFDF8,#FBF3E4);border-radius:var(--r);padding:26px;box-shadow:var(--shadow2);position:sticky;top:100px;border:1px solid var(--line)}
+.cosum .sitem{display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px dashed var(--line);font-size:13.5px}
+.cosum .sitem .si{width:44px;height:38px;border-radius:10px;overflow:hidden;flex:none;display:grid;place-items:center}
+.cosum .sitem .si svg{width:90%;height:90%}
+.cosum .sitem b{display:block;font-size:13.5px;line-height:1.3}
+/* confirmation */
+.confirmwrap{max-width:760px;margin:0 auto;text-align:center}
+.checkanim{width:110px;height:110px;margin:0 auto 20px}
+.checkanim circle{stroke:var(--sage2);stroke-width:5;fill:#EEF3E8;stroke-dasharray:340;stroke-dashoffset:340;animation:draw 1s .2s forwards}
+.checkanim path{stroke:var(--sage2);stroke-width:7;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:100;stroke-dashoffset:100;animation:draw .7s .9s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.ordercard{background:var(--cream2);border-radius:var(--r);padding:30px;box-shadow:var(--shadow2);text-align:left;margin-top:26px}
+.statuschip{display:inline-flex;align-items:center;gap:8px;background:var(--sage2);color:#fff;font-weight:800;font-size:13px;padding:7px 15px;border-radius:20px}
+.statuschip .dot{width:8px;height:8px;border-radius:50%;background:#fff;animation:pulse 1.4s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
+.confetti{position:fixed;top:-20px;z-index:2000;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(340deg);opacity:.2}}
+/* tracking */
+.tl{position:relative;margin:36px 0 10px;padding-left:8px}
+.tl .line{position:absolute;top:17px;left:20px;right:20px;height:5px;background:var(--lav2);border-radius:4px}
+.tl .fill{position:absolute;top:17px;left:20px;height:5px;background:linear-gradient(90deg,var(--sage),var(--sage2));border-radius:4px;transition:width .8s cubic-bezier(.2,.7,.3,1);box-shadow:0 2px 8px rgba(126,154,115,.5)}
+.tlstages{display:flex;justify-content:space-between;position:relative}
+.tstage{display:flex;flex-direction:column;align-items:center;gap:9px;width:80px;text-align:center}
+.tstage .dot2{width:34px;height:34px;border-radius:50%;background:#fff;border:4px solid var(--lav2);display:grid;place-items:center;color:transparent;transition:.4s;z-index:2}
+.tstage.done .dot2{background:var(--sage2);border-color:var(--sage2);color:#fff}
+.tstage.act .dot2{border-color:var(--sage2);color:var(--sage2);animation:pulse 1.4s infinite;box-shadow:0 0 0 7px rgba(126,154,115,.18)}
+.tstage span{font-size:11.5px;font-weight:800;color:var(--muted);line-height:1.25}
+.tstage.done span,.tstage.act span{color:var(--brown2)}
+/* account */
+.acc{display:grid;grid-template-columns:250px 1fr;gap:26px;align-items:start}
+.accside{background:var(--cream2);border-radius:var(--r);padding:18px;box-shadow:var(--shadow2);position:sticky;top:100px}
+.accside .who2{display:flex;gap:11px;align-items:center;padding:8px 10px 16px;border-bottom:1px solid var(--line);margin-bottom:10px}
+.accside .who2 .avv{width:44px;height:44px;border-radius:50%;background:linear-gradient(140deg,var(--peach),var(--lav2));display:grid;place-items:center;font-family:'Baloo 2';font-weight:800;color:var(--brown2)}
+.accside button{display:flex;align-items:center;gap:11px;width:100%;padding:11px 13px;border-radius:12px;font-weight:800;font-size:14px;color:var(--muted);transition:.2s;text-align:left}
+.accside button:hover{background:var(--lav);color:var(--brown2)}
+.accside button.on{background:var(--brown);color:#fff}
+.acccard{background:var(--cream2);border-radius:var(--r);padding:26px;box-shadow:var(--shadow2)}
+.olist .oitem{border:1.5px solid var(--line);border-radius:var(--rs);padding:16px 18px;margin-bottom:12px}
+.oitem .orow{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.oitem b{font-family:'Baloo 2'}
+.odetails{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);font-size:13.5px;color:var(--muted);display:none}
+.oitem.open .odetails{display:block}
+/* wishlist empty etc */
+.empty{text-align:center;padding:60px 20px;color:var(--muted)}
+.empty svg{width:70px;height:70px;color:var(--lav2);margin:0 auto 14px}
+/* toast */
+#toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(90px);background:var(--choc);color:#FBF3E4;padding:13px 26px;border-radius:40px;font-weight:700;font-size:14.5px;z-index:3000;transition:.4s cubic-bezier(.2,.7,.3,1);box-shadow:var(--shadow);display:flex;gap:10px;align-items:center;max-width:92vw}
+#toast.show{transform:translateX(-50%) translateY(0)}
+#toast .ic{color:var(--gold2)}
+/* search overlay */
+#searchOverlay{position:fixed;inset:0;background:rgba(67,48,31,.5);backdrop-filter:blur(8px);z-index:1300;display:grid;place-items:start center;padding:90px 20px 20px;opacity:0;pointer-events:none;transition:.3s}
+#searchOverlay.open{opacity:1;pointer-events:auto}
+.spanel{width:min(640px,100%);background:var(--cream2);border-radius:24px;box-shadow:var(--shadow);overflow:hidden;transform:translateY(-16px);transition:.35s}
+#searchOverlay.open .spanel{transform:none}
+.spanel .srow2{display:flex;gap:12px;align-items:center;padding:18px 22px;border-bottom:1px solid var(--line)}
+.spanel input{flex:1;border:none;outline:none;font-size:17px;font-weight:700;background:transparent;color:var(--ink)}
+#searchResults{max-height:52vh;overflow-y:auto;padding:10px}
+.sres{display:flex;align-items:center;gap:13px;padding:10px 14px;border-radius:14px;cursor:pointer;transition:.2s}
+.sres:hover{background:var(--lav)}
+.sres .srim{width:52px;height:46px;border-radius:12px;overflow:hidden;flex:none;display:grid;place-items:center}
+.sres .srim svg{width:90%;height:90%}
+.sres .sric{width:44px;height:44px;border-radius:12px;background:var(--lav);display:grid;place-items:center;color:var(--brown2);flex:none}
+.sres b{display:block;font-family:'Baloo 2';font-size:15px;line-height:1.25}
+.sres .slab{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--sage2)}
+.sres .spr{margin-left:auto;font-weight:800;font-family:'Baloo 2';color:var(--brown2)}
+.snote{text-align:center;color:var(--muted);font-size:13px;padding:16px;font-weight:700}
+/* about */
+.aboutgrid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
+.aboutart{border-radius:30px;overflow:hidden;box-shadow:var(--shadow);background:linear-gradient(150deg,var(--peach),var(--lav));padding:30px}
+.aboutart svg{width:100%}
+.responsible{background:linear-gradient(90deg,#FBF0DC,#F6E8D2);border-left:5px solid var(--gold);border-radius:var(--rs);padding:16px 22px;font-size:14px;color:var(--brown2);font-weight:600;margin-top:44px}
+/* responsive */
+@media(max-width:1000px){
+.hero-in{grid-template-columns:1fr;padding:40px 0 70px}
+.hero-visual{height:420px;max-width:520px;margin:0 auto}
+.kitwrap,.sgwrap,.two,.co,.aboutgrid,.visit,.pd,.acc{grid-template-columns:1fr}
+.kitbox{position:static}
+.pdinfo{padding:0 30px 30px}
+.pdgal{padding-bottom:10px}
+.accside{position:static}
+.fmain{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+.grid{grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
+.pimg{height:160px}
+.frow{grid-template-columns:1fr}
+.pays{grid-template-columns:1fr}
+.pd{grid-template-columns:1fr}
+.pdinfo{padding:0 22px 26px}
+.pdgal{padding:22px}
+.pdmain{height:250px}
+.fmain{grid-template-columns:1fr}
+.tlstages{flex-wrap:wrap;gap:14px 0}
+.tstage{width:33%}
+.tl .line,.tl .fill{display:none}
+.car>*{flex-basis:225px}
+.quizban{padding:30px}
+.sec{padding:56px 0}
+}
+</style>
+</head>
+<body>
+
+<div id="loader">
+  <div class="paws" id="loadPaws"></div>
+  <p>Hafao is waking up</p>
+</div>
+
+<div class="topstrip">Free delivery across Bangladesh on orders over Tk 5,000 &nbsp;|&nbsp; Care hotline: +880 1700-000000</div>
+
+<header id="header">
+  <div class="container nav">
+    <a class="logo" data-act="go" data-view="home" href="javascript:void(0)">
+      <img src="https://www.designarena.ai/u/cee629b9-1df1-4943-a3eb-3f61ba46755d" alt="Hafao Pet Shop logo" onerror="this.style.display='none'">
+      <span class="lt"><b>Hafao</b><span>Pet Shop</span></span>
+    </a>
+    <nav class="navlinks" id="navLinks"></nav>
+    <div class="navact">
+      <button class="iconbtn" data-act="open-search" title="Search" id="searchBtn"></button>
+      <button class="iconbtn" data-act="go" data-view="wishlist" title="Wishlist"><span class="bdg" id="badgeWish">0</span></button>
+      <button class="iconbtn" data-act="go" data-view="account" title="Account"></button>
+      <button class="iconbtn" data-act="open-cart" title="Cart" id="cartBtn"><span class="bdg" id="badgeCart">0</span></button>
+      <button class="iconbtn burger" data-act="open-menu" title="Menu" id="burgerBtn"></button>
+    </div>
+  </div>
+</header>
+
+<div id="mmenu">
+  <div class="mmhead">
+    <span class="baloo" style="font-size:20px;color:var(--brown2)">Menu</span>
+    <button class="xbtn" data-act="close-menus" id="mmClose"></button>
+  </div>
+  <div id="mmLinks"></div>
+</div>
+
+<main id="main">
+
+<!-- HOME -->
+<section class="view" id="view-home">
+  <div class="hero">
+    <div class="container hero-in">
+      <div class="hero-copy">
+        <span class="kick baloo" style="font-family:'Caveat',cursive;font-size:26px;color:var(--gold)">From Narayanganj with love</span>
+        <h1>Everything Your Pet <em>Loves</em>, In One Place.</h1>
+        <p class="sub">Discover rare companions, premium pet essentials and everything they need from Hafao, delivered with care across Bangladesh and beyond.</p>
+        <div class="cta">
+          <button class="btn btn-p" data-act="go" data-view="shop">Explore Pets <span data-ic="arrow"></span></button>
+          <button class="btn btn-o" data-act="go" data-view="food">Shop Pet Essentials</button>
+        </div>
+        <div class="hstats">
+          <div class="hstat"><b>30+</b><span>Live companions</span></div>
+          <div class="hstat"><b>500+</b><span>Pet essentials</span></div>
+          <div class="hstat"><b>9</b><span>Cities served</span></div>
+          <div class="hstat"><b>4.9</b><span>Customer rating</span></div>
+        </div>
+      </div>
+      <div class="hero-visual" id="heroVisual">
+        <div class="hv-blob" data-depth="6"></div>
+        <div class="hv-card hv-main" data-depth="14" id="hvMain"></div>
+        <div class="hv-card hv-cat" data-depth="26" id="hvCat"></div>
+        <div class="hv-card hv-rab" data-depth="34" id="hvRab"></div>
+        <div class="hv-card hv-bird" data-depth="22" id="hvBird"></div>
+        <div class="hv-badge"><span class="stars" data-ic="stars"></span> Loved by 2,400 pet families</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="trust" id="trustRow"></div>
+  </div>
+
+  <!-- categories -->
+  <div class="sec container">
+    <div class="shead reveal"><span class="kick">Shop by friend</span><h2>Who Are You Shopping For</h2><p>Choose a family member and we will show you everything they love.</p></div>
+    <div class="cats" id="catTiles"></div>
+  </div>
+
+  <!-- new arrivals -->
+  <div class="sec container" style="padding-top:10px">
+    <div class="shopbar reveal">
+      <div><span class="kick baloo" style="font-family:'Caveat',cursive;font-size:24px;color:var(--gold)">Just arrived</span><h2 style="font-size:clamp(26px,3.4vw,36px)">New Arrivals</h2></div>
+      <div class="carnav"><button class="carbtn" data-act="car-prev" data-target="newArr"></button><button class="carbtn" data-act="car-next" data-target="newArr"></button></div>
+    </div>
+    <div class="carwrap"><div class="car" id="newArr"></div></div>
+  </div>
+
+  <!-- rare -->
+  <div class="sec dark">
+    <div class="container">
+      <div class="shead reveal"><span class="kick" style="color:var(--gold2)">Rare and Extraordinary</span><h2>Companions Like No Other</h2><p>A carefully curated collection of extraordinary pets for experienced and dedicated owners.</p></div>
+      <div class="rgrid" id="rareGrid"></div>
+      <div class="legalnote reveal"><span data-ic="shield"></span><span>Responsible ownership notice: the availability, sale and transportation of live animals depend on applicable laws, animal welfare rules, permits and destination requirements. Rare pets are recommended for experienced owners only. Please contact Hafao before ordering any live animal.</span></div>
+    </div>
+  </div>
+
+  <!-- best sellers -->
+  <div class="sec container">
+    <div class="shopbar reveal">
+      <div><span class="kick baloo" style="font-family:'Caveat',cursive;font-size:24px;color:var(--gold)">Loved by everyone</span><h2 style="font-size:clamp(26px,3.4vw,36px)">Best Sellers</h2></div>
+      <div class="carnav"><button class="carbtn" data-act="car-prev" data-target="bestSel"></button><button class="carbtn" data-act="car-next" data-target="bestSel"></button></div>
+    </div>
+    <div class="carwrap"><div class="car" id="bestSel"></div></div>
+  </div>
+
+  <!-- kit -->
+  <div class="sec container" id="kitSection">
+    <div class="shead reveal"><span class="kick">Build your own</span><h2>Build Your Pet Kit</h2><p>Select your pet type, choose the essentials for each slot and we will calculate the perfect starter kit.</p></div>
+    <div class="chips reveal" id="kitTypes" style="justify-content:center"></div>
+    <div class="kitwrap reveal">
+      <div class="kitslots" id="kitSlots"></div>
+      <div class="kitbox">
+        <h3>Your Hafao Kit</h3>
+        <p style="font-size:13.5px;opacity:.8" id="kitName">Dog Care Kit</p>
+        <div class="kt" id="kitTotal">Tk 0</div>
+        <ul id="kitList"></ul>
+        <button class="btn btn-gold" style="width:100%" data-act="add-kit">Add Kit to Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- quiz banner -->
+  <div class="sec container" style="padding-top:0">
+    <div class="quizban reveal">
+      <div>
+        <span class="kick baloo" style="font-family:'Caveat',cursive;font-size:24px;color:var(--gold)">Pet Match Quiz</span>
+        <h2>Not Sure Which Pet Fits Your Life?</h2>
+        <p>Answer five quick questions about your home, time and lifestyle and we will match you with the companions that suit you best.</p>
+      </div>
+      <button class="btn btn-p" data-act="quiz-start">Start the Quiz <span data-ic="arrow"></span></button>
+    </div>
+  </div>
+
+  <!-- size guide -->
+  <div class="sec container" id="sizeGuide" style="padding-top:0">
+    <div class="shead reveal"><span class="kick">Perfect fit</span><h2>Interactive Pet Size Guide</h2><p>Enter your pet type and weight to find the right clothing size before you order.</p></div>
+    <div class="sgwrap reveal">
+      <div class="sgcard">
+        <div class="frow">
+          <div class="fld"><label>Pet type</label><select id="sgType"><option>Dog</option><option>Cat</option><option>Rabbit</option></select></div>
+          <div class="fld"><label>Weight in kg</label><input type="number" id="sgWeight" min="0.2" step="0.1" placeholder="e.g. 4.5"></div>
+        </div>
+        <button class="btn btn-p sm" data-act="size-find">Find My Size</button>
+        <div class="sgresult" id="sgResult"><span style="font-size:13px;font-weight:800;color:var(--muted);letter-spacing:1px">RECOMMENDED SIZE</span><br><b id="sgSize">S</b><p style="font-size:13px;color:var(--muted)" id="sgDesc"></p></div>
+      </div>
+      <div class="sgcard"><table id="sgTable"><thead><tr><th>Size</th><th>Weight range</th><th>Back length</th></tr></thead><tbody></tbody></table><p style="font-size:12.5px;color:var(--muted);margin-top:12px">Measurements are a guide. When between sizes, choose the larger one for comfort.</p></div>
+    </div>
+  </div>
+
+  <!-- tips -->
+  <div class="sec alt">
+    <div class="container">
+      <div class="shead reveal"><span class="kick">Hafao wisdom</span><h2>Pet Care Tips</h2><p>Small daily habits that keep your companions happy and healthy.</p></div>
+      <div class="tipbox reveal" id="tipBox"></div>
+    </div>
+  </div>
+
+  <!-- reviews -->
+  <div class="sec container">
+    <div class="shead reveal"><span class="kick">Happy customers</span><h2>Loved Across Bangladesh</h2><p>Real stories from Hafao families and their beloved companions.</p></div>
+    <div class="rvgrid" id="revGrid"></div>
+  </div>
+
+  <!-- journal -->
+  <div class="sec peachy">
+    <div class="container">
+      <div class="shead reveal"><span class="kick">Hafao Journal</span><h2>Notes For Better Pet Care</h2><p>Guides on care, feeding, grooming, training and responsible ownership.</p></div>
+      <div class="jgrid" id="journalGrid"></div>
+    </div>
+  </div>
+
+  <!-- international -->
+  <div class="sec container" id="intlShip">
+    <div class="shead reveal"><span class="kick">Worldwide reach</span><h2>From Bangladesh to Your Door</h2><p>Hafao carefully arranges international delivery for eligible animals and products, where laws and welfare allow.</p></div>
+    <div class="two">
+      <div class="glasscard reveal">
+        <h3 style="font-size:20px;margin-bottom:6px">What international delivery depends on</h3>
+        <ul class="flist" id="intlList"></ul>
+        <div class="notice" style="margin:18px 0 0"><span data-ic="info"></span><span>International pet delivery depends on species, destination country laws, animal welfare requirements, health documents, airline rules, courier rules and permits. Hafao does not claim that every animal can be shipped worldwide. Each request is reviewed individually with full transparency.</span></div>
+      </div>
+      <div class="glasscard reveal">
+        <h3 style="font-size:20px;margin-bottom:6px">How we make it safe</h3>
+        <ul class="flist" id="intlList2"></ul>
+        <button class="btn btn-o sm" style="margin-top:20px" data-act="go" data-view="contact-visit">Ask About International Delivery</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- BD delivery -->
+  <div class="sec alt" id="bdShip">
+    <div class="container">
+      <div class="shead reveal"><span class="kick">Home ground</span><h2>Delivery Across Bangladesh</h2><p>Choose your city to see the delivery fee. Fees are configurable and update instantly in your cart.</p></div>
+      <div class="citygrid reveal" id="bdCities"></div>
+      <p class="reveal" style="text-align:center;margin-top:22px;font-size:14px;color:var(--muted);font-weight:700">Selected city: <span id="selCity" style="color:var(--brown2)">Narayanganj</span> &nbsp;|&nbsp; Delivery fee: <span id="selFee" style="color:var(--brown2)">Tk 60</span> &nbsp;|&nbsp; Free over Tk 5,000</p>
+    </div>
+  </div>
+
+  <!-- about -->
+  <div class="sec container" id="aboutSec">
+    <div class="aboutgrid">
+      <div class="reveal">
+        <span class="kick baloo" style="font-family:'Caveat',cursive;font-size:24px;color:var(--gold)">About Hafao</span>
+        <h2 style="font-size:clamp(26px,3.4vw,38px);margin-bottom:14px">A Pet Shop With A Big Heart</h2>
+        <p style="color:var(--muted)">Hafao Pet Shop began in Narayanganj, Bangladesh with one simple promise: everything your pet loves, in one place. We hand-pick every companion, test every product and treat every customer like family. From playful kittens to rare exotics, from nutritious food to cozy beds, Hafao brings international standards to Bangladesh with local warmth.</p>
+        <ul class="flist" style="margin-top:18px">
+          <li><span data-ic="heart"></span><span>Health checked companions from responsible sources</span></li>
+          <li><span data-ic="shield"></span><span>Honest advice about responsible pet ownership</span></li>
+          <li><span data-ic="truck"></span><span>Safe, careful delivery across 9 cities and worldwide where permitted</span></li>
+        </ul>
+        <button class="btn btn-p sm" style="margin-top:22px" data-act="go" data-view="shop">Meet Our Companions</button>
+      </div>
+      <div class="aboutart reveal" id="aboutArt"></div>
+    </div>
+  </div>
+
+  <!-- visit -->
+  <div class="sec peachy" id="visitSec">
+    <div class="container">
+      <div class="shead reveal"><span class="kick">Say hello</span><h2>Visit Hafao</h2><p>Come meet the companions, feel the products and let our team help you in person.</p></div>
+      <div class="visit reveal">
+        <div class="mapbox" id="mapBox">
+          <div class="road" style="left:0;right:0;top:30%;height:14px;transform:rotate(-4deg)"></div>
+          <div class="road" style="top:0;bottom:0;left:26%;width:12px;transform:rotate(6deg)"></div>
+          <div class="road" style="left:0;right:0;top:68%;height:10px;transform:rotate(3deg)"></div>
+          <div class="pin"><span data-ic="pin"></span></div>
+          <div class="mlabel">Hafao Pet Shop, Narayanganj</div>
+          <span style="position:absolute;bottom:12px;right:14px;font-size:11px;font-weight:700;color:var(--muted);background:rgba(255,253,248,.8);padding:4px 10px;border-radius:12px">Interactive map placeholder</span>
+        </div>
+        <div class="vinfo">
+          <div class="vrow"><span data-ic="pin"></span><div><b>Address</b><span id="vAddr"></span></div></div>
+          <div class="vrow"><span data-ic="clock"></span><div><b>Opening hours</b><span>Saturday to Thursday: 9:00 AM - 9:00 PM<br>Friday: 3:00 PM - 9:00 PM</span></div></div>
+          <div class="vrow"><span data-ic="phone"></span><div><b>Phone</b><span id="vPhone"></span></div></div>
+          <div class="vrow"><span data-ic="mail"></span><div><b>Email</b><span id="vMail"></span></div></div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:4px">
+            <button class="btn btn-p sm" data-act="directions">Get Directions</button>
+            <button class="btn btn-o sm" data-act="go" data-view="contact-visit">Contact Us</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOP PETS -->
+<section class="view sec" id="view-shop" style="display:none">
+  <div class="container">
+    <div class="shead"><span class="kick">Live companions</span><h2>Find Your Perfect Companion</h2><p>Browse by category, sort by what matters and meet your new best friend.</p></div>
+    <div class="notice"><span data-ic="info"></span><span>Live pet availability may vary. Statuses update regularly, but please contact Hafao to confirm before visiting or placing an order. Sale and transportation of animals depend on applicable laws and welfare requirements.</span></div>
+    <div class="chips" id="shopChips"></div>
+    <div class="shopbar"><span style="font-weight:800;color:var(--muted)" id="shopCount"></span>
+      <select class="selbox" id="shopSort">
+        <option value="new">New Arrivals</option>
+        <option value="low">Price: Low to High</option>
+        <option value="high">Price: High to Low</option>
+        <option value="pop">Most Popular</option>
+        <option value="rare">Rare First</option>
+      </select>
+    </div>
+    <div class="grid" id="shopGrid"></div>
+  </div>
+</section>
+
+<!-- FOOD / CLOTHING / ACCESSORIES / CARE -->
+<section class="view sec" id="view-food" style="display:none"><div class="container">
+  <div class="shead"><span class="kick">Nutrition first</span><h2>Pet Food</h2><p>Premium nutrition for every species, from playful kittens to gentle tortoises.</p></div>
+  <div class="chips" id="foodChips"></div><div class="grid" id="foodGrid"></div>
+</div></section>
+
+<section class="view sec" id="view-clothing" style="display:none"><div class="container">
+  <div class="shead"><span class="kick">Style and comfort</span><h2>Pet Clothing</h2><p>Soft, safe and adorable outfits. Filter by size using our size guide.</p></div>
+  <div class="chips" id="clothChips"></div><div class="grid" id="clothGrid"></div>
+  <p style="text-align:center;margin-top:30px;font-weight:700;color:var(--muted)">Not sure about the size? <a href="javascript:void(0)" style="color:var(--gold);text-decoration:underline" data-act="go-sizeguide">Open the Pet Size Guide</a></p>
+</div></section>
+
+<section class="view sec" id="view-accessories" style="display:none"><div class="container">
+  <div class="shead"><span class="kick">Everyday joy</span><h2>Pet Accessories</h2><p>Collars, beds, toys, carriers and everything that makes tails wag.</p></div>
+  <div class="chips" id="accChips"></div><div class="grid" id="accGrid"></div>
+</div></section>
+
+<section class="view sec" id="view-care" style="display:none"><div class="container">
+  <div class="shead"><span class="kick">Health and happiness</span><h2>Pet Care</h2><p>Grooming, hygiene, dental, first aid and safety essentials trusted by vets.</p></div>
+  <div class="chips" id="careChips"></div><div class="grid" id="careGrid"></div>
+</div></section>
+
+<!-- CHECKOUT -->
+<section class="view sec" id="view-checkout" style="display:none"><div class="container">
+  <div class="shead" style="margin-bottom:30px"><span class="kick">Almost there</span><h2>Checkout</h2><p>Confirm your details and place your order. Payment gateway integration is ready for activation.</p></div>
+  <div class="co">
+    <form id="checkoutForm" novalidate>
+      <div class="fcard"><h3><span class="stepn">1</span> Customer Information</h3>
+        <div class="frow"><div class="fld"><label>Full name</label><input id="cName" placeholder="Your full name"></div>
+        <div class="fld"><label>Phone number</label><input id="cPhone" placeholder="01XXXXXXXXX"></div></div>
+        <div class="frow one"><div class="fld"><label>Email address</label><input id="cEmail" type="email" placeholder="you@email.com"></div></div>
+      </div>
+      <div class="fcard"><h3><span class="stepn">2</span> Delivery Details</h3>
+        <div class="fld" style="margin-bottom:14px"><label>Delivery type</label>
+          <div class="radioseg" id="dmodeSeg">
+            <label class="on"><input type="radio" name="dmode" value="bd" checked><span data-ic="pin"></span> Bangladesh Delivery</label>
+            <label><input type="radio" name="dmode" value="intl"><span data-ic="globe"></span> International Delivery</label>
+          </div>
+        </div>
+        <div id="bdFields">
+          <div class="frow">
+            <div class="fld"><label>Division</label><select id="bdDivision"></select></div>
+            <div class="fld"><label>District / City</label><select id="bdCity"></select></div>
+          </div>
+          <div class="frow one"><div class="fld"><label>Full address</label><input id="bdAddress" placeholder="House, road, area"></div></div>
+          <div class="frow one"><div class="fld"><label>Postal code</label><input id="bdPostal" placeholder="e.g. 1400"></div></div>
+        </div>
+        <div id="intlFields" style="display:none">
+          <div class="frow">
+            <div class="fld"><label>Country</label><select id="intlCountry"></select></div>
+            <div class="fld"><label>State / Province</label><input id="intlState" placeholder="State or province"></div>
+          </div>
+          <div class="frow">
+            <div class="fld"><label>City</label><input id="intlCity" placeholder="City"></div>
+            <div class="fld"><label>Postal code</label><input id="intlPostal" placeholder="Postal code"></div>
+          </div>
+          <div class="frow one"><div class="fld"><label>Full address</label><input id="intlAddress" placeholder="Street, building, apartment"></div></div>
+          <div class="notice" style="margin:0"><span data-ic="info"></span><span>International orders are reviewed individually. Delivery of live animals depends on destination laws, permits and welfare rules. Our team will contact you to confirm every detail.</span></div>
+        </div>
+        <div class="fld" style="margin-top:14px;display:flex;gap:9px;align-items:center;font-weight:700;font-size:14px"><input type="checkbox" id="saveAddr" style="width:17px;height:17px;accent-color:var(--brown)"> Save this address to my account</div>
+      </div>
+      <div class="fcard"><h3><span class="stepn">3</span> Payment Method</h3>
+        <div class="pays" id="paySeg">
+          <label class="on"><input type="radio" name="pay" value="Cash on Delivery" checked><span data-ic="cash"></span> Cash on Delivery</label>
+          <label><input type="radio" name="pay" value="bKash / Nagad"><span data-ic="phone"></span> bKash / Nagad</label>
+          <label><input type="radio" name="pay" value="Card"><span data-ic="card"></span> Card Payment</label>
+          <label><input type="radio" name="pay" value="Bank Transfer"><span data-ic="bank"></span> Bank Transfer</label>
+        </div>
+        <div class="paynote">Online payment gateways are integration ready. For now, bKash, Nagad, card and bank payments are confirmed manually by our team after you place the order.</div>
+      </div>
+    </form>
+    <div class="cosum">
+      <h3 style="font-size:20px;margin-bottom:12px">Order Summary</h3>
+      <div id="sumItems"></div>
+      <div class="srow" style="margin-top:10px"><span>Subtotal</span><span id="sumSub"></span></div>
+      <div class="srow disc" id="sumDiscRow" style="display:none"><span>Coupon discount</span><span id="sumDisc"></span></div>
+      <div class="srow"><span>Shipping fee</span><span id="sumShip"></span></div>
+      <div class="srow tot"><span>Final total</span><span id="sumTotal"></span></div>
+      <p style="font-size:12.5px;color:var(--muted);margin:10px 0 18px" id="shipNote"></p>
+      <button class="btn btn-p" style="width:100%" data-act="place-order">Place Order</button>
+      <button class="btn btn-o sm" style="width:100%;margin-top:10px" data-act="open-cart">Back to Cart</button>
+    </div>
+  </div>
+</div></section>
+
+<!-- CONFIRM -->
+<section class="view sec" id="view-confirm" style="display:none"><div class="container">
+  <div class="confirmwrap" id="confirmBox"></div>
+</div></section>
+
+<!-- TRACK -->
+<section class="view sec" id="view-track" style="display:none"><div class="container">
+  <div class="shead"><span class="kick">Where is my pet</span><h2>Track Your Order</h2><p>Enter your order number and the phone or email used at checkout.</p></div>
+  <div class="glasscard" style="max-width:640px;margin:0 auto">
+    <div class="frow"><div class="fld"><label>Order number</label><input id="tNo" placeholder="e.g. HF-832194"></div>
+    <div class="fld"><label>Phone or email</label><input id="tContact" placeholder="01XXXXXXXXX or email"></div></div>
+    <button class="btn btn-p" data-act="track-find">Track Order</button>
+  </div>
+  <div id="trackResult" style="max-width:860px;margin:36px auto 0"></div>
+</div></section>
+
+<!-- ACCOUNT -->
+<section class="view sec" id="view-account" style="display:none"><div class="container" id="accountBox"></div></section>
+
+<!-- WISHLIST -->
+<section class="view sec" id="view-wishlist" style="display:none"><div class="container">
+  <div class="shead"><span class="kick">Saved with love</span><h2>My Wishlist</h2><p>Your favorite pets and products, ready when you are.</p></div>
+  <div id="wishBox"></div>
+</div></section>
+
+</main>
+
+<footer>
+  <div class="container fmain">
+    <div class="fbrand">
+      <a class="logo" data-act="go" data-view="home" href="javascript:void(0)">
+        <img src="https://www.designarena.ai/u/cee629b9-1df1-4943-a3eb-3f61ba46755d" alt="Hafao Pet Shop logo" onerror="this.style.display='none'">
+        <span class="lt"><b style="color:#FBF3E4">Hafao</b><span>Pet Shop</span></span>
+      </a>
+      <p style="font-size:14px;margin-top:14px;max-width:280px">Everything Your Pet Loves, In One Place. Premium pets and essentials from Narayanganj, Bangladesh to the world.</p>
+      <div class="socials">
+        <a class="soc" href="https://facebook.com" target="_blank" rel="noopener" title="Facebook"><span data-ic="fb"></span></a>
+        <a class="soc" href="https://instagram.com" target="_blank" rel="noopener" title="Instagram"><span data-ic="ig"></span></a>
+        <a class="soc" href="https://tiktok.com" target="_blank" rel="noopener" title="TikTok"><span data-ic="tt"></span></a>
+        <a class="soc" href="https://youtube.com" target="_blank" rel="noopener" title="YouTube"><span data-ic="yt"></span></a>
+      </div>
+    </div>
+    <div><h4>Shop</h4>
+      <a href="javascript:void(0)" data-act="go" data-view="shop">Shop Pets</a>
+      <a href="javascript:void(0)" data-act="go" data-view="food">Pet Food</a>
+      <a href="javascript:void(0)" data-act="go" data-view="clothing">Clothing</a>
+      <a href="javascript:void(0)" data-act="go" data-view="accessories">Accessories</a>
+      <a href="javascript:void(0)" data-act="go" data-view="care">Pet Care</a>
+    </div>
+    <div><h4>Company</h4>
+      <a href="javascript:void(0)" data-act="go-about">About Hafao</a>
+      <a href="javascript:void(0)" data-act="go-visit">Contact</a>
+      <a href="javascript:void(0)" data-act="info" data-info="shipping">Shipping</a>
+      <a href="javascript:void(0)" data-act="info" data-info="returns">Returns</a>
+      <a href="javascript:void(0)" data-act="info" data-info="privacy">Privacy Policy</a>
+      <a href="javascript:void(0)" data-act="info" data-info="terms">Terms and Conditions</a>
+      <a href="javascript:void(0)" data-act="info" data-info="rpo">Responsible Pet Ownership</a>
+    </div>
+    <div>
+      <h4>Join the Hafao family</h4>
+      <p style="font-size:14px;margin-bottom:12px">Care tips, new arrivals and special offers, once a week.</p>
+      <div class="newsbox"><input id="newsEmail" type="email" placeholder="Your email address"><button data-act="news">Subscribe</button></div>
+      <p style="font-size:12px;margin-top:10px;color:#A08B70">We respect your inbox. Unsubscribe anytime.</p>
+    </div>
+  </div>
+  <div class="container fnote">
+    <span id="year"></span>
+    <span>Pet availability, sale and transportation depend on applicable laws, animal welfare rules, permits and destination requirements.</span>
+  </div>
+</footer>
+
+<!-- cart drawer -->
+<aside id="cartDrawer">
+  <div class="cd-head"><h3>Your Cart</h3><button class="xbtn" data-act="close-cart" id="cdClose"></button></div>
+  <div class="cdBd" id="cartItems"></div>
+  <div class="cdFt">
+    <div class="couprow"><input id="couponInput" placeholder="Coupon code"><button data-act="apply-coupon">Apply</button></div>
+    <div class="chint">Try code HAFAO10 for 10 percent off, or WELCOME15 for 15 percent off.</div>
+    <div id="cdTotals"></div>
+    <div class="cdActions">
+      <button class="btn btn-o" data-act="close-cart">Continue</button>
+      <button class="btn btn-p" data-act="go-checkout">Checkout</button>
+    </div>
+  </div>
+</aside>
+
+<div id="backdrop" data-act="close-all"></div>
+
+<!-- pet modal -->
+<div class="modal" id="petModal"><div class="mpanel">
+  <button class="xbtn mclose" data-act="close-modal" data-modal="petModal"></button>
+  <div id="petModalBody"></div>
+</div></div>
+
+<!-- info modal -->
+<div class="modal" id="infoModal"><div class="mpanel" style="width:min(680px,100%)">
+  <button class="xbtn mclose" data-act="close-modal" data-modal="infoModal"></button>
+  <div id="infoBody" style="padding:20px 34px 40px"></div>
+</div></div>
+
+<!-- quiz modal -->
+<div class="modal" id="quizModal"><div class="mpanel" style="width:min(680px,100%)">
+  <button class="xbtn mclose" data-act="close-modal" data-modal="quizModal"></button>
+  <div id="quizBody" style="padding:20px 34px 40px"></div>
+</div></div>
+
+<!-- search overlay -->
+<div id="searchOverlay">
+  <div class="spanel">
+    <div class="srow2"><span data-ic="search"></span><input id="searchInput" placeholder="Search pets, food, clothing, accessories, care..."><button class="xbtn" data-act="close-search" id="sClose"></button></div>
+    <div id="searchResults"><div class="snote">Start typing to search the entire Hafao store.</div></div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+/* =====================================================================
+   HAFAO PET SHOP - EDITABLE STORE DATA
+   The owner can freely edit pets, products, prices, availability,
+   delivery fees, coupons, cities and countries below.
+===================================================================== */
+const BRAND={name:'Hafao Pet Shop',phone:'+880 1700-000000',email:'hello@hafao.com.bd',address:'House 12, Road 3, Bandar, Narayanganj 1400, Bangladesh'};
+const DELIVERY_BD={'Narayanganj':60,'Dhaka':80,'Mymensingh':120,'Chattogram':120,'Sylhet':130,'Rajshahi':130,'Khulna':130,'Barishal':140,'Rangpur':140,'Other district':150};
+const SHIP_INTL={'India':2500,'Nepal':2800,'Bhutan':2800,'United Arab Emirates':5500,'Saudi Arabia':5800,'Qatar':5600,'Malaysia':5900,'Singapore':6000,'United States':9500,'United Kingdom':9800,'Canada':9900,'Australia':10200,'Other country':8500};
+const COUPONS={'HAFAO10':{type:'pct',val:10,label:'10 percent off'},'WELCOME15':{type:'pct',val:15,label:'15 percent off'},'PAWS500':{type:'flat',val:500,label:'Tk 500 off'}};
+const FREE_BD_OVER=5000;
+const DIVISIONS={'Dhaka':['Dhaka','Narayanganj','Gazipur','Other district'],'Chattogram':['Chattogram','Coxs Bazar','Other district'],'Sylhet':['Sylhet','Moulvibazar','Other district'],'Rajshahi':['Rajshahi','Bogura','Other district'],'Khulna':['Khulna','Jashore','Other district'],'Barishal':['Barishal','Other district'],'Rangpur':['Rangpur','Other district'],'Mymensingh':['Mymensingh','Other district']};
+const SIZES=['XS','S','M','L','XL','XXL'];
+const CATLABEL={dogs:'Dog',cats:'Cat',birds:'Bird',rabbits:'Rabbit',small:'Small Pet',reptiles:'Reptile',aquatic:'Aquatic Pet'};
+
+/* ---------- PET LISTINGS (live animals, kept separate from products) ---------- */
+const PETS=[
+{id:'p01',name:'Bengal Cat',cat:'cats',type:'cat',c:{m:'#D9A05B',s:'#F3D9B0',a:'#B07A3C',sp:1},age:'4 months',gender:'Male',price:42000,avail:'Available',rare:0,isNew:1,pop:9,temper:'Active, curious and playful',desc:'A stunning leopard like coat with an athletic, confident personality that loves to climb and explore.'},
+{id:'p02',name:'Scottish Fold',cat:'cats',type:'cat',c:{m:'#B7B7BC',s:'#E3E3E8',a:'#8E8E96'},age:'3 months',gender:'Female',price:38000,avail:'Available',rare:0,isNew:0,pop:8,temper:'Sweet, calm and gentle',desc:'Famous folded ears and round eyes. A quiet, affectionate companion that adores cozy laps.'},
+{id:'p03',name:'Maine Coon',cat:'cats',type:'cat',c:{m:'#8C6B4F',s:'#D8C4AC',a:'#6B5138'},age:'5 months',gender:'Male',price:52000,avail:'Available',rare:0,isNew:0,pop:9,temper:'Friendly, social and gentle',desc:'The gentle giant of cats. Large, fluffy and wonderfully tolerant, perfect for families.'},
+{id:'p04',name:'Ragdoll Cat',cat:'cats',type:'cat',c:{m:'#E8D8C6',s:'#FBF4EA',a:'#B99C7E'},age:'4 months',gender:'Female',price:48000,avail:'Reserved',rare:0,isNew:0,pop:8,temper:'Relaxed, loving and docile',desc:'Known for going limp when held. Blue eyed, silky soft and endlessly affectionate.'},
+{id:'p05',name:'Siamese Cat',cat:'cats',type:'cat',c:{m:'#E9DCC8',s:'#F7F0E2',a:'#6B5646'},age:'3 months',gender:'Female',price:30000,avail:'Available',rare:0,isNew:1,pop:8,temper:'Vocal, clever and social',desc:'Elegant color points and a chatty personality. This kitten will follow you everywhere.'},
+{id:'p06',name:'Sphynx Cat',cat:'cats',type:'cat',c:{m:'#E3B7A0',s:'#F5D9C8',a:'#C08A6C'},age:'4 months',gender:'Male',price:55000,avail:'Available',rare:0,isNew:0,pop:7,temper:'Energetic, warm and people loving',desc:'A unique hairless breed with warm suede like skin and a big clownish heart.'},
+{id:'p07',name:'Persian Cat',cat:'cats',type:'cat',c:{m:'#F1E4D4',s:'#FDF8F0',a:'#CBB49A'},age:'4 months',gender:'Female',price:35000,avail:'Available',rare:0,isNew:0,pop:9,temper:'Calm, quiet and elegant',desc:'A luxurious long coat and a sweet flat face. The classic sofa companion.'},
+{id:'p08',name:'British Shorthair',cat:'cats',type:'cat',c:{m:'#9AA7B5',s:'#C9D2DC',a:'#76838F'},age:'5 months',gender:'Male',price:45000,avail:'Unavailable',rare:0,isNew:0,pop:8,temper:'Easygoing, sturdy and independent',desc:'Plush blue gray coat, copper eyes and a teddy bear temperament everyone adores.'},
+{id:'p09',name:'Golden Retriever',cat:'dogs',type:'dog',c:{m:'#E3B878',s:'#F6E3C4',a:'#C08F52'},age:'3 months',gender:'Male',price:55000,avail:'Available',rare:0,isNew:0,pop:10,temper:'Loyal, gentle and eager to please',desc:'The worlds favorite family dog. Intelligent, patient and always ready for playtime.'},
+{id:'p10',name:'Shiba Inu',cat:'dogs',type:'dog',c:{m:'#DE8A4C',s:'#F7E8D2',a:'#B05E28'},age:'4 months',gender:'Female',price:65000,avail:'Available',rare:0,isNew:1,pop:9,temper:'Bold, clean and independent',desc:'A fox like face, curled tail and confident charm. Naturally tidy and expressive.'},
+{id:'p11',name:'Pomeranian',cat:'dogs',type:'dog',c:{m:'#F0D9A8',s:'#FBF0D8',a:'#C9A868'},age:'3 months',gender:'Female',price:48000,avail:'Available',rare:0,isNew:0,pop:9,temper:'Lively, bold and affectionate',desc:'A tiny cloud of fluff with a giant personality. Perfect apartment companion.'},
+{id:'p12',name:'Corgi',cat:'dogs',type:'dog',c:{m:'#E0A85C',s:'#F8ECD4',a:'#A97134'},age:'4 months',gender:'Male',price:72000,avail:'Reserved',rare:0,isNew:0,pop:8,temper:'Happy, smart and big hearted',desc:'Short legs, big ears and a huge smile. Royal favorite with endless energy.'},
+{id:'p13',name:'Husky',cat:'dogs',type:'dog',c:{m:'#BFC5CC',s:'#F2F4F6',a:'#5E6670',mk:1},age:'3 months',gender:'Male',price:60000,avail:'Available',rare:0,isNew:0,pop:9,temper:'Adventurous, friendly and talkative',desc:'Striking mask markings and bright eyes. An athletic breed for active families.'},
+{id:'p14',name:'French Bulldog',cat:'dogs',type:'dog',c:{m:'#C9B49A',s:'#EFE3CE',a:'#96794F'},age:'4 months',gender:'Male',price:78000,avail:'Available',rare:0,isNew:1,pop:8,temper:'Charming, playful and adaptable',desc:'Bat ears and a comical soul. A compact city companion that rarely barks.'},
+{id:'p15',name:'Dachshund',cat:'dogs',type:'dog',c:{m:'#8A5A38',s:'#E8CBA6',a:'#5E3B20'},age:'3 months',gender:'Female',price:42000,avail:'Available',rare:0,isNew:0,pop:7,temper:'Brave, curious and stubbornly cute',desc:'The famous sausage dog. Long bodied, short legged and full of character.'},
+{id:'p16',name:'Holland Lop Rabbit',cat:'rabbits',type:'rabbit',c:{m:'#D9C4A9',s:'#F3EADC',a:'#A98F6C'},age:'3 months',gender:'Female',price:8500,avail:'Available',rare:1,isNew:1,pop:8,temper:'Gentle, cuddly and social',desc:'Floppy ears and a compact fluffy body. One of the most affectionate rabbit breeds.'},
+{id:'p17',name:'Lionhead Rabbit',cat:'rabbits',type:'rabbit',c:{m:'#EFE6DA',s:'#FBF7F0',a:'#C0A887'},age:'3 months',gender:'Male',price:7500,avail:'Available',rare:0,isNew:0,pop:7,temper:'Curious, friendly and soft',desc:'A woolly mane around the face gives this rabbit its royal lion name.'},
+{id:'p18',name:'Guinea Pig',cat:'small',type:'guinea',c:{m:'#D8A66B',s:'#F4E4C8',a:'#A87C44'},age:'4 months',gender:'Male',price:3200,avail:'Available',rare:0,isNew:0,pop:7,temper:'Chatty, gentle and easy to handle',desc:'A cheerful wheeker that greets you with happy sounds every feeding time.'},
+{id:'p19',name:'Syrian Hamster',cat:'small',type:'hamster',c:{m:'#E4C089',s:'#F7E7C6',a:'#B98F52'},age:'2 months',gender:'Female',price:1200,avail:'Available',rare:0,isNew:0,pop:7,temper:'Solitary, busy and adorable',desc:'Golden fluff with cheek pouches full of snacks. Perfect first small pet.'},
+{id:'p20',name:'Chinchilla',cat:'small',type:'chinchilla',c:{m:'#BFC4CE',s:'#E9ECF1',a:'#8E93A0'},age:'6 months',gender:'Male',price:48000,avail:'Available',rare:1,isNew:1,pop:8,temper:'Soft, jumpy and intelligent',desc:'Incredibly dense velvet fur and curious eyes. Requires dust baths and cool rooms.'},
+{id:'p21',name:'Ferret',cat:'small',type:'ferret',c:{m:'#E8D9BE',s:'#F8F1E2',a:'#7A5A3C'},age:'5 months',gender:'Male',price:18000,avail:'Reserved',rare:1,isNew:0,pop:8,temper:'Mischievous, playful and bold',desc:'A bouncy noodle of endless energy. Entertaining, social and wonderfully silly.'},
+{id:'p22',name:'African Grey Parrot',cat:'birds',type:'parrot',c:{m:'#9EA3AB',s:'#D7DAE0',a:'#C0392B'},age:'1 year',gender:'Male',price:95000,avail:'Reserved',rare:1,isNew:0,pop:9,temper:'Brilliant, sensitive and talkative',desc:'The most talented talking parrot in the world. A lifelong companion for dedicated owners.'},
+{id:'p23',name:'Cockatiel',cat:'birds',type:'bird',c:{m:'#DCCBA8',s:'#F3EAD5',a:'#E8C86B',ck:'#F0A04A'},age:'4 months',gender:'Male',price:6500,avail:'Available',rare:0,isNew:0,pop:8,temper:'Whistly, affectionate and gentle',desc:'A crested charmer that whistles tunes and loves shoulder time.'},
+{id:'p24',name:'Lovebird',cat:'birds',type:'bird',c:{m:'#7FBF6B',s:'#C8E4B8',a:'#E86A6A',ck:'#E86A6A',bk:'#D98A3C'},age:'5 months',gender:'Female',price:5500,avail:'Available',rare:0,isNew:0,pop:7,temper:'Affectionate, bold and lively',desc:'Small, colorful and deeply bonded. Lovebirds live up to their sweet name.'},
+{id:'p25',name:'Green Cheek Conure',cat:'birds',type:'bird',c:{m:'#7BA05B',s:'#B9CFA0',a:'#8C6B4F',ck:'#B84A4A',bk:'#5E4331'},age:'4 months',gender:'Male',price:12000,avail:'Available',rare:1,isNew:1,pop:8,temper:'Playful, cuddly and clownish',desc:'A pint sized parrot with a huge heart. Quiet enough for apartments.'},
+{id:'p26',name:'Bearded Dragon',cat:'reptiles',type:'dragon',c:{m:'#D8B06A',s:'#F0DDB4',a:'#B08A45'},age:'6 months',gender:'Male',price:22000,avail:'Available',rare:1,isNew:0,pop:7,temper:'Docile, calm and handler friendly',desc:'The friendliest reptile. Enjoys gentle handling and relaxing under the heat lamp.'},
+{id:'p27',name:'Leopard Gecko',cat:'reptiles',type:'gecko',c:{m:'#EFD9A0',s:'#F8EDCB',a:'#C09A4C'},age:'5 months',gender:'Female',price:9500,avail:'Available',rare:1,isNew:1,pop:8,temper:'Peaceful, slow and beginner friendly',desc:'Spotted, smiling and wonderfully low maintenance. A perfect first reptile.'},
+{id:'p28',name:'Red Eared Slider',cat:'aquatic',type:'turtle',c:{m:'#7FA05A',s:'#A8C482',a:'#4C6B34'},age:'4 months',gender:'Male',price:1500,avail:'Available',rare:0,isNew:0,pop:7,temper:'Hardy, curious and long lived',desc:'The classic aquatic turtle with signature red ear marks. Can live for decades.'},
+{id:'p29',name:'Betta Fish',cat:'aquatic',type:'fish',c:{m:'#C05A78',s:'#E58AA0',a:'#8E3A52'},age:'5 months',gender:'Male',price:800,avail:'Available',rare:0,isNew:0,pop:7,temper:'Bold, graceful and territorial',desc:'Flowing fins in jewel tones. A living gem for a beautifully planted tank.'},
+{id:'p30',name:'Axolotl',cat:'aquatic',type:'axolotl',c:{m:'#F4C3C3',s:'#FBE0E0',a:'#E88A8A'},age:'6 months',gender:'Male',price:15000,avail:'Available',rare:1,isNew:1,pop:9,temper:'Calm, smiling and mesmerizing',desc:'The famous smiling water salamander that never grows up. A true living wonder.'}
+];
+
+/* ---------- PRODUCTS ---------- */
+const PRODUCTS=[
+/* FOOD */
+{id:'f01',n:'Whisker Feast Adult Cat Food 3kg',sec:'food',sub:'Cat Food',p:1450,r:4.8,ic:'bag',bg:['#F6E3D2','#FBF3E8'],pop:9,d:'Complete balanced nutrition with real chicken for adult cats.'},
+{id:'f02',n:'Kitten Growth Formula 1.2kg',sec:'food',sub:'Cat Food',p:780,r:4.7,ic:'bag',bg:['#EFEAF7','#F8F5FD'],pop:8,isNew:1,d:'DHA rich small kibble that supports healthy kitten development.'},
+{id:'f03',n:'Ocean Catch Cat Food 10kg',sec:'food',sub:'Cat Food',p:3900,r:4.6,ic:'bag',bg:['#E3ECF5','#F4F8FC'],pop:8,d:'Ocean fish recipe with omega oils for a shiny coat.'},
+{id:'f04',n:'Royal Pup Chicken Dog Food 3kg',sec:'food',sub:'Dog Food',p:1650,r:4.8,ic:'bag',bg:['#FBEBDD','#FDF5EC'],pop:9,d:'High protein puppy formula with calcium for strong bones.'},
+{id:'f05',n:'Active Adult Dog Food 10kg',sec:'food',sub:'Dog Food',p:4600,r:4.7,ic:'bag',bg:['#EAF0E2','#F6FAF1'],pop:9,d:'Energy packed recipe for large and active breeds.'},
+{id:'f06',n:'Puppy Starter Kibble 1.5kg',sec:'food',sub:'Dog Food',p:850,r:4.6,ic:'bag',bg:['#FDF0DC','#FEF8EC'],pop:7,d:'Gentle first food for weaning puppies from 3 weeks.'},
+{id:'f07',n:'Tropical Bird Seed Blend 1kg',sec:'food',sub:'Bird Food',p:560,r:4.5,ic:'jar',bg:['#FDF3DC','#FEF9EC'],pop:8,d:'Millet, canary seed and sunflower mix for small birds.'},
+{id:'f08',n:'Parrot Nut Mix 800g',sec:'food',sub:'Bird Food',p:920,r:4.7,ic:'jar',bg:['#F3E8DA','#FAF2E8'],pop:8,isNew:1,d:'Premium nuts and dried fruit for large parrots.'},
+{id:'f09',n:'Bunny Garden Pellets 2kg',sec:'food',sub:'Rabbit Food',p:640,r:4.6,ic:'bag',bg:['#EAF0E2','#F5FAF0'],pop:8,d:'Fiber rich pellets with timothy hay for digestion.'},
+{id:'f10',n:'Timothy Hay Fresh 1kg',sec:'food',sub:'Rabbit Food',p:480,r:4.8,ic:'bag',bg:['#F0F5E6','#F8FBF2'],pop:9,d:'Sun cured second cut hay. Essential daily roughage.'},
+{id:'f11',n:'Hamster Harvest Mix 900g',sec:'food',sub:'Hamster Food',p:420,r:4.5,ic:'jar',bg:['#FBEBDD','#FDF4EA'],pop:7,d:'Seeds, grains and veggies for hamsters and gerbils.'},
+{id:'f12',n:'Golden Hamster Fruit Blend 500g',sec:'food',sub:'Hamster Food',p:380,r:4.4,ic:'jar',bg:['#FDF0DC','#FEF7EA'],pop:7,isNew:1,d:'Apple, banana and berry treat blend in moderation.'},
+{id:'f13',n:'Betta Color Flakes 50g',sec:'food',sub:'Fish Food',p:260,r:4.6,ic:'jar',bg:['#E8F0F5','#F4F9FC'],pop:8,d:'Color enhancing floating flakes for bettas and guppies.'},
+{id:'f14',n:'Aquarium Pellet Sticks 200g',sec:'food',sub:'Fish Food',p:480,r:4.5,ic:'jar',bg:['#E3ECF5','#F2F8FC'],pop:7,d:'Sinking sticks for tetras, barbs and community tanks.'},
+{id:'f15',n:'Gecko Meal Powder 300g',sec:'food',sub:'Reptile Food',p:720,r:4.6,ic:'jar',bg:['#F3EBDC','#FAF4E9'],pop:7,isNew:1,d:'Complete diet powder for crested and leopard geckos.'},
+{id:'f16',n:'Turtle Shrimp Sticks 200g',sec:'food',sub:'Reptile Food',p:540,r:4.5,ic:'jar',bg:['#E8F0EA','#F4FAF5'],pop:7,d:'Floating sticks with shrimp for sliders and cooters.'},
+{id:'f17',n:'Chicken Training Bites 200g',sec:'food',sub:'Treats',p:320,r:4.8,ic:'bone',bg:['#FBEBDD','#FDF4EA'],pop:9,d:'Soft tiny rewards perfect for positive reinforcement.'},
+{id:'f18',n:'Salmon Crunch Treats 150g',sec:'food',sub:'Treats',p:350,r:4.7,ic:'bone',bg:['#F6E3D2','#FBF1E6'],pop:8,d:'Crunchy omega rich treats cats come running for.'},
+{id:'f19',n:'Calcium Plus Supplement 250g',sec:'food',sub:'Supplements',p:680,r:4.6,ic:'jar',bg:['#EFEAF7','#F8F5FD'],pop:7,d:'Calcium and D3 powder for reptiles and birds.'},
+{id:'f20',n:'Omega Coat Oil 200ml',sec:'food',sub:'Supplements',p:790,r:4.7,ic:'bottle',bg:['#FDF0DC','#FEF7EA'],pop:8,isNew:1,d:'Salmon oil pump for glossy coats and healthy skin.'},
+/* CLOTHING */
+{id:'c01',n:'Classic Cotton Pet T-Shirt',sec:'clothing',sub:'Tshirts',p:550,r:4.6,ic:'shirt',bg:['#EFEAF7','#F8F5FD'],sizes:['XS','S','M','L','XL'],pop:8,d:'Breathable 100 percent cotton tee for everyday wear.'},
+{id:'c02',n:'Sunny Day Summer Tee',sec:'clothing',sub:'Tshirts',p:590,r:4.5,ic:'shirt',bg:['#FDF3DC','#FEF9EC'],sizes:['XS','S','M','L'],pop:7,isNew:1,d:'Ultra light mesh panel tee that keeps pets cool.'},
+{id:'c03',n:'Cozy Fleece Hoodie',sec:'clothing',sub:'Hoodies',p:980,r:4.8,ic:'hoodie',bg:['#E3ECF5','#F2F8FC'],sizes:['XS','S','M','L','XL','XXL'],pop:9,d:'Plush fleece with leash opening and adorable hood.'},
+{id:'c04',n:'Cloud Soft Hoodie',sec:'clothing',sub:'Hoodies',p:1050,r:4.7,ic:'hoodie',bg:['#F6E3D2','#FBF1E6'],sizes:['S','M','L','XL','XXL'],pop:8,isNew:1,d:'Double brushed interior feels like a warm hug.'},
+{id:'c05',n:'Cable Knit Sweater',sec:'clothing',sub:'Sweaters',p:1150,r:4.7,ic:'sweater',bg:['#FBEBDD','#FDF4EA'],sizes:['XS','S','M','L','XL'],pop:8,d:'Handsome knitted sweater for chilly winter walks.'},
+{id:'c06',n:'Party Tutu Dress',sec:'clothing',sub:'Dresses',p:890,r:4.6,ic:'dress',bg:['#F6E3EE','#FBF4F8'],sizes:['XS','S','M','L'],pop:8,d:'Layered tulle dress with sparkle trim for big days.'},
+{id:'c07',n:'Summer Floral Dress',sec:'clothing',sub:'Dresses',p:840,r:4.5,ic:'dress',bg:['#EAF0E2','#F5FAF0'],sizes:['XS','S','M'],pop:7,d:'Breezy floral print dress with a comfy stretch bodice.'},
+{id:'c08',n:'Puddle Jumper Raincoat',sec:'clothing',sub:'Raincoats',p:1250,r:4.8,ic:'raincoat',bg:['#E3ECF5','#F2F8FC'],sizes:['S','M','L','XL','XXL'],pop:9,isNew:1,d:'Waterproof hooded coat with reflective strips.'},
+{id:'c09',n:'Arctic Shield Winter Jacket',sec:'clothing',sub:'Winter Jackets',p:1650,r:4.9,ic:'jacket',bg:['#E8ECF5','#F4F6FC'],sizes:['M','L','XL','XXL'],pop:9,d:'Quilted thermal jacket with fleece lining for cold snaps.'},
+{id:'c10',n:'Checkered Bandana',sec:'clothing',sub:'Bandanas',p:220,r:4.5,ic:'bandana',bg:['#FBEBDD','#FDF4EA'],sizes:['XS','S','M','L','XL'],pop:8,d:'Slide on cotton bandana that fits over any collar.'},
+{id:'c11',n:'Gentleman Bow Tie',sec:'clothing',sub:'Bow Ties',p:260,r:4.6,ic:'bowtie',bg:['#EFEAF7','#F8F5FD'],sizes:['XS','S','M','L'],pop:8,d:'Clasp on bow tie for weddings, photos and charm.'},
+{id:'c12',n:'Superhero Costume',sec:'clothing',sub:'Costumes',p:780,r:4.7,ic:'costume',bg:['#E3ECF5','#F2F8FC'],sizes:['XS','S','M','L'],pop:8,isNew:1,d:'Cape and mask set. Every pet deserves a secret identity.'},
+{id:'c13',n:'Little Explorer Costume',sec:'clothing',sub:'Costumes',p:820,r:4.5,ic:'costume',bg:['#EAF0E2','#F5FAF0'],sizes:['S','M','L'],pop:7,d:'Adorable adventure outfit for photo days and parties.'},
+{id:'c14',n:'Soft Sole Pet Shoes',sec:'clothing',sub:'Pet Shoes',p:640,r:4.4,ic:'shoes',bg:['#F6E3D2','#FBF1E6'],sizes:['XS','S','M','L'],pop:7,d:'Rugged yet soft soles protect paws on hot pavement.'},
+/* ACCESSORIES */
+{id:'a01',n:'Velvet Comfort Collar',sec:'accessories',sub:'Collars',p:350,r:4.7,ic:'collar',bg:['#F6E3EE','#FBF4F8'],pop:8,d:'Padded velvet collar with a soft quick release buckle.'},
+{id:'a02',n:'Classic Leather Collar',sec:'accessories',sub:'Collars',p:620,r:4.8,ic:'collar',bg:['#F3E8DA','#FAF2E8'],pop:8,d:'Full grain leather that ages beautifully with your dog.'},
+{id:'a03',n:'Padded Sport Leash',sec:'accessories',sub:'Leashes',p:480,r:4.6,ic:'leash',bg:['#EAF0E2','#F5FAF0'],pop:8,d:'1.5 meter leash with a cushioned neoprene handle.'},
+{id:'a04',n:'Retractable Leash 5m',sec:'accessories',sub:'Leashes',p:890,r:4.5,ic:'leash',bg:['#E3ECF5','#F2F8FC'],pop:8,isNew:1,d:'Smooth lock button gives free exploring with control.'},
+{id:'a05',n:'No-Pull Mesh Harness',sec:'accessories',sub:'Harnesses',p:780,r:4.8,ic:'harness',bg:['#FBEBDD','#FDF4EA'],pop:9,d:'Front clip design gently stops pulling on walks.'},
+{id:'a06',n:'Cloud Nine Pet Bed',sec:'accessories',sub:'Pet Beds',p:2200,r:4.9,ic:'bed',bg:['#EFEAF7','#F8F5FD'],pop:10,d:'Orthopedic memory foam bed with a washable cover.'},
+{id:'a07',n:'Donut Calming Bed',sec:'accessories',sub:'Pet Beds',p:1850,r:4.8,ic:'bed',bg:['#FDF0DC','#FEF7EA'],pop:9,d:'Raised rim supports the head and eases anxiety.'},
+{id:'a08',n:'Fleece Snuggle Blanket',sec:'accessories',sub:'Blankets',p:540,r:4.6,ic:'blanket',bg:['#F6E3D2','#FBF1E6'],pop:8,d:'Double layer fleece for crates, sofas and car rides.'},
+{id:'a09',n:'Slow Feeder Bowl',sec:'accessories',sub:'Bowls',p:460,r:4.7,ic:'bowl',bg:['#EAF0E2','#F5FAF0'],pop:8,d:'Maze pattern slows fast eaters and aids digestion.'},
+{id:'a10',n:'Ceramic Paw Bowl Set',sec:'accessories',sub:'Bowls',p:720,r:4.8,ic:'bowl',bg:['#FBEBDD','#FDF4EA'],pop:9,d:'Heavy glazed pair of food and water bowls with paw motif.'},
+{id:'a11',n:'Travel Water Bottle',sec:'accessories',sub:'Water Bottles',p:520,r:4.7,ic:'bottle',bg:['#E3ECF5','#F2F8FC'],pop:8,d:'One click leaf shaped trough for walks and travel.'},
+{id:'a12',n:'Rainbow Teaser Wand',sec:'accessories',sub:'Toys',p:180,r:4.6,ic:'teaser',bg:['#F6E3EE','#FBF4F8'],pop:8,d:'Durable wand with bell teaser that drives cats wild.'},
+{id:'a13',n:'Squeaky Bone Toy',sec:'accessories',sub:'Toys',p:240,r:4.5,ic:'bone',bg:['#FBEBDD','#FDF4EA'],pop:8,d:'Tough rubber chew bone with a satisfying squeak.'},
+{id:'a14',n:'Rope Play Bone',sec:'accessories',sub:'Toys',p:320,r:4.6,ic:'bone',bg:['#EAF0E2','#F5FAF0'],pop:7,isNew:1,d:'Braided cotton rope that flosses teeth while tugging.'},
+{id:'a15',n:'Tall Scratching Post',sec:'accessories',sub:'Scratching Posts',p:1650,r:4.8,ic:'post',bg:['#F3E8DA','#FAF2E8'],pop:9,d:'Sisal wrapped tower with plush base and dangling toy.'},
+{id:'a16',n:'Sky Cabin Pet Carrier',sec:'accessories',sub:'Carriers',p:2450,r:4.8,ic:'carrier',bg:['#E3ECF5','#F2F8FC'],pop:9,isNew:1,d:'Airline style carrier with mesh windows and soft bed.'},
+{id:'a17',n:'Gentle Slicker Brush',sec:'accessories',sub:'Grooming Tools',p:380,r:4.7,ic:'comb',bg:['#EFEAF7','#F8F5FD'],pop:8,d:'Fine wire bristles remove loose fur without scratching.'},
+{id:'a18',n:'Nail Care Clipper Set',sec:'accessories',sub:'Grooming Tools',p:340,r:4.5,ic:'scissors',bg:['#FBEBDD','#FDF4EA'],pop:7,d:'Sharp guarded clippers with a nail file included.'},
+{id:'a19',n:'Corner Litter Box',sec:'accessories',sub:'Litter Boxes',p:1150,r:4.6,ic:'litter',bg:['#E8ECF5','#F4F6FC'],pop:8,d:'High sided corner design saves space and stops scatter.'},
+{id:'a20',n:'City Walk Pet Bag',sec:'accessories',sub:'Pet Bags',p:1580,r:4.7,ic:'petbag',bg:['#F6E3D2','#FBF1E6'],pop:8,d:'Breathable sling backpack rated up to 6 kg.'},
+{id:'a21',n:'Paw Print ID Tag',sec:'accessories',sub:'ID Tags',p:190,r:4.8,ic:'tag',bg:['#FDF3DC','#FEF9EC'],pop:8,d:'Engraved brass tag. Add your number at checkout notes.'},
+{id:'a22',n:'Clicker Training Kit',sec:'accessories',sub:'Training Products',p:310,r:4.6,ic:'target',bg:['#EAF0E2','#F5FAF0'],pop:7,d:'Training clicker with guide booklet and wrist coil.'},
+/* CARE */
+{id:'r01',n:'Soft Coat Grooming Kit',sec:'care',sub:'Grooming',p:890,r:4.8,ic:'scissors',bg:['#EFEAF7','#F8F5FD'],pop:9,d:'Brush, comb and scissors set for salon style grooming.'},
+{id:'r02',n:'Puppy Shampoo No Tears',sec:'care',sub:'Bath and Hygiene',p:420,r:4.7,ic:'shampoo',bg:['#E3ECF5','#F2F8FC'],pop:8,d:'Tear free gentle formula for puppies and kittens.'},
+{id:'r03',n:'Waterless Foam Cleanser',sec:'care',sub:'Bath and Hygiene',p:520,r:4.5,ic:'shampoo',bg:['#EAF0E2','#F5FAF0'],pop:7,isNew:1,d:'Brush on foam for pets who dislike baths.'},
+{id:'r04',n:'Fresh Breath Dental Kit',sec:'care',sub:'Dental Care',p:560,r:4.7,ic:'tooth',bg:['#E8F0F5','#F4F9FC'],pop:8,d:'Finger brush, toothbrush and poultry flavored paste.'},
+{id:'r05',n:'Dental Chew Sticks',sec:'care',sub:'Dental Care',p:300,r:4.6,ic:'bone',bg:['#FBEBDD','#FDF4EA'],pop:8,d:'Daily chews that reduce plaque and freshen breath.'},
+{id:'r06',n:'Flea and Tick Spray',sec:'care',sub:'Flea and Tick Care',p:640,r:4.6,ic:'spray',bg:['#EAF0E2','#F5FAF0'],pop:8,d:'Plant based protection safe for homes with kids.'},
+{id:'r07',n:'Flea Comb Fine Teeth',sec:'care',sub:'Flea and Tick Care',p:240,r:4.5,ic:'comb',bg:['#FDF0DC','#FEF7EA'],pop:7,d:'Tightly spaced metal comb catches fleas and eggs.'},
+{id:'r08',n:'Pet First Aid Kit',sec:'care',sub:'First Aid',p:1250,r:4.8,ic:'firstaid',bg:['#F6E3EE','#FBF4F8'],pop:8,isNew:1,d:'Bandages, antiseptic and tweezers in a compact case.'},
+{id:'r09',n:'Daily Vitamin Chews',sec:'care',sub:'Nutrition',p:720,r:4.6,ic:'jar',bg:['#FDF3DC','#FEF9EC'],pop:7,d:'Multivitamin chews for immunity, joints and coat.'},
+{id:'r10',n:'Puppy Training Pads',sec:'care',sub:'Training',p:690,r:4.7,ic:'pads',bg:['#E3ECF5','#F2F8FC'],pop:9,d:'Ultra absorbent quick dry pads, pack of 30.'},
+{id:'r11',n:'Home Safety Gate',sec:'care',sub:'Pet Safety',p:2350,r:4.6,ic:'gate',bg:['#F3E8DA','#FAF2E8'],pop:7,d:'Pressure mounted gate keeps pets away from stairs.'},
+{id:'r12',n:'Reflective Night Collar Light',sec:'care',sub:'Pet Safety',p:380,r:4.7,ic:'shield',bg:['#EFEAF7','#F8F5FD'],pop:8,isNew:1,d:'Glowing clip light visible up to 400 meters at night.'}
+];
+
+/* ---------- KIT DATA ---------- */
+const KIT={
+'Dog':[['Nutrition',[['Royal Pup Chicken Dog Food 3kg',1650],['Active Adult Dog Food 10kg',4600]]],['Comfort',[['Cloud Nine Pet Bed',2200],['Fleece Snuggle Blanket',540]]],['Feeding',[['Ceramic Paw Bowl Set',720],['Slow Feeder Bowl',460]]],['Play',[['Squeaky Bone Toy',240],['Rope Play Bone',320]]],['Grooming',[['Gentle Slicker Brush',380],['Soft Coat Grooming Kit',890]]],['Outings',[['Velvet Comfort Collar',350],['Padded Sport Leash',480]]]],
+'Cat':[['Nutrition',[['Whisker Feast Adult Cat Food 3kg',1450],['Ocean Catch Cat Food 10kg',3900]]],['Comfort',[['Donut Calming Bed',1850],['Fleece Snuggle Blanket',540]]],['Feeding',[['Ceramic Paw Bowl Set',720],['Slow Feeder Bowl',460]]],['Play',[['Rainbow Teaser Wand',180],['Rope Play Bone',320]]],['Grooming',[['Gentle Slicker Brush',380],['Nail Care Clipper Set',340]]],['Home',[['Tall Scratching Post',1650],['Corner Litter Box',1150]]]],
+'Bird':[['Nutrition',[['Tropical Bird Seed Blend 1kg',560],['Parrot Nut Mix 800g',920]]],['Health',[['Calcium Plus Supplement 250g',680]]],['Bath and Hygiene',[['Waterless Foam Cleanser',520],['Puppy Shampoo No Tears',420]]],['Play',[['Rainbow Teaser Wand',180]]],['Comfort',[['Fleece Snuggle Blanket',540]]],['Travel',[['Sky Cabin Pet Carrier',2450],['City Walk Pet Bag',1580]]]],
+'Rabbit':[['Nutrition',[['Bunny Garden Pellets 2kg',640],['Timothy Hay Fresh 1kg',480]]],['Feeding',[['Ceramic Paw Bowl Set',720]]],['Comfort',[['Fleece Snuggle Blanket',540],['Donut Calming Bed',1850]]],['Grooming',[['Gentle Slicker Brush',380]]],['Health',[['Daily Vitamin Chews',720]]],['Play',[['Squeaky Bone Toy',240],['Rope Play Bone',320]]]],
+'Hamster':[['Nutrition',[['Hamster Harvest Mix 900g',420],['Golden Hamster Fruit Blend 500g',380]]],['Feeding',[['Ceramic Paw Bowl Set',720]]],['Comfort',[['Fleece Snuggle Blanket',540]]],['Health',[['Daily Vitamin Chews',720]]],['Grooming',[['Nail Care Clipper Set',340]]],['Travel',[['Sky Cabin Pet Carrier',2450]]]]};
+
+/* ---------- ARTICLES / TIPS / REVIEWS ---------- */
+const ARTICLES=[
+{t:'Caring for a New Kitten',cat:'Pet Care',min:4,img:['#F6E3EE','#FBF4F8'],body:'Bringing a kitten home is exciting. Set up one quiet room with a litter box, food, water and a cozy bed before letting it explore the whole house. Feed kitten formula food three to four times a day and keep fresh water always available. Schedule a vet visit within the first week for vaccinations and deworming. Play with wand toys daily to build trust and burn energy. Most importantly, be patient. Within two weeks most kittens decide the whole house, and your lap, belongs to them.'},
+{t:'Feeding Your Dog Right',cat:'Feeding',min:5,img:['#FBEBDD','#FDF4EA'],body:'A healthy dog starts with a healthy bowl. Choose a food matched to your dogs age, size and activity level, and measure every portion instead of free feeding. Puppies usually eat three meals a day while adults do well on two. Treats should stay under ten percent of daily calories. Always provide fresh water and avoid cooked bones, chocolate, grapes, onions and anything sweetened with xylitol. If you notice itching, low energy or tummy trouble, talk to your vet before changing foods again.'},
+{t:'Grooming Basics at Home',cat:'Grooming',min:4,img:['#EFEAF7','#F8F5FD'],body:'Regular grooming keeps coats shiny and lets you spot problems early. Brush short haired pets weekly and long haired pets daily to prevent mats. Bathe every four to six weeks with a pet specific shampoo, never human products. Trim nails when you hear clicking on the floor, taking off just the tip. Clean ears gently with a damp cloth and brush teeth several times a week with pet toothpaste. Make every session short, calm and full of treats so grooming becomes bonding time.'},
+{t:'Training Your Puppy with Kindness',cat:'Training',min:5,img:['#EAF0E2','#F5FAF0'],body:'Puppies learn best through rewards, never fear. Keep sessions under five minutes and end on a success. Use tiny soft treats and mark good behavior the instant it happens. Start with name recognition, sit, and coming when called, then add loose leash walking. Socialize carefully by letting your puppy meet calm people, gentle dogs and new surfaces like grass and tile. Never punish accidents, just take them outside often and praise loudly. Kindness builds a dog that wants to listen.'},
+{t:'Responsible Pet Ownership',cat:'Responsible Ownership',min:4,img:['#FDF3DC','#FEF9EC'],body:'Owning a pet is a promise for their whole life. That means daily food and fresh water, yearly vet checks, vaccinations and prompt care during illness. It also means training and social time so your pet is a joy to live with. Never release a pet into the street and never buy on impulse. Check that your species is legal to keep in your area, and if you ever travel abroad, learn the permits and health documents required well in advance. Hafao is always here with honest advice.'},
+{t:'Setting Up a Bird Cage',cat:'Pet Care',min:3,img:['#FDF0DC','#FEF7EA'],body:'Birds spend most of their life in their cage, so make it count. Choose the widest cage you can afford, at least twice the birds wingspan. Place perches at different heights using natural wood, and vary their thickness for foot health. Position the cage in a bright, draft free spot at chest height. Provide foraging toys and rotate them weekly to prevent boredom. Clean food dishes daily and change paper liners often. A rich environment turns a cage into a happy home.'}];
+const TIPS=[
+{t:'Fresh water, every single day',p:'Change water bowls at least once daily. Pets drink more when water is clean and cool, which protects their kidneys.'},
+{t:'Brush more, bathe less',p:'Regular brushing removes loose fur and spreads natural oils, so many pets only need a bath every four to six weeks.'},
+{t:'Treats have limits',p:'Keep treats under ten percent of daily calories. Use pieces of their regular kibble for training instead.'},
+{t:'Watch the waistline',p:'You should feel ribs easily with light pressure. If you cannot, ask your vet about a weight plan.'},
+{t:'Play is medicine',p:'Fifteen minutes of chasing a toy twice a day reduces anxiety, boredom chewing and loud meowing at night.'},
+{t:'Vet visits before problems',p:'A yearly checkup catches issues while they are small and cheap to treat. Prevention beats treatment every time.'}];
+const REVIEWS=[
+{n:'Nusrat Jahan',c:'Dhaka',pet:'and Misu the Persian',art:'cat',pal:{m:'#F1E4D4',s:'#FBF4EA',a:'#CBB49A'},t:'My Persian kitten arrived healthy, playful and exactly as described. The Hafao team video called me before delivery so I could see her. Could not be happier.'},
+{n:'Tanvir Ahmed',c:'Narayanganj',pet:'and Rex the Golden Retriever',art:'dog',pal:{m:'#E3B878',s:'#F6E3C4',a:'#C08F52'},t:'Ordered puppy food, a bed and toys. Everything came next morning in beautiful packaging. Rex approved of every single item.'},
+{n:'Farhana Akter',c:'Chattogram',pet:'and Mochi the Holland Lop',art:'rabbit',pal:{m:'#D9C4A9',s:'#F3EADC',a:'#A98F6C'},t:'They guided me on rabbit care for two hours on the phone before I even paid. That is how you know a shop truly loves animals.'},
+{n:'Sabbir Hossain',c:'Sylhet',pet:'and Kiwi the Cockatiel',art:'bird',pal:{m:'#DCCBA8',s:'#F3EAD5',a:'#E8C86B',ck:'#F0A04A'},t:'The cage setup advice from Hafao Journal made a huge difference. Kiwi whistles the first three notes of our ringtone now.'},
+{n:'Mahmuda Rahman',c:'Khulna',pet:'and Peanut the Hamster',art:'hamster',pal:{m:'#E4C089',s:'#F7E7C6',a:'#B98F52'},t:'The starter kit builder saved me money and confusion. Everything matched, and Peanut moved into his new home like a king.'},
+{n:'Rafiul Islam',c:'Rajshahi',pet:'and Bolt the Shiba Inu',art:'dog',pal:{m:'#DE8A4C',s:'#F7E8D2',a:'#B05E28'},t:'Premium experience from start to finish. Live updates during delivery and the sweetest handwritten thank you card inside.'}];
+
+const STAGES=['Order Placed','Confirmed','Processing','Packed','Shipped','Out for Delivery','Delivered'];
+const CATHEALTH={cats:'Vaccinated, dewormed and vet checked. Full health record provided.',dogs:'Vaccinated, dewormed and vet checked. Full health record provided.',birds:'Healthy feathers, weaned and eating independently. Care guidance provided.',small:'Healthy and active with clean enclosure records. Care guidance provided.',reptiles:'Healthy shedding cycle and feeding well. Written care sheet provided.',rabbits:'Healthy and litter trained. Care guidance provided.',aquatic:'Acclimated, eating well and health screened. Water care guide included.'};
+const CATCARE={cats:['Indoor space with a scratching post','Litter box cleaned daily','Weekly brushing and daily play time'],dogs:['Daily walks and play sessions','Cozy bed and safe chew toys','Regular grooming and monthly baths'],birds:['Spacious cage with varied perches','Daily out of cage time in a safe room','Fresh water and a balanced seed or pellet mix'],rabbits:['Unlimited hay available at all times','Space to hop and explore daily','Gentle brushing every week'],small:['Quiet cozy enclosure away from noise','Weekly bedding change','Daily fresh food and water'],reptiles:['Heat lamp and proper UV lighting','Temperature and humidity controlled tank','Calcium supplement schedule'],aquatic:['Cycled and filtered tank','Stable water temperature','Weekly partial water changes']};
+const CATFEED={cats:['Premium kitten or cat food twice daily','Fresh water available at all times','Occasional treats in moderation'],dogs:['Puppy formula three times daily','Measured portions based on weight','Fresh water available all day'],birds:['Seed or pellet mix with fruits and vegetables','Cuttlebone for calcium','Clean water daily'],rabbits:['Unlimited timothy hay','Fresh greens and quality pellets','Avoid sugary treats'],small:['Species specific seed or pellet mix','Small portions of fresh vegetables','Hay for healthy digestion'],reptiles:['Species specific feeding plan','Calcium dusted feeding schedule','Fresh water dish'],aquatic:['Quality pellets or flakes once daily','Remove uneaten food quickly','Species specific supplements']};
+</script>
+
+<script>
+/* ================= ICONS ================= */
+const ST={bag:'<path d="M5.5 8h13l-1.2 12H6.7L5.5 8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/>',
+jar:'<rect x="6.5" y="9" width="11" height="11" rx="2.5"/><rect x="8" y="5.5" width="8" height="3" rx="1.2"/><path d="M9.5 13h5"/>',
+bone:'<path d="M6.5 9.5h11v5h-11z"/><circle cx="6.5" cy="9.5" r="2.1"/><circle cx="6.5" cy="14.5" r="2.1"/><circle cx="17.5" cy="9.5" r="2.1"/><circle cx="17.5" cy="14.5" r="2.1"/>',
+shirt:'<path d="M9 5l3 2 3-2 4 2.5-2 3.5-1.5-.8V19h-7v-8.8L7 11 5 7.5 9 5z"/>',
+hoodie:'<path d="M9 6l3 1.5L15 6l4 2.5-2 3.5-1.5-.8V19h-7v-7.8L7 12 5 8.5 9 6z"/><path d="M9 6a3.2 3.2 0 0 1 6 0"/><path d="M10.5 9.5v2.5M13.5 9.5v2.5"/>',
+sweater:'<path d="M8 5l-3.5 3L7 11l1.5-1V19h7v-9L17 11l2.5-3L16 5a4 4 0 0 1-8 0z"/>',
+dress:'<path d="M9.5 4l2.5 1.5L14.5 4l.8 3.5L18 19H6L8.7 7.5 9.5 4z"/>',
+raincoat:'<path d="M9 5l3 2 3-2 4 2.5-2 3.5-1.5-.8V19h-7v-8.8L7 11 5 7.5 9 5z"/><path d="M12 4.5v-1.5"/>',
+jacket:'<path d="M9 5l3 2 3-2 4 2.5-2 3.5-1.5-.8V19h-7v-8.8L7 11 5 7.5 9 5z"/><path d="M12 7v12"/>',
+bandana:'<path d="M5 6.5h14l-7 5.5L5 6.5z"/><path d="M12 12l-3.5 7 3.5-2 3.5 2-3.5-7z"/>',
+bowtie:'<path d="M11 12L4.5 8.5v7L11 12z"/><path d="M13 12l6.5-3.5v7L13 12z"/><circle cx="12" cy="12" r="1.8"/>',
+costume:'<path d="M8 5h8l4 14H4L8 5z"/><path d="M8 5a4 4 0 0 1 8 0"/><path d="M12 10.5l.9 1.8 2 .3-1.4 1.4.3 2-1.8-1-1.8 1 .3-2-1.4-1.4 2-.3.9-1.8z"/>',
+shoes:'<path d="M4 16c2-1 3-4 3-6h4c0 2 1 3.5 3 4.5l4 1.5v2H4v-2z"/>',
+collar:'<circle cx="12" cy="11" r="6.5"/><circle cx="12" cy="18" r="2.4"/><path d="M9.5 11h5"/>',
+leash:'<path d="M4 20c8 0 6-12 14-14"/><circle cx="19.5" cy="5.5" r="1.6"/><circle cx="4" cy="20" r="1.8"/>',
+harness:'<path d="M7.5 4h9l-1 5h-7l-1-5z"/><path d="M8.5 9c-2 2.5-2 6.5 0 9h7c2-2.5 2-6.5 0-9"/>',
+bed:'<path d="M4 16.5a8 5.5 0 0 1 16 0v1.5H4v-1.5z"/><path d="M6.5 13.5a5.5 3.5 0 0 1 11 0"/><path d="M3 20h18"/>',
+blanket:'<path d="M5 8l7-3 7 3v9l-7 3-7-3V8z"/><path d="M5 8l7 3 7-3M12 11v9"/>',
+bowl:'<path d="M4 11.5h16l-1.8 6.7a2 2 0 0 1-2 1.8H7.8a2 2 0 0 1-2-1.8L4 11.5z"/><path d="M8.5 11.5V10a3.5 3.5 0 0 1 7 0v1.5"/>',
+bottle:'<rect x="8.5" y="8" width="7" height="12" rx="2"/><path d="M10 8V6h4v2"/><path d="M10.5 6V4.5h3V6"/>',
+teaser:'<path d="M4 20L15 6.5"/><circle cx="17.5" cy="4.5" r="2.2"/><path d="M15 6.5q1.5 2 4.5 1.5"/>',
+post:'<rect x="9" y="6" width="6" height="12" rx="1"/><rect x="5.5" y="18" width="13" height="2.5" rx="1.2"/><path d="M9 9.5h6M9 12.5h6M9 15.5h6"/>',
+carrier:'<rect x="4.5" y="9" width="15" height="10" rx="2.5"/><path d="M9 9V7a3 3 0 0 1 6 0v2"/><path d="M12 9v10"/>',
+comb:'<path d="M6 7.5h12"/><path d="M8.5 7.5V17M11.5 7.5V17M14.5 7.5V17M17 7.5V17"/>',
+scissors:'<circle cx="6.5" cy="7" r="2.2"/><circle cx="6.5" cy="17" r="2.2"/><path d="M8.5 8.2L19 17M8.5 15.8L19 7"/>',
+litter:'<path d="M4 12.5h16l-1.5 6H5.5l-1.5-6z"/><path d="M8 10c0-2 1.8-3 4-3s4 1 4 3"/><ellipse cx="12" cy="10.5" rx="3" ry="1.1"/>',
+petbag:'<path d="M6 9h12l1 11H5L6 9z"/><path d="M9 9V7a3 3 0 0 1 6 0v2"/><circle cx="12" cy="14.5" r="2.4"/>',
+tag:'<rect x="7" y="7" width="10" height="10" rx="2.5" transform="rotate(45 12 12)"/><circle cx="12" cy="9.5" r="1.2"/><path d="M12 14.5c1.2 0 2 .8 2 1.7 0 .7-.6 1-2 1s-2-.3-2-1c0-.9.8-1.7 2-1.7z"/>',
+target:'<circle cx="12" cy="12" r="7.5"/><circle cx="12" cy="12" r="3.6"/><circle cx="12" cy="12" r=".7"/>',
+shampoo:'<rect x="8.5" y="9.5" width="7" height="10.5" rx="2"/><path d="M10 9.5V7.5h4v2"/><path d="M12 7.5v-2h4"/><path d="M16 5.5V4"/>',
+spray:'<rect x="9" y="10" width="6.5" height="10" rx="2"/><path d="M10.5 10V8h3.5l1.5-2.5H19"/><path d="M8.5 5.5h3.5"/>',
+firstaid:'<rect x="4" y="8" width="16" height="11" rx="2.5"/><path d="M9.5 8V6.7A1.7 1.7 0 0 1 11.2 5h1.6a1.7 1.7 0 0 1 1.7 1.7V8"/><path d="M12 11v5M9.5 13.5h5"/>',
+gate:'<path d="M4 5v15M20 5v15M4 8.5h16M4 16.5h16M9 5v15M15 5v15"/>',
+shield:'<path d="M12 4l7 2.5V12c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6.5L12 4z"/><path d="M9.5 12l2 2 3.5-4"/>',
+tooth:'<path d="M8 5c3 0 2.8 1.4 4 1.4S13 5 16 5c2 0 3 1.8 3 4 0 4-3 4-3.5 10h-1c0-4 .5-5-2.5-5s-2.5 1-2.5 5h-1C8 13 5 13 5 9c0-2.2 1-4 3-4z"/>',
+pads:'<rect x="5" y="13" width="14" height="5" rx="2"/><path d="M5.5 13l2-5h9l2 5"/><path d="M9 15.5h6"/>',
+search:'<circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/>',
+heart:'<path d="M12 20s-7-4.3-9.3-8A5.4 5.4 0 0 1 12 6.2 5.4 5.4 0 0 1 21.3 12C19 15.7 12 20 12 20z"/>',
+cart:'<path d="M4 6h2l2.4 10.4A2 2 0 0 0 10.3 18h7.4a2 2 0 0 0 2-1.6L21 9H7"/><circle cx="10" cy="21" r="1.4"/><circle cx="17" cy="21" r="1.4"/>',
+user:'<circle cx="12" cy="8" r="3.6"/><path d="M5 20c1.2-3.4 3.9-5 7-5s5.8 1.6 7 5"/>',
+menu:'<path d="M4 7h16M4 12h16M4 17h16"/>',close:'<path d="M6 6l12 12M18 6L6 18"/>',
+chd:'<path d="M15 6l-6 6 6 6"/>',chg:'<path d="M9 6l6 6-6 6"/>',
+arrow:'<path d="M4 12h15M13 6l6 6-6 6"/>',plus:'<path d="M12 5v14M5 12h14"/>',minus:'<path d="M5 12h14"/>',
+trash:'<path d="M5 7h14M10 7V5h4v2M7 7l1 13h8l1-13"/>',
+truck:'<path d="M2 7h12v9H2V7z"/><path d="M14 10h4l3 3v3h-7v-6z"/><circle cx="6.5" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/>',
+phone:'<path d="M6 4h4l1.5 4L9 10a12 12 0 0 0 5 5l2-2.5 4 1.5v4a2 2 0 0 1-2 2A16 16 0 0 1 4 6a2 2 0 0 1 2-2z"/>',
+mail:'<rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="M4.5 7.5l7.5 6 7.5-6"/>',
+pin:'<path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/>',
+clock:'<circle cx="12" cy="12" r="8.5"/><path d="M12 7v5.5l3.5 2"/>',
+globe:'<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c-5 5-5 12 0 17 5-5 5-12 0-17z"/>',
+info:'<circle cx="12" cy="12" r="8.5"/><path d="M12 11v5"/><circle cx="12" cy="8" r=".4"/>',
+cash:'<rect x="3" y="7" width="18" height="10" rx="2"/><circle cx="12" cy="12" r="2.4"/><path d="M6 10v.01M18 14v.01"/>',
+card:'<rect x="3" y="6" width="18" height="12" rx="2.5"/><path d="M3 10h18M7 15h4"/>',
+bank:'<path d="M4 10l8-5 8 5M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 19.5h18"/>',
+chat:'<path d="M4 6h16v10H9l-5 4V6z"/>',
+check:'<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+filter:'<path d="M4 6h16M7 12h10M10 18h4"/>',
+home:'<path d="M4 11l8-7 8 7v9h-6v-6h-4v6H4v-9z"/>',
+fb:'<path d="M14 8.5h2.5V5.5H14a4 4 0 0 0-4 4v2H7.5v3H10v6h3v-6h2.4l.5-3H13v-1.6a1.4 1.4 0 0 1 1-1.4z"/>',
+ig:'<rect x="4" y="4" width="16" height="16" rx="4.5"/><circle cx="12" cy="12" r="3.6"/><circle cx="16.8" cy="7.2" r=".7"/>',
+yt:'<rect x="3" y="6.5" width="18" height="11" rx="3"/><path d="M10.5 9.8l4.2 2.2-4.2 2.2V9.8z"/>',
+tt:'<path d="M14.5 4.5c.4 2 1.8 3.3 3.8 3.6v2.8c-1.5 0-2.8-.4-3.8-1.1v5.5a5 5 0 1 1-5-5c.3 0 .5 0 .8.1v2.8a2.3 2.3 0 1 0 1.6 2.2V4.5h2.6z"/>'};
+const FILL={paw:'<g fill="currentColor" stroke="none"><ellipse cx="7.2" cy="9" rx="1.9" ry="2.6"/><ellipse cx="12" cy="7.3" rx="1.9" ry="2.6"/><ellipse cx="16.8" cy="9" rx="1.9" ry="2.6"/><path d="M12 11.4c3.5 0 6.3 2.7 6.3 5.4 0 2.1-2 3.3-6.3 3.3s-6.3-1.2-6.3-3.3c0-2.7 2.8-5.4 6.3-5.4z"/></g>',
+star:'<path d="M12 3.4l2.5 5.2 5.7.8-4.1 4 1 5.7-5.1-2.7-5.1 2.7 1-5.7-4.1-4 5.7-.8L12 3.4z"/>'};
+function ic(n,cls){if(FILL[n])return '<svg class="ic '+(cls||'')+'" viewBox="0 0 24 24" fill="currentColor">'+FILL[n]+'</svg>';
+return '<svg class="ic '+(cls||'')+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">'+(ST[n]||ST.paw)+'</svg>';}
+function stars(r){let h='';for(let i=1;i<=5;i++)h+='<svg viewBox="0 0 24 24" style="width:15px;height:15px;fill:'+(i<=Math.round(r)?'currentColor':'none')+'" stroke="currentColor" stroke-width="1.6">'+FILL.star+'</svg>';return h;}
+
+/* ================= PET / PRODUCT ART ================= */
+const shad='<ellipse cx="100" cy="146" rx="52" ry="8" fill="#5e4331" opacity=".10"/>';
+const eyeb=(x,y,r)=>'<circle cx="'+x+'" cy="'+y+'" r="'+(r||6.5)+'" fill="#33241a"/><circle cx="'+(x+2)+'" cy="'+(y-2)+'" r="'+((r||6.5)*.32)+'" fill="#fff"/>';
+const blush=(x,y)=>'<circle cx="'+x+'" cy="'+y+'" r="6" fill="#ef9d9d" opacity=".4"/>';
+const ART={
+cat:c=>shad+'<path d="M56 74 L64 26 L96 56 Z" fill="'+c.m+'"/><path d="M144 74 L136 26 L104 56 Z" fill="'+c.m+'"/><path d="M61 64 L67 38 L84 55 Z" fill="'+c.a+'"/><path d="M139 64 L133 38 L116 55 Z" fill="'+c.a+'"/><circle cx="100" cy="100" r="50" fill="'+c.m+'"/>'+(c.sp?'<g fill="'+c.a+'" opacity=".5"><ellipse cx="82" cy="62" rx="5" ry="8" transform="rotate(-18 82 62)"/><ellipse cx="100" cy="56" rx="5" ry="9"/><ellipse cx="118" cy="62" rx="5" ry="8" transform="rotate(18 118 62)"/></g>':'')+eyeb(79,95)+eyeb(121,95)+'<circle cx="100" cy="103" r="6" fill="'+c.a+'" opacity=".5"/><path d="M95 111 L105 111 L100 118 Z" fill="#e28f8f"/><path d="M100 118 q-5 8 -13 5 M100 118 q5 8 13 5" stroke="#33241a" stroke-width="2.4" fill="none" stroke-linecap="round"/><g stroke="'+c.a+'" stroke-width="2.2" stroke-linecap="round" opacity=".55"><path d="M52 100 H30"/><path d="M54 110 L34 117"/><path d="M148 100 H170"/><path d="M146 110 L166 117"/></g>'+blush(64,110)+blush(136,110),
+dog:c=>shad+'<ellipse cx="58" cy="92" rx="15" ry="28" fill="'+c.a+'" transform="rotate(16 58 92)"/><ellipse cx="142" cy="92" rx="15" ry="28" fill="'+c.a+'" transform="rotate(-16 142 92)"/><circle cx="100" cy="98" r="50" fill="'+c.m+'"/>'+(c.mk?'<path d="M100 50c-15 0-22 17-20 42h40c2-25-5-42-20-42z" fill="'+c.a+'" opacity=".4"/>':'')+'<ellipse cx="100" cy="118" rx="25" ry="19" fill="'+c.s+'"/>'+eyeb(80,92)+eyeb(120,92)+'<ellipse cx="100" cy="110" rx="9.5" ry="7.5" fill="#33241a"/><path d="M100 117 v5 M100 122 q-6 8 -14 4 M100 122 q6 8 14 4" stroke="#33241a" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M93 126 q7 14 14 0 q-1 10 -7 10 t-7-10z" fill="#e88f8f"/>'+blush(64,106)+blush(136,106),
+rabbit:c=>shad+'<ellipse cx="76" cy="44" rx="13" ry="34" fill="'+c.m+'" transform="rotate(-10 76 44)"/><ellipse cx="124" cy="44" rx="13" ry="34" fill="'+c.m+'" transform="rotate(10 124 44)"/><ellipse cx="77" cy="48" rx="6" ry="24" fill="'+c.a+'" opacity=".6" transform="rotate(-10 77 48)"/><ellipse cx="123" cy="48" rx="6" ry="24" fill="'+c.a+'" opacity=".6" transform="rotate(10 123 48)"/><circle cx="100" cy="106" r="46" fill="'+c.m+'"/>'+eyeb(82,100,6)+eyeb(118,100,6)+'<path d="M96 112 L104 112 L100 118 Z" fill="#e28f8f"/><path d="M100 118 v4 M100 122 q-4 6 -10 4 M100 122 q4 6 10 4" stroke="#33241a" stroke-width="2.2" fill="none" stroke-linecap="round"/><rect x="96.5" y="125" width="7" height="7" rx="2" fill="#fff"/><g stroke="'+c.a+'" stroke-width="2" stroke-linecap="round" opacity=".55"><path d="M56 108 H38"/><path d="M144 108 H162"/></g>'+blush(70,112)+blush(130,112),
+hamster:c=>shad+'<circle cx="72" cy="64" r="13" fill="'+c.m+'"/><circle cx="128" cy="64" r="13" fill="'+c.m+'"/><circle cx="72" cy="64" r="6.5" fill="'+c.a+'"/><circle cx="128" cy="64" r="6.5" fill="'+c.a+'"/><circle cx="100" cy="104" r="46" fill="'+c.m+'"/><circle cx="66" cy="118" r="17" fill="'+c.s+'"/><circle cx="134" cy="118" r="17" fill="'+c.s+'"/>'+eyeb(83,98,5.5)+eyeb(117,98,5.5)+'<path d="M97 108 L103 108 L100 113 Z" fill="#c97b7b"/><path d="M100 113 q-3 5 -8 4 M100 113 q3 5 8 4" stroke="#33241a" stroke-width="2" fill="none" stroke-linecap="round"/>'+blush(72,110)+blush(128,110),
+guinea:c=>shad+'<circle cx="74" cy="68" r="10" fill="'+c.a+'"/><circle cx="126" cy="68" r="10" fill="'+c.a+'"/><circle cx="100" cy="106" r="47" fill="'+c.m+'"/><circle cx="64" cy="120" r="15" fill="'+c.s+'"/><circle cx="136" cy="120" r="15" fill="'+c.s+'"/>'+eyeb(84,100,5.5)+eyeb(116,100,5.5)+'<path d="M97 110 L103 110 L100 115 Z" fill="#c97b7b"/><path d="M100 115 q-3 5 -8 4 M100 115 q3 5 8 4" stroke="#33241a" stroke-width="2" fill="none" stroke-linecap="round"/>'+blush(72,116)+blush(128,116),
+chinchilla:c=>shad+'<ellipse cx="70" cy="50" rx="14" ry="24" fill="'+c.m+'" transform="rotate(-14 70 50)"/><ellipse cx="130" cy="50" rx="14" ry="24" fill="'+c.m+'" transform="rotate(14 130 50)"/><ellipse cx="71" cy="54" rx="7" ry="15" fill="'+c.a+'" opacity=".6" transform="rotate(-14 71 54)"/><ellipse cx="129" cy="54" rx="7" ry="15" fill="'+c.a+'" opacity=".6" transform="rotate(14 129 54)"/><circle cx="100" cy="106" r="45" fill="'+c.m+'"/><circle cx="68" cy="120" r="16" fill="'+c.s+'"/><circle cx="132" cy="120" r="16" fill="'+c.s+'"/>'+eyeb(84,100,6)+eyeb(116,100,6)+'<path d="M97 112 L103 112 L100 117 Z" fill="#c97b7b"/><path d="M100 117 q-3 5 -8 4 M100 117 q3 5 8 4" stroke="#33241a" stroke-width="2" fill="none" stroke-linecap="round"/><g stroke="#8e93a0" stroke-width="2" stroke-linecap="round" opacity=".7"><path d="M60 112 H40"/><path d="M62 120 L44 126"/><path d="M140 112 H160"/><path d="M138 120 L156 126"/></g>',
+ferret:c=>shad+'<circle cx="72" cy="62" r="11" fill="'+c.a+'"/><circle cx="128" cy="62" r="11" fill="'+c.a+'"/><ellipse cx="100" cy="104" rx="47" ry="42" fill="'+c.m+'"/><path d="M58 94 q14 -13 26 -1 q-4 17 -15 17 q-11 0 -11 -16z" fill="'+c.a+'" opacity=".85"/><path d="M142 94 q-14 -13 -26 -1 q4 17 15 17 q11 0 11 -16z" fill="'+c.a+'" opacity=".85"/><circle cx="76" cy="97" r="6.5" fill="#2e2018"/><circle cx="78.4" cy="94.6" r="2" fill="#fff"/><circle cx="124" cy="97" r="6.5" fill="#2e2018"/><circle cx="126.4" cy="94.6" r="2" fill="#fff"/><ellipse cx="100" cy="122" rx="19" ry="14" fill="'+c.s+'"/><ellipse cx="100" cy="115" rx="6" ry="5" fill="#d98a8a"/><path d="M100 120 v4 M100 124 q-4 5 -9 3 M100 124 q4 5 9 3" stroke="#33241a" stroke-width="2" fill="none" stroke-linecap="round"/>'+blush(70,120)+blush(130,120),
+bird:c=>shad+'<path d="M100 42 q-3 -18 -16 -22 q6 12 4 20 z" fill="'+c.a+'"/><path d="M100 42 q0 -20 -8 -26 q0 14 -2 24 z" fill="'+c.a+'"/><path d="M100 42 q3 -18 16 -22 q-6 12 -4 20 z" fill="'+c.a+'"/><circle cx="100" cy="96" r="46" fill="'+c.m+'"/><circle cx="100" cy="106" r="30" fill="'+c.s+'" opacity=".5"/><circle cx="76" cy="106" r="10" fill="'+(c.ck||'#f0a04a')+'" opacity=".7"/><circle cx="124" cy="106" r="10" fill="'+(c.ck||'#f0a04a')+'" opacity=".7"/><circle cx="84" cy="88" r="7.5" fill="#fff"/><circle cx="84" cy="88" r="4" fill="#33241a"/><circle cx="116" cy="88" r="7.5" fill="#fff"/><circle cx="116" cy="88" r="4" fill="#33241a"/><path d="M95 104 q5 7 10 0 q-1 11 -5 12 q-4 -1 -5 -12z" fill="'+(c.bk||'#e8b54a')+'"/><path d="M88 124 q12 8 24 0" stroke="#33241a" stroke-width="2.4" fill="none" stroke-linecap="round"/>'+blush(66,118)+blush(134,118),
+parrot:c=>shad+'<circle cx="100" cy="98" r="48" fill="'+c.m+'"/><circle cx="82" cy="92" r="12" fill="#f5f1ea"/><circle cx="118" cy="92" r="12" fill="#f5f1ea"/><circle cx="82" cy="92" r="4.5" fill="#33241a"/><circle cx="118" cy="92" r="4.5" fill="#33241a"/><path d="M92 110 q8 10 16 0 q0 17 -8 19 q-8 -2 -8 -19z" fill="#3d3129"/><path d="M100 128 v6" stroke="#2a211b" stroke-width="3" stroke-linecap="round"/><path d="M84 127 q16 10 32 0" stroke="#2a211b" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M62 134 q38 15 76 0 l-6 12 q-32 11 -64 0z" fill="'+c.a+'"/>'+blush(70,116)+blush(130,116),
+fish:c=>shad+'<g fill="'+c.s+'" opacity=".75"><circle cx="50" cy="50" r="4"/><circle cx="40" cy="64" r="3"/><circle cx="56" cy="36" r="3"/></g><path d="M138 84 q30 -26 40 -10 q-10 6 -8 12 q10 10 -8 22 q-16 8 -28 -4z" fill="'+c.s+'"/><path d="M96 62 q10 -22 34 -20 q-8 12 -6 22z" fill="'+c.s+'"/><ellipse cx="102" cy="92" rx="44" ry="26" fill="'+c.m+'"/><path d="M64 92 q14 16 34 18 q-16 8 -34 -4z" fill="'+c.s+'" opacity=".65"/><circle cx="76" cy="86" r="6" fill="#33241a"/><circle cx="78" cy="84" r="2" fill="#fff"/><path d="M64 100 q6 4 12 2" stroke="#33241a" stroke-width="2" fill="none" stroke-linecap="round"/>',
+turtle:c=>shad+'<circle cx="150" cy="112" r="15" fill="'+c.s+'"/><circle cx="156" cy="106" r="3" fill="#33241a"/><path d="M141 106 a16 16 0 0 1 12 -4" stroke="#d15b4a" stroke-width="5" fill="none" stroke-linecap="round"/><ellipse cx="62" cy="138" rx="12" ry="7" fill="'+c.s+'"/><ellipse cx="118" cy="140" rx="12" ry="7" fill="'+c.s+'"/><path d="M50 118 a52 40 0 0 1 100 0 z" fill="'+c.m+'"/><g stroke="'+c.a+'" stroke-width="2.5" fill="none" opacity=".65"><path d="M76 92 h52"/><path d="M66 104 h84"/><path d="M88 84 l8 20 M114 84 l-8 20 M130 88 l8 16"/></g>',
+gecko:c=>shad+'<path d="M62 126 q-26 10 -22 22 q20 2 32 -12" fill="'+c.s+'"/><ellipse cx="100" cy="102" rx="40" ry="34" fill="'+c.m+'"/><circle cx="76" cy="78" r="11" fill="#fff"/><circle cx="76" cy="78" r="6" fill="#33241a"/><circle cx="78" cy="76" r="2" fill="#fff"/><circle cx="124" cy="78" r="11" fill="#fff"/><circle cx="124" cy="78" r="6" fill="#33241a"/><circle cx="126" cy="76" r="2" fill="#fff"/><g fill="'+c.a+'" opacity=".8"><circle cx="88" cy="104" r="4"/><circle cx="108" cy="112" r="4"/><circle cx="120" cy="98" r="3.4"/><circle cx="96" cy="122" r="3.4"/><circle cx="76" cy="114" r="3.4"/></g><path d="M88 120 q12 8 24 0" stroke="#33241a" stroke-width="2.4" fill="none" stroke-linecap="round"/>',
+dragon:c=>shad+'<g fill="'+c.a+'"><path d="M70 64 l6 -14 6 12z"/><path d="M86 56 l6 -14 6 12z"/><path d="M102 54 l6 -14 6 12z"/><path d="M118 56 l6 -13 6 12z"/><path d="M132 64 l7 -12 5 12z"/></g><ellipse cx="100" cy="104" rx="46" ry="36" fill="'+c.m+'"/><ellipse cx="100" cy="124" rx="26" ry="16" fill="'+c.s+'"/><circle cx="80" cy="94" r="7" fill="#33241a"/><circle cx="82" cy="92" r="2.2" fill="#fff"/><circle cx="120" cy="94" r="7" fill="#33241a"/><circle cx="122" cy="92" r="2.2" fill="#fff"/><path d="M88 124 q12 8 24 0" stroke="#33241a" stroke-width="2.4" fill="none" stroke-linecap="round"/><g fill="'+c.a+'" opacity=".8"><circle cx="70" cy="116" r="3"/><circle cx="130" cy="116" r="3"/><circle cx="64" cy="102" r="3"/></g>',
+axolotl:c=>shad+'<g fill="'+c.a+'"><ellipse cx="58" cy="74" rx="8" ry="16" transform="rotate(-40 58 74)"/><ellipse cx="52" cy="94" rx="8" ry="16" transform="rotate(-80 52 94)"/><ellipse cx="58" cy="112" rx="8" ry="16" transform="rotate(-120 58 112)"/><ellipse cx="142" cy="74" rx="8" ry="16" transform="rotate(40 142 74)"/><ellipse cx="148" cy="94" rx="8" ry="16" transform="rotate(80 148 94)"/><ellipse cx="142" cy="112" rx="8" ry="16" transform="rotate(120 142 112)"/></g><circle cx="100" cy="98" r="44" fill="'+c.m+'"/><circle cx="84" cy="92" r="4.5" fill="#33241a"/><circle cx="85.5" cy="90.5" r="1.5" fill="#fff"/><circle cx="116" cy="92" r="4.5" fill="#33241a"/><circle cx="117.5" cy="90.5" r="1.5" fill="#fff"/><path d="M86 112 q14 10 28 0" stroke="#b06a6a" stroke-width="3" fill="none" stroke-linecap="round"/>'+blush(74,106)+blush(126,106)};
+function petSVG(p,style){return '<svg '+(style?'style="'+style+'" ':'')+'class="petart" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">'+(ART[p.type]||ART.cat)(p.c)+'</svg>';}
+function prodSVG(it,style){return '<svg '+(style?'style="'+style+'" ':'')+'viewBox="0 0 24 24" fill="none" stroke="#6F5138" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">'+ST[it.ic]+'</svg>';}
+function petBg(p){return 'linear-gradient(140deg,'+(p.c.s||'#F6E3D2')+','+(p.c.m||'#FBF3E8')+')';}
+
+/* ================= STATE ================= */
+let S={cart:[],wish:[],orders:[],user:null,addresses:[],viewed:[],coupon:null,city:'Narayanganj'};
+try{const sv=JSON.parse(localStorage.getItem('hafao_state'));if(sv)S=Object.assign(S,sv);}catch(e){}
+function save(){try{localStorage.setItem('hafao_state',JSON.stringify(S));}catch(e){}}
+const money=n=>'Tk '+Math.round(n).toLocaleString('en-US');
+const petById=id=>PETS.find(p=>p.id===id);
+const prodAll=()=>PRODUCTS;
+const prodById=id=>PRODUCTS.find(p=>p.id===id);
+
+/* ================= UI HELPERS ================= */
+const $=s=>document.querySelector(s);
+const $$=s=>document.querySelectorAll(s);
+function toast(msg){const t=$('#toast');t.innerHTML=ic('check')+msg;t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),2600);}
+function openModal(id){$('#'+id).classList.add('open');$('#backdrop').classList.add('on');document.body.style.overflow='hidden';}
+function closeModals(){$$('.modal').forEach(m=>m.classList.remove('open'));if(!$('#cartDrawer').classList.contains('open')&&!$('#mmenu').classList.contains('open')&&!$('#searchOverlay').classList.contains('open')){$('#backdrop').classList.remove('on');document.body.style.overflow='';}}
+function closeAll(){$('#cartDrawer').classList.remove('open');$('#mmenu').classList.remove('open');$('#searchOverlay').classList.remove('open');closeModals();}
+let trackTimer=null;
+
+/* ================= VIEW ROUTER ================= */
+const NAVS=[['home','Home'],['shop','Shop Pets'],['food','Pet Food'],['clothing','Pet Clothing'],['accessories','Accessories'],['care','Pet Care'],['about','About Hafao'],['visit','Contact']];
+function buildNav(){
+  $('#navLinks').innerHTML=NAVS.map(n=>'<a href="javascript:void(0)" data-nav="'+n[0]+'" data-act="'+(n[0]==='about'?'go-about':n[0]==='visit'?'go-visit':'go')+'" data-view="'+n[0]+'">'+n[1]+'</a>').join('');
+  $('#mmLinks').innerHTML=NAVS.map(n=>'<a href="javascript:void(0)" data-nav="'+n[0]+'" data-act="'+(n[0]==='about'?'go-about':n[0]==='visit'?'go-visit':'go')+'" data-view="'+n[0]+'">'+ic(n[0]==='home'?'home':n[0]==='shop'?'paw2':'tag')+' '+n[1]+'</a>').join('')+ '<a href="javascript:void(0)" data-act="open-cart">'+ic('cart')+' Cart</a>';
+}
+function markNav(v){$$('[data-nav]').forEach(a=>a.classList.toggle('active',a.dataset.nav===v));}
+function go(v,anchor){
+  if(trackTimer){clearInterval(trackTimer);trackTimer=null;}
+  $$('.view').forEach(s=>s.style.display='none');
+  let target=v;
+  if(v==='about'){target='home';}
+  if(v==='visit'||v==='contact-visit'){target='home';}
+  $('#view-'+target).style.display='block';
+  markNav(v==='food'||v==='clothing'||v==='accessories'||v==='care'||v==='shop'?v:v==='about'?'about':v==='visit'||v==='contact-visit'?'visit':v);
+  if(target==='wishlist')renderWish();
+  if(target==='account')renderAccount();
+  if(target==='checkout')updateSummary();
+  closeAll();
+  window.scrollTo({top:0,behavior:'auto'});
+  if(anchor){setTimeout(()=>{const el=document.getElementById(anchor);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});},60);}
+  else if(v==='about')setTimeout(()=>$('#aboutSec').scrollIntoView({behavior:'smooth'}),60);
+  else if(v==='visit'||v==='contact-visit')setTimeout(()=>$('#visitSec').scrollIntoView({behavior:'smooth'}),60);
+  rv();
+}
+
+/* ================= REVEAL OBSERVER ================= */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
+function rv(){$$('.reveal:not([data-rv])').forEach(el=>{el.dataset.rv=1;io.observe(el);});}
+
+/* ================= CARDS ================= */
+function availCls(a){return a==='Available'?'av-ok':a==='Reserved'?'av-rs':'av-no';}
+function wishOn(kind,id){return S.wish.some(w=>w.kind===kind&&w.id===id);}
+function petCard(p,dark){
+  return '<article class="pcard reveal" data-pid="'+p.id+'">'
+  +'<div class="pimg" style="background:'+petBg(p)+'" data-act="pet" data-id="'+p.id+'">'+petSVG(p)
+  +'<span class="avail '+availCls(p.avail)+'">'+p.avail+'</span>'
+  +(p.rare?'<span class="rarebdg">Rare</span>':'')+(p.isNew?'<span class="newbdg">New Arrival</span>':'')
+  +'<button class="wbtn'+(wishOn('pet',p.id)?' on':'')+'" data-act="wish" data-kind="pet" data-id="'+p.id+'" title="Add to wishlist">'+ic('heart')+'</button></div>'
+  +'<div class="pbody"><span class="pcat">'+CATLABEL[p.cat]+' &middot; '+p.gender+' &middot; '+p.age+'</span>'
+  +'<h3 data-act="pet" data-id="'+p.id+'">'+p.name+'</h3>'
+  +'<p class="pdesc">'+p.desc+'</p>'
+  +'<div class="prow"><span class="price">'+money(p.price)+'</span><div class="pbtns">'
+  +'<button class="minib'+(wishOn('pet',p.id)?' on':'')+'" data-act="wish" data-kind="pet" data-id="'+p.id+'">'+ic('heart')+'</button>'
+  +'<button class="addb" data-act="add-cart" data-kind="pet" data-id="'+p.id+'" '+(p.avail==='Unavailable'?'disabled':'')+'>'+ic('cart')+' Add</button>'
+  +'</div></div><button class="plink" data-act="pet" data-id="'+p.id+'">View Details <span>'+ic('arrow')+'</span></button></div></article>';
+}
+function prodCard(it){
+  const sizeSel=it.sec==='clothing'?'<div style="display:flex;align-items:center;gap:8px;margin-top:2px"><span style="font-size:12px;font-weight:800;color:var(--muted)">Size</span><select class="sizesel" data-size-for="'+it.id+'">'+SIZES.filter(s=>it.sizes.includes(s)).map(s=>'<option'+(s==='M'?' selected':'')+'>'+s+'</option>').join('')+'</select></div>':'';
+  return '<article class="pcard reveal" data-pid="'+it.id+'">'
+  +'<div class="pimg" style="background:linear-gradient(140deg,'+it.bg[0]+','+it.bg[1]+')">'+prodSVG(it,'width:74px;height:74px')
+  +(it.isNew?'<span class="newbdg">New</span>':'')
+  +'<button class="wbtn'+(wishOn('prod',it.id)?' on':'')+'" data-act="wish" data-kind="prod" data-id="'+it.id+'">'+ic('heart')+'</button></div>'
+  +'<div class="pbody"><span class="pcat">'+it.sub+'</span><h3>'+it.n+'</h3>'
+  +'<div style="display:flex;align-items:center;gap:6px;color:var(--gold)">'+stars(it.r)+'<span style="font-size:12px;font-weight:800;color:var(--muted)">'+it.r+'</span></div>'
+  +'<p class="pdesc">'+it.d+'</p>'+sizeSel
+  +'<div class="prow"><span class="price">'+money(it.p)+'</span><div class="pbtns">'
+  +'<button class="minib'+(wishOn('prod',it.id)?' on':'')+'" data-act="wish" data-kind="prod" data-id="'+it.id+'">'+ic('heart')+'</button>'
+  +'<button class="addb" data-act="add-cart" data-kind="prod" data-id="'+it.id+'">'+ic('cart')+' Add</button></div></div></div></article>';
+}
+
+/* ================= SHOP ================= */
+let shopFilter='all',shopSortV='new';
+const SHOPCATS=[['all','All Companions'],['dogs','Dogs'],['cats','Cats'],['birds','Birds'],['rabbits','Rabbits'],['small','Small Pets'],['reptiles','Reptiles'],['aquatic','Aquatic Pets'],['rare','Rare Pets']];
+function buildShopChips(){$('#shopChips').innerHTML=SHOPCATS.map(c=>'<button class="chip'+(c[0]===shopFilter?' on':'')+'" data-act="shop-cat" data-cat="'+c[0]+'">'+c[1]+'</button>').join('');}
+function renderShop(){
+  let list=PETS.filter(p=>shopFilter==='all'||(shopFilter==='rare'?p.rare:p.cat===shopFilter));
+  list=[...list].sort((a,b)=>shopSortV==='low'?a.price-b.price:shopSortV==='high'?b.price-a.price:shopSortV==='pop'?b.pop-a.pop:shopSortV==='rare'?((b.rare-a.rare)||(b.pop-a.pop)):((b.isNew-a.isNew)||(b.pop-a.pop)));
+  $('#shopGrid').innerHTML=list.map(petCard).join('');
+  $('#shopCount').textContent=list.length+' companions found';
+  rv();
+}
+/* ================= PRODUCT SECTIONS ================= */
+const SECDEFS={food:['foodChips','foodGrid'],clothing:['clothChips','clothGrid'],accessories:['accChips','accGrid'],care:['careChips','careGrid']};
+const secSubs={};
+function buildSecChips(){
+  Object.keys(SECDEFS).forEach(sec=>{
+    const subs=[...new Set(PRODUCTS.filter(p=>p.sec===sec).map(p=>p.sub))];
+    secSubs[sec]='all';
+    const box=document.getElementById(SECDEFS[sec][0]);
+    const chips=[['all','All '+(sec==='food'?'Food':sec==='clothing'?'Clothing':sec==='accessories'?'Accessories':'Care')]].concat(subs.map(s=>[s,s]));
+    box.innerHTML=(sec==='clothing'?SIZES.map(s=>'<button class="chip" data-act="size-chip" data-size="'+s+'">'+s+'</button>').join('')+'<span style="width:12px"></span>':'')
+      +chips.map(c=>'<button class="chip'+(c[0]==='all'?' on':'')+'" data-act="sec-chip" data-sec="'+sec+'" data-sub="'+c[0]+'">'+c[1]+'</button>').join('');
+  });
+}
+let clothSize='all';
+function renderSec(sec){
+  const grid=document.getElementById(SECDEFS[sec][1]);
+  let list=PRODUCTS.filter(p=>p.sec===sec);
+  if(sec==='clothing'&&clothSize!=='all')list=list.filter(p=>p.sizes&&p.sizes.includes(clothSize));
+  else if(secSubs[sec]!=='all')list=list.filter(p=>p.sub===secSubs[sec]);
+  grid.innerHTML=list.length?list.map(prodCard).join(''):'<div class="empty" style="grid-column:1/-1">'+ic('search')+'<p>No items match this filter yet. Try another size or category.</p></div>';
+  rv();
+}
+
+/* ================= HOME RENDER ================= */
+function renderHome(){
+  $('#hvMain').innerHTML=petSVG({type:'dog',c:{m:'#E3B878',s:'#F6E3C4',a:'#C08F52'}});
+  $('#hvCat').innerHTML=petSVG({type:'cat',c:{m:'#B7B7BC',s:'#E3E3E8',a:'#8E8E96'}});
+  $('#hvRab').innerHTML=petSVG({type:'rabbit',c:{m:'#D9C4A9',s:'#F3EADC',a:'#A98F6C'}});
+  $('#hvBird').innerHTML=petSVG({type:'bird',c:{m:'#DCCBA8',s:'#F3EAD5',a:'#E8C86B',ck:'#F0A04A'}});
+  $('#aboutArt').innerHTML=petSVG({type:'dog',c:{m:'#E3B878',s:'#F6E3C4',a:'#C08F52'}}, '');
+  const paws=[[8,14,26],[76,6,20],[16,66,22],[86,72,26],[48,88,18]];
+  paws.forEach((p,i)=>{const s=document.createElement('span');s.className='pawfloat';s.style.cssText='left:'+p[0]+'%;top:'+p[1]+'%;width:'+p[2]+'px;animation-delay:'+(i*.9)+'s';s.innerHTML='<svg viewBox="0 0 24 24" fill="currentColor">'+FILL.paw+'</svg>';$('#heroVisual').appendChild(s);});
+  $('#loadPaws').innerHTML=ic('paw')+ic('paw')+ic('paw');
+  $('#trustRow').innerHTML=[
+    ['heart','#B08A9E','Health Checked','Every companion receives a vet check'],
+    ['truck','#7E9A73','Safe Delivery','Careful handling across 9 cities'],
+    ['shield','#C9A24B','Honest Guidance','Responsible ownership always first'],
+    ['chat','#A08AC9','Lifetime Support','Care advice before and after adoption']
+  ].map(t=>'<div class="tcard reveal"><div class="ti" style="background:'+t[1]+'">'+ic(t[0])+'</div><div><b>'+t[2]+'</b><span>'+t[3]+'</span></div></div>').join('');
+  const catArts={dogs:['dog',{m:'#E0A85C',s:'#F8ECD4',a:'#A97134'}],cats:['cat',{m:'#B7B7BC',s:'#E3E3E8',a:'#8E8E96'}],birds:['bird',{m:'#DCCBA8',s:'#F3EAD5',a:'#E8C86B',ck:'#F0A04A'}],rabbits:['rabbit',{m:'#D9C4A9',s:'#F3EADC',a:'#A98F6C'}],small:['hamster',{m:'#E4C089',s:'#F7E7C6',a:'#B98F52'}],reptiles:['gecko',{m:'#EFD9A0',s:'#F8EDCB',a:'#C09A4C'}],aquatic:['fish',{m:'#C05A78',s:'#E58AA0',a:'#8E3A52'}],rare:['axolotl',{m:'#F4C3C3',s:'#FBE0E0',a:'#E88A8A'}]};
+  $('#catTiles').innerHTML=SHOPCATS.slice(1).map(c=>{
+    const a=catArts[c[0]];
+    const n=c[0]==='rare'?PETS.filter(p=>p.rare).length:PETS.filter(p=>p.cat===c[0]).length;
+    return '<div class="cat-tile reveal" data-act="shop-cat-go" data-cat="'+c[0]+'"><div class="cimg" style="background:linear-gradient(140deg,'+a[1].s+','+a[1].m+')"><svg viewBox="0 0 200 160">'+ART[a[0]](a[1])+'</svg></div><b>'+c[1]+'</b><span>'+n+' friends waiting</span></div>';}).join('');
+  $('#newArr').innerHTML=PETS.filter(p=>p.isNew).concat(PETS.filter(p=>p.avail==='Available').slice(0,8)).filter((p,i,arr)=>arr.indexOf(p)===i).slice(0,10).map(p=>petCard(p)).join('');
+  $('#bestSel').innerHTML=[...PRODUCTS].sort((a,b)=>b.pop-a.pop).slice(0,10).map(prodCard).join('');
+  $('#rareGrid').innerHTML=PETS.filter(p=>p.rare).map(p=>petCard(p,1)).join('');
+  $('#intlList').innerHTML=['Species and destination country laws','Animal welfare and transport requirements','Health documents and veterinary certificates','Airline and courier rules for live animals','Import permits and quarantine rules'].map(t=>'<li>'+ic('check')+'<span>'+t+'</span></li>').join('');
+  $('#intlList2').innerHTML=['IATA compliant travel crates and climate care','Veterinary health checks before any journey','Full document guidance for every destination','Honest answers if shipping is not possible','Products ship worldwide with standard couriers'].map(t=>'<li>'+ic('check')+'<span>'+t+'</span></li>').join('');
+  $('#bdCities').innerHTML=Object.keys(DELIVERY_BD).map(c=>'<div class="cityc'+(c===S.city?' on':'')+'" data-act="city" data-city="'+c+'"><b>'+c+'</b><span>'+money(DELIVERY_BD[c])+'</span></div>').join('');
+  $('#selCity').textContent=S.city;$('#selFee').textContent=money(DELIVERY_BD[S.city]);
+  $('#revGrid').innerHTML=REVIEWS.map(r=>'<div class="rev reveal"><div class="stars">'+stars(5)+'</div><p>'+r.t+'</p><div class="who"><div class="av" style="background:linear-gradient(140deg,'+r.pal.s+','+r.pal.m+')"><svg viewBox="0 0 200 160">'+ART[r.art](r.pal)+'</svg></div><div><b>'+r.n+'</b><span>'+r.c+' '+r.pet+'</span></div></div></div>').join('');
+  $('#journalGrid').innerHTML=ARTICLES.map((a,i)=>'<div class="jcard reveal" data-act="article" data-i="'+i+'"><div class="jimg" style="background:linear-gradient(140deg,'+a.img[0]+','+a.img[1]+')">'+ic('paw')+'</div><div class="jbody"><span class="jtag">'+a.cat+'</span><h3>'+a.t+'</h3><p>'+a.body.slice(0,96)+'...</p><div class="jmeta">'+a.min+' min read</div></div></div>').join('');
+  vAddr();buildKitTypes();kitType='Dog';renderKit();tipShow(0);
+  $('#vAddr').textContent=BRAND.address;$('#vPhone').textContent=BRAND.phone;$('#vMail').textContent=BRAND.email;
+}
+function vAddr(){}
+
+/* ================= TIPS ================= */
+let tipI=0,tipTimer=null;
+function tipShow(i){
+  const box=$('#tipBox');tipI=(i+TIPS.length)%TIPS.length;
+  box.classList.add('fade');setTimeout(()=>{
+    box.innerHTML='<div class="tic">'+ic('paw')+'</div><h3>'+TIPS[tipI].t+'</h3><p>'+TIPS[tipI].p+'</p><div class="tipdots">'+TIPS.map((_,x)=>'<span class="'+(x===tipI?'on':'')+'"></span>').join('')+'</div>';
+    box.classList.remove('fade');
+  },250);
+  const n=document.createElement('div');n.className='tipnav';
+  n.innerHTML='<button class="carbtn" data-act="tip-prev" style="width:38px;height:38px">'+ic('chd')+'</button><button class="carbtn" data-act="tip-next" style="width:38px;height:38px">'+ic('chg')+'</button>';
+  box.querySelectorAll('.tipnav').forEach(e=>e.remove());box.appendChild(n);
+  clearInterval(tipTimer);tipTimer=setInterval(()=>tipShow(tipI+1),6000);
+}
+
+/* ================= CART ================= */
+function cartCount(){return S.cart.reduce((a,c)=>a+c.qty,0);}
+function renderBadges(){$('#badgeCart').textContent=cartCount();$('#badgeWish').textContent=S.wish.length;}
+function addToCart(kind,id,size){
+  if(kind==='pet'){const p=petById(id);if(!p||p.avail==='Unavailable'){toast('Sorry, this pet is currently unavailable.');return;}
+    const key='pet-'+id;const ex=S.cart.find(c=>c.key===key);
+    if(ex)ex.qty++;else S.cart.push({key,kind,id,name:p.name,price:p.price,qty:1,art:{type:p.type,c:p.c},meta:'Live pet - '+p.avail});
+  }else{const it=prodById(id);if(!it)return;size=size||'M';const key='prod-'+id+'-'+size;const ex=S.cart.find(c=>c.key===key);
+    if(ex)ex.qty++;else S.cart.push({key,kind,id,name:it.n,price:it.p,qty:1,art:{type:'prod',c:null,ic:it.ic,bg:it.bg},meta:(size!=='M'||it.sec==='clothing'?'Size '+size+' - ':'')+it.sub});
+  }
+  save();renderBadges();renderCart();toast('Added to your cart.');
+}
+function couponDisc(sub){if(!S.coupon)return 0;const c=COUPONS[S.coupon];if(!c)return 0;return c.type==='pct'?sub*c.val/100:Math.min(c.val,sub);}
+function cartTotals(mode,country){
+  const sub=S.cart.reduce((a,c)=>a+c.price*c.qty,0);
+  const disc=couponDisc(sub);
+  let fee=0;
+  if(mode==='intl'){fee=SHIP_INTL[country]||SHIP_INTL['Other country'];}
+  else{fee=DELIVERY_BD[S.city]||60;if(sub-disc>=FREE_BD_OVER)fee=0;}
+  return{sub,disc,fee,total:Math.max(0,sub-disc+fee)};
+}
+function renderCart(){
+  const box=$('#cartItems');
+  if(!S.cart.length){box.innerHTML='<div class="cemp">'+ic('cart')+'<p style="font-weight:800">Your cart is empty</p><p style="font-size:13px">Add a companion or some essentials to get started.</p></div>';}
+  else box.innerHTML=S.cart.map(c=>{
+    const img=c.art.type==='prod'?'<div class="cimg2" style="background:linear-gradient(140deg,'+c.art.bg[0]+','+c.art.bg[1]+')"><svg viewBox="0 0 24 24" fill="none" stroke="#6F5138" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width:34px;height:34px">'+ST[c.art.ic]+'</svg></div>':'<div class="cimg2" style="background:'+petBg({c:c.art.c})+'"><svg viewBox="0 0 200 160" style="width:90%;height:90%">'+ART[c.art.type](c.art.c)+'</svg></div>';
+    return '<div class="citem">'+img+'<div style="flex:1;min-width:0"><b>'+c.name+'</b><span class="csub">'+c.meta+'</span><div style="display:flex;align-items:center;gap:10px;margin-top:6px"><div class="qty"><button data-act="qty" data-key="'+c.key+'" data-d="-1">-</button><span>'+c.qty+'</span><button data-act="qty" data-key="'+c.key+'" data-d="1">+</button></div><span class="cprice">'+money(c.price*c.qty)+'</span></div></div><button class="crm" data-act="rm" data-key="'+c.key+'">'+ic('trash')+'</button></div>';}).join('');
+  const t=cartTotals('bd',null);
+  $('#cdTotals').innerHTML='<div class="srow"><span>Subtotal</span><span>'+money(t.sub)+'</span></div>'
+  +(S.coupon?'<div class="srow disc"><span>Coupon '+S.coupon+'</span><span>- '+money(t.disc)+'</span></div>':'')
+  +'<div class="srow"><span>Delivery fee ('+S.city+')</span><span>'+(t.fee?money(t.fee):'Free')+'</span></div>'
+  +'<div class="srow tot"><span>Total</span><span>'+money(t.total)+'</span></div>';
+  renderBadges();
+}
+function openCart(){$('#cartDrawer').classList.add('open');$('#backdrop').classList.add('on');renderCart();}
+
+/* ================= WISHLIST ================= */
+function toggleWish(kind,id){
+  const i=S.wish.findIndex(w=>w.kind===kind&&w.id===id);
+  if(i>-1){S.wish.splice(i,1);toast('Removed from wishlist.');}
+  else{S.wish.push({kind,id});toast('Saved to your wishlist.');}
+  save();renderBadges();
+  $$('[data-act="wish"][data-kind="'+kind+'"][data-id="'+id+'"]').forEach(b=>b.classList.toggle('on',i<0));
+  if($('#view-wishlist').style.display==='block')renderWish();
+}
+function wishItemData(w){
+  if(w.kind==='pet'){const p=petById(w.id);return p?{name:p.name,price:p.price,bg:petBg(p),svg:'<svg viewBox="0 0 200 160" style="width:88%;height:88%">'+ART[p.type](p.c)+'</svg>',cat:CATLABEL[p.cat],kind:'pet',id:p.id,disabled:p.avail==='Unavailable'}:null;}
+  const it=prodById(w.id);return it?{name:it.n,price:it.p,bg:'linear-gradient(140deg,'+it.bg[0]+','+it.bg[1]+')',svg:'<svg viewBox="0 0 24 24" fill="none" stroke="#6F5138" stroke-width="1.6" style="width:30px;height:30px">'+ST[it.ic]+'</svg>',cat:it.sub,kind:'prod',id:it.id}:null;
+}
+function renderWish(){
+  const box=$('#wishBox');
+  if(!S.wish.length){box.innerHTML='<div class="empty">'+ic('heart')+'<p style="font-weight:800">Your wishlist is empty</p><p style="font-size:13px;margin-bottom:18px">Tap the heart on any pet or product to save it here.</p><button class="btn btn-p sm" data-act="go" data-view="shop">Browse Companions</button></div>';return;}
+  box.innerHTML='<div class="grid">'+S.wish.map(w=>{const d=wishItemData(w);if(!d)return '';return '<article class="pcard"><div class="pimg" style="background:'+d.bg+'">'+d.svg+'<button class="wbtn on" data-act="wish" data-kind="'+d.kind+'" data-id="'+d.id+'">'+ic('heart')+'</button></div><div class="pbody"><span class="pcat">'+d.cat+'</span><h3>'+d.name+'</h3><div class="prow"><span class="price">'+money(d.price)+'</span><div class="pbtns"><button class="addb" data-act="wish-move" data-kind="'+d.kind+'" data-id="'+d.id+'" '+(d.disabled?'disabled':'')+'>Move to Cart</button></div></div></div></article>';}).join('')+'</div>';
+  rv();
+}
+
+/* ================= PET DETAIL ================= */
+function openPet(id){
+  const p=petById(id);if(!p)return;
+  if(!S.viewed.includes(id)){S.viewed.unshift(id);S.viewed=S.viewed.slice(0,8);save();}
+  const tints=[petBg(p),'linear-gradient(140deg,#EFEAF7,#DDD2EE)','linear-gradient(140deg,#FBDFC9,#F4C9A8)','linear-gradient(140deg,#EAF0E2,#CBDCC0)'];
+  const rel=PETS.filter(x=>x.cat===p.cat&&x.id!==p.id).slice(0,4);
+  $('#petModalBody').innerHTML=
+  '<div class="pd"><div class="pdgal"><div class="pdmain" id="pdMain" style="background:'+tints[0]+'">'+petSVG(p)+'</div>'
+  +'<div class="pdthumbs">'+tints.map((t,i)=>'<button class="'+(i===0?'on':'')+'" data-act="pdthumb" data-i="'+i+'" style="background:'+t+'"><svg viewBox="0 0 200 160">'+ART[p.type](p.c)+'</svg></button>').join('')+'</div></div>'
+  +'<div class="pdinfo"><span class="avail '+availCls(p.avail)+'">'+p.avail+'</span>'
+  +'<h2>'+p.name+'</h2><p style="color:var(--muted);font-size:14.5px">'+p.desc+'</p>'
+  +'<div class="pdmeta"><div><b>Breed / Species</b>'+p.name+'</div><div><b>Category</b>'+CATLABEL[p.cat]+'</div><div><b>Age</b>'+p.age+'</div><div><b>Gender</b>'+p.gender+'</div><div><b>Location</b>Narayanganj, Bangladesh</div><div><b>Price</b><span style="font-family:Baloo 2;font-weight:800;color:var(--brown2);font-size:16px">'+money(p.price)+'</span></div><div style="grid-column:1/-1"><b>Health</b>'+CATHEALTH[p.cat]+'</div></div>'
+  +'<div class="pdsec"><h4>Temperament</h4><div class="temps">'+p.temper.split(',').map(t=>'<span>'+t.trim()+'</span>').join('')+'</div></div>'
+  +'<div class="pdsec"><h4>Care Requirements</h4><ul>'+(CATCARE[p.cat]||[]).map(x=>'<li>'+x+'</li>').join('')+'</ul></div>'
+  +'<div class="pdsec"><h4>Feeding Information</h4><ul>'+(CATFEED[p.cat]||[]).map(x=>'<li>'+x+'</li>').join('')+'</ul></div>'
+  +'<div class="pdctas"><button class="btn btn-p sm" data-act="add-cart" data-kind="pet" data-id="'+p.id+'" '+(p.avail==='Unavailable'?'disabled':'')+'>'+ic('cart')+' Add to Cart</button>'
+  +'<button class="btn btn-g sm" data-act="buy-now" data-kind="pet" data-id="'+p.id+'" '+(p.avail==='Unavailable'?'disabled':'')+'>Buy Now</button>'
+  +'<button class="minib'+(wishOn('pet',p.id)?' on':'')+'" data-act="wish" data-kind="pet" data-id="'+p.id+'" style="width:46px;height:46px">'+ic('heart')+'</button></div>'
+  +'<button class="plink" style="margin-top:14px" data-act="pd-contact">Contact Hafao about this pet</button>'
+  +'<div class="contactbox" id="pdContact">Call '+BRAND.phone+' or email '+BRAND.email+' to confirm availability before visiting or ordering.</div>'
+  +'<p style="font-size:11.5px;color:var(--muted);margin-top:14px">Pet availability, sale and transportation depend on applicable laws, animal welfare rules, permits and destination requirements.</p></div></div>'
+  +(rel.length?'<div style="padding:6px 30px 14px"><h3 style="font-size:20px">Related Companions</h3></div><div class="relgrid">'+rel.map(r=>'<div class="relcard" data-act="pet" data-id="'+r.id+'"><div class="ri" style="background:'+petBg(r)+'"><svg viewBox="0 0 200 160">'+ART[r.type](r.c)+'</svg></div><b>'+r.name+'</b><span>'+money(r.price)+'</span></div>').join('')+'</div>':'');
+  openModal('petModal');
+}
+
+/* ================= SEARCH ================= */
+function searchIndex(){
+  const out=[];
+  PETS.forEach(p=>out.push({kind:'pet',id:p.id,name:p.name,label:'Live Pet - '+CATLABEL[p.cat],price:p.price,bg:petBg(p),svg:'<svg viewBox="0 0 200 160" style="width:88%;height:88%">'+ART[p.type](p.c)+'</svg>',q:(p.name+' '+p.cat).toLowerCase()}));
+  PRODUCTS.forEach(it=>out.push({kind:'prod',id:it.id,name:it.n,label:it.sub+' Product',price:it.p,bg:'linear-gradient(140deg,'+it.bg[0]+','+it.bg[1]+')',svg:'<svg viewBox="0 0 24 24" fill="none" stroke="#6F5138" stroke-width="1.6" style="width:28px;height:28px">'+ST[it.ic]+'</svg>',q:(it.n+' '+it.sub).toLowerCase()}));
+  return out;
+}
+function doSearch(q){
+  const box=$('#searchResults');
+  if(!q.trim()){box.innerHTML='<div class="snote">Start typing to search the entire Hafao store.</div>';return;}
+  const res=searchIndex().filter(x=>x.q.includes(q.toLowerCase())).slice(0,9);
+  box.innerHTML=res.length?res.map(r=>'<div class="sres" data-act="search-go" data-kind="'+r.kind+'" data-id="'+r.id+'"><div class="srim" style="background:'+r.bg+'">'+r.svg+'</div><div><span class="slab">'+r.label+'</span><b>'+r.name+'</b></div><span class="spr">'+money(r.price)+'</span></div>').join(''):'<div class="snote">No results for "'+q+'". Try cat, dog, food, bed or toy.</div>';
+}
+function searchGo(kind,id){
+  closeAll();
+  if(kind==='pet'){openPet(id);return;}
+  const it=prodById(id);go(it.sec);
+  setTimeout(()=>{const card=document.querySelector('[data-pid="'+id+'"]');if(card){card.scrollIntoView({behavior:'smooth',block:'center'});card.classList.add('flash');setTimeout(()=>card.classList.remove('flash'),1800);}},120);
+}
+
+/* ================= CHECKOUT ================= */
+function fillSelect(sel,obj,def){sel.innerHTML=Object.keys(obj).map(k=>'<option'+(k===def?' selected':'')+'>'+k+'</option>').join('');}
+function initCheckout(){
+  fillSelect($('#bdDivision'),DIVISIONS,'Dhaka');
+  fillDivCities();
+  fillSelect($('#intlCountry'),SHIP_INTL,'India');
+}
+function fillDivCities(){fillSelect($('#bdCity'),DIVISIONS[$('#bdDivision').value].reduce((a,c)=>(a[c]=DELIVERY_BD[c]||150,a),{}),'Dhaka');}
+function coMode(){return document.querySelector('input[name="dmode"]:checked').value;}
+function coCountry(){return $('#intlCountry').value;}
+function updateSummary(){
+  const box=$('#sumItems');
+  if(!S.cart.length){box.innerHTML='<p style="font-size:13.5px;color:var(--muted);padding:6px 0">Your cart is empty.</p>';}
+  else box.innerHTML=S.cart.map(c=>'<div class="sitem"><div class="si" style="background:'+(c.art.type==='prod'?'linear-gradient(140deg,'+c.art.bg[0]+','+c.art.bg[1]+')':petBg({c:c.art.c}))+'">'+(c.art.type==='prod'?'<svg viewBox="0 0 24 24" fill="none" stroke="#6F5138" stroke-width="1.6" style="width:22px;height:22px">'+ST[c.art.ic]+'</svg>':'<svg viewBox="0 0 200 160" style="width:86%;height:86%">'+ART[c.art.type](c.art.c)+'</svg>')+'</div><div style="flex:1"><b>'+c.name+'</b><span style="color:var(--muted);font-size:12px"> &times; '+c.qty+'</span></div><b style="font-family:Baloo 2">'+money(c.price*c.qty)+'</b></div>').join('');
+  const t=cartTotals(coMode(),coCountry());
+  $('#sumSub').textContent=money(t.sub);
+  $('#sumDiscRow').style.display=S.coupon?'flex':'none';
+  $('#sumDisc').textContent='- '+money(t.disc);
+  $('#sumShip').textContent=t.fee?money(t.fee):'Free';
+  $('#sumTotal').textContent=money(t.total);
+  $('#shipNote').textContent=coMode()==='intl'?'International shipping via '+coCountry()+'. Live animals require document review before shipping.':'Free Bangladesh delivery on orders over '+money(FREE_BD_OVER)+'. Current city: '+S.city+'.';
+}
+function placeOrder(){
+  const f=$('#checkoutForm');
+  const req=[['cName',v=>v.length>=3],['cPhone',v=>v.replace(/\D/g,'').length>=6],['cEmail',v=>/^\S+@\S+\.\S+$/.test(v)]];
+  let ok=true;
+  req.forEach(r=>{const el=document.getElementById(r[0]);const bad=!r[1](el.value.trim());el.closest('.fld').classList.toggle('err',bad);if(bad)ok=false;});
+  const m=coMode();
+  if(m==='bd'){[['bdAddress',v=>v.length>=6],['bdPostal',v=>v.length>=3]].forEach(r=>{const el=document.getElementById(r[0]);const bad=!r[1](el.value.trim());el.closest('.fld').classList.toggle('err',bad);if(bad)ok=false;});}
+  else{[['intlAddress',v=>v.length>=6],['intlCity',v=>v.length>=2]].forEach(r=>{const el=document.getElementById(r[0]);const bad=!r[1](el.value.trim());el.closest('.fld').classList.toggle('err',bad);if(bad)ok=false;});}
+  if(!ok){toast('Please fill the highlighted fields correctly.');return;}
+  if(!S.cart.length){toast('Your cart is empty.');go('shop');return;}
+  const t=cartTotals(m,m==='intl'?coCountry():null);
+  const order={no:'HF-'+String(Date.now()).slice(-6)+Math.floor(Math.random()*90+10),placedAt:Date.now(),items:JSON.parse(JSON.stringify(S.cart)),sub:t.sub,disc:t.disc,fee:t.fee,total:t.total,pay:document.querySelector('input[name="pay"]:checked').value,
+  customer:{name:$('#cName').value.trim(),phone:$('#cPhone').value.trim(),email:$('#cEmail').value.trim(),mode:m,
+  division:m==='bd'?$('#bdDivision').value:'',city:m==='bd'?$('#bdCity').value:$('#intlCity').value.trim(),state:m==='intl'?$('#intlState').value.trim():'',
+  country:m==='intl'?coCountry():'Bangladesh',address:m==='bd'?$('#bdAddress').value.trim():$('#intlAddress').value.trim(),postal:m==='bd'?$('#bdPostal').value.trim():$('#intlPostal').value.trim()}};
+  if($('#saveAddr').checked){S.addresses.unshift({name:order.customer.name,phone:order.customer.phone,address:order.customer.address,city:order.customer.city,division:order.customer.division,postal:order.customer.postal,type:m,country:order.customer.country});S.addresses=S.addresses.slice(0,5);}
+  S.orders.unshift(order);S.cart=[];S.coupon=null;save();renderBadges();renderCart();
+  renderConfirm(order);go('confirm');pawConfetti();
+}
+function stageOf(o){const s=(Date.now()-o.placedAt)/1000;const th=[0,14,32,55,85,120,160];let i=0;th.forEach((t,ix)=>{if(s>=t)i=ix;});return i;}
+function renderConfirm(o){
+  const st=STAGES[stageOf(o)];
+  $('#confirmBox').innerHTML='<svg class="checkanim" viewBox="0 0 120 120"><circle cx="60" cy="60" r="54"/><path d="M38 62l16 16 30-34"/></svg>'
+  +'<span class="kick baloo" style="font-family:Caveat,cursive;font-size:26px;color:var(--gold)">Order placed successfully</span>'
+  +'<h2 style="font-size:clamp(26px,4vw,38px)">Thank You, '+o.customer.name.split(' ')[0]+'.</h2>'
+  +'<p style="color:var(--muted);max-width:480px;margin:10px auto 0">Your order is confirmed and our team is already taking care of it. A confirmation has been noted for '+o.customer.email+'.</p>'
+  +'<div class="ordercard"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:16px"><div><span style="font-size:12px;font-weight:800;letter-spacing:1px;color:var(--muted);text-transform:uppercase">Order number</span><div class="baloo" style="font-size:24px;color:var(--brown2)">'+o.no+'</div></div><span class="statuschip"><span class="dot"></span>'+st+'</span></div>'
+  +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px" id="cfGrid">'
+  +'<div><b style="font-family:Baloo 2;color:var(--choc)">Customer information</b><p style="font-size:14px;color:var(--muted)">'+o.customer.name+'<br>'+o.customer.phone+'<br>'+o.customer.email+'</p></div>'
+  +'<div><b style="font-family:Baloo 2;color:var(--choc)">Delivery information</b><p style="font-size:14px;color:var(--muted)">'+(o.customer.mode==='intl'?o.customer.country+' - '+o.customer.state+' '+o.customer.city:o.customer.division+' - '+o.customer.city)+'<br>'+o.customer.address+'<br>Postal: '+(o.customer.postal||'-')+'</p></div>'
+  +'<div><b style="font-family:Baloo 2;color:var(--choc)">Payment method</b><p style="font-size:14px;color:var(--muted)">'+o.pay+'</p></div>'
+  +'<div><b style="font-family:Baloo 2;color:var(--choc)">Status</b><p style="font-size:14px;color:var(--muted)">Order Placed - our team will call to confirm shortly.</p></div></div>'
+  +'<div style="border-top:1.5px dashed var(--line);margin-top:18px;padding-top:14px">'+o.items.map(c=>'<div style="display:flex;justify-content:space-between;font-size:14px;padding:5px 0"><span>'+c.name+' &times; '+c.qty+'</span><b>'+money(c.price*c.qty)+'</b></div>').join('')
+  +'<div style="display:flex;justify-content:space-between;font-size:14px;padding:5px 0;color:var(--muted)"><span>Shipping fee</span><span>'+(o.fee?money(o.fee):'Free')+'</span></div>'
+  +(o.disc?'<div style="display:flex;justify-content:space-between;font-size:14px;padding:5px 0;color:var(--sage2)"><span>Discount</span><span>- '+money(o.disc)+'</span></div>':'')
+  +'<div style="display:flex;justify-content:space-between;font-family:Baloo 2;font-size:20px;padding-top:8px;color:var(--choc)"><span>Total</span><span>'+money(o.total)+'</span></div></div></div>'
+  +'<div style="display:flex;gap:12px;justify-content:center;margin-top:26px;flex-wrap:wrap"><button class="btn btn-p" data-act="track-this" data-no="'+o.no+'">Track This Order</button><button class="btn btn-o" data-act="go" data-view="home">Continue Shopping</button></div>';
+}
+function pawConfetti(){
+  for(let i=0;i<26;i++){const c=document.createElement('span');c.className='confetti';
+  c.style.cssText='left:'+(Math.random()*100)+'vw;width:'+(14+Math.random()*14)+'px;height:'+(14+Math.random()*14)+'px;color:'+['#C9A24B','#9DB38C','#B08A9E','#E8B54A','#F2A9A9'][i%5]+';animation-duration:'+(2.4+Math.random()*2.2)+'s;animation-delay:'+(Math.random()*.8)+'s';
+  c.innerHTML='<svg viewBox="0 0 24 24" fill="currentColor">'+FILL.paw+'</svg>';document.body.appendChild(c);setTimeout(()=>c.remove(),5200);}
+}
+
+/* ================= TRACKING ================= */
+function trackFind(){
+  const no=$('#tNo').value.trim().toUpperCase(),ct=$('#tContact').value.trim().toLowerCase();
+  if(!no||!ct){toast('Enter both your order number and phone or email.');return;}
+  const o=S.orders.find(x=>x.no.toUpperCase()===no&&(x.customer.phone.toLowerCase()===ct||x.customer.email.toLowerCase()===ct));
+  const box=$('#trackResult');
+  if(!o){box.innerHTML='<div class="empty">'+ic('search')+'<p style="font-weight:800">Order not found</p><p style="font-size:13px">Check your order number, or use the exact phone or email from checkout.</p></div>';return;}
+  drawTrack(o);
+  if(trackTimer)clearInterval(trackTimer);
+  trackTimer=setInterval(()=>{if(stageOf(o)<6)drawTrack(o);else clearInterval(trackTimer);},4000);
+}
+function drawTrack(o){
+  const i=stageOf(o);
+  $('#trackResult').innerHTML='<div class="glasscard"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;align-items:center"><div><span style="font-size:12px;font-weight:800;letter-spacing:1px;color:var(--muted);text-transform:uppercase">Order '+o.no+'</span><h3 style="font-size:22px">'+o.items.length+' item(s) - '+money(o.total)+'</h3></div><span class="statuschip"><span class="dot"></span>'+STAGES[i]+'</span></div>'
+  +'<div class="tl"><div class="line"></div><div class="fill" style="width:'+(i/(STAGES.length-1)*100)+'%"></div><div class="tlstages">'+STAGES.map((s,x)=>'<div class="tstage '+(x<i?'done':x===i?'act':'')+'"><div class="dot2">'+(x<=i?ic('check'):'')+'</div><span>'+s+'</span></div>').join('')+'</div></div>'
+  +'<p style="font-size:12.5px;color:var(--muted);text-align:center">Demo timeline: for preview, statuses advance automatically in real time. Real orders are updated by the Hafao team.</p></div>';
+}
+
+/* ================= ACCOUNT ================= */
+let accTab='profile';
+function renderAccount(){
+  const box=$('#accountBox');
+  if(!S.user){box.innerHTML='<div class="glasscard" style="max-width:460px;margin:0 auto"><div class="shead" style="margin-bottom:18px"><span class="kick">Welcome</span><h2 style="font-size:28px">Sign In or Create Account</h2><p>Your profile, orders and wishlist stay on this device.</p></div>'
+  +'<div class="fld" style="margin-bottom:12px"><label>Full name</label><input id="aName" placeholder="Your name"></div>'
+  +'<div class="fld" style="margin-bottom:12px"><label>Email</label><input id="aEmail" type="email" placeholder="you@email.com"></div>'
+  +'<div class="fld" style="margin-bottom:18px"><label>Phone</label><input id="aPhone" placeholder="01XXXXXXXXX"></div>'
+  +'<button class="btn btn-p" style="width:100%" data-act="login">Enter My Account</button></div>';return;}
+  const tabs=[['profile','Profile','user'],['orders','My Orders','cart'],['tracking','Order Tracking','truck'],['wishlist','Wishlist','heart'],['addresses','Saved Addresses','pin'],['viewed','Recently Viewed','clock']];
+  let body='';
+  if(accTab==='profile')body='<h3 style="font-size:20px;margin-bottom:14px">My Profile</h3><div class="fld" style="margin-bottom:12px"><label>Full name</label><input id="pName" value="'+S.user.name+'"></div><div class="fld" style="margin-bottom:12px"><label>Email</label><input id="pEmail" value="'+S.user.email+'"></div><div class="fld" style="margin-bottom:16px"><label>Phone</label><input id="pPhone" value="'+S.user.phone+'"></div><button class="btn btn-p sm" data-act="save-profile">Save Changes</button>';
+  if(accTab==='orders')body='<h3 style="font-size:20px;margin-bottom:14px">My Orders</h3><div class="olist">'+(S.orders.length?S.orders.map(o=>'<div class="oitem"><div class="orow"><b>'+o.no+'</b><span class="statuschip" style="font-size:11px"><span class="dot"></span>'+STAGES[stageOf(o)]+'</span><span style="font-weight:800;font-family:Baloo 2;color:var(--brown2)">'+money(o.total)+'</span><button class="plink" data-act="toggle-order" data-no="'+o.no+'">Details</button></div><div class="odetails">'+o.items.map(c=>c.name+' x '+c.qty+' - '+money(c.price*c.qty)).join('<br>')+'<br>Payment: '+o.pay+'<br>Delivery: '+(o.customer.mode==='intl'?o.customer.country:o.customer.city+', '+o.customer.division)+'</div></div>').join(''):'<div class="empty">'+ic('cart')+'<p>No orders yet.</p></div>')+'</div>';
+  if(accTab==='tracking')body='<h3 style="font-size:20px;margin-bottom:6px">Order Tracking</h3><div class="frow"><div class="fld"><label>Order number</label><input id="tNo2" placeholder="HF-XXXXXX"></div><div class="fld"><label>Phone or email</label><input id="tC2" placeholder="'+S.user.phone+'"></div></div><button class="btn btn-p sm" data-act="track2">Track</button><div id="trackResult2" style="margin-top:20px"></div>';
+  if(accTab==='wishlist')body='<h3 style="font-size:20px;margin-bottom:14px">Wishlist</h3>'+(S.wish.length?'<div class="grid">'+S.wish.map(w=>{const d=wishItemData(w);return d?'<article class="pcard"><div class="pimg" style="background:'+d.bg+'">'+d.svg+'</div><div class="pbody"><h3>'+d.name+'</h3><div class="prow"><span class="price">'+money(d.price)+'</span><button class="addb" data-act="wish-move" data-kind="'+d.kind+'" data-id="'+d.id+'">Move to Cart</button></div></div></article>':'';}).join('')+'</div>':'<div class="empty">'+ic('heart')+'<p>Nothing saved yet.</p></div>');
+  if(accTab==='addresses')body='<h3 style="font-size:20px;margin-bottom:14px">Saved Addresses</h3>'+(S.addresses.length?S.addresses.map((a,i)=>'<div class="oitem"><div class="orow"><b>'+a.name+'</b><button class="crm" data-act="rm-addr" data-i="'+i+'">'+ic('trash')+'</button></div><p style="font-size:13.5px;color:var(--muted)">'+a.address+', '+a.city+' '+(a.division?'- '+a.division:'')+' '+(a.country||'')+' - '+a.postal+'</p></div>').join(''):'<div class="empty">'+ic('pin')+'<p>No saved addresses. Save one at checkout.</p></div>');
+  if(accTab==='viewed')body='<h3 style="font-size:20px;margin-bottom:14px">Recently Viewed</h3>'+(S.viewed.length?'<div class="relgrid" style="padding:0">'+S.viewed.map(id=>{const p=petById(id);return p?'<div class="relcard" data-act="pet" data-id="'+p.id+'"><div class="ri" style="background:'+petBg(p)+'"><svg viewBox="0 0 200 160">'+ART[p.type](p.c)+'</svg></div><b>'+p.name+'</b><span>'+money(p.price)+'</span></div>':'';}).join(''):'<div class="empty">'+ic('clock')+'<p>Pets you view will appear here.</p></div>');
+  box.innerHTML='<div class="acc"><div class="accside"><div class="who2"><div class="avv">'+S.user.name.charAt(0).toUpperCase()+'</div><div><b style="font-family:Baloo 2;line-height:1.1;display:block">'+S.user.name+'</b><span style="font-size:12px;color:var(--muted)">'+S.user.email+'</span></div></div>'
+  +tabs.map(t=>'<button class="'+(accTab===t[0]?'on':'')+'" data-act="acc-tab" data-tab="'+t[0]+'">'+ic(t[2])+' '+t[1]+'</button>').join('')
+  +'<button data-act="logout" style="color:#C97B7B">'+ic('close')+' Logout</button></div><div class="acccard">'+body+'</div></div>';
+}
+
+/* ================= QUIZ ================= */
+const QUIZ=[
+{q:'How big is your living space?',a:[['A cozy apartment',1,0,0,1,0,0],['A house with a small yard',0,1,1,0,1,0],['A spacious home or garden',0,2,1,0,1,1]]},
+{q:'How much time can you give daily?',a:[['Under one hour',0,0,1,2,1,1],['One to two hours',1,1,1,1,1,0],['Three hours or more',1,2,0,0,1,0]]},
+{q:'Your pet experience level?',a:[['This is my first pet',1,0,1,2,0,1],['I have had a few pets',1,1,1,1,1,1],['I am very experienced',0,2,1,0,2,2]]},
+{q:'What is your comfortable budget?',a:[['Under Tk 10,000',0,0,1,2,1,1],['Tk 10,000 to 50,000',1,1,1,0,1,1],['Tk 50,000 and above',0,2,1,0,1,1]]},
+{q:'Which companion appeals most?',a:[['Fluffy and calm',2,0,1,1,0,0],['Playful and loyal',0,2,0,0,1,0],['Unique and exotic',0,0,2,0,2,1],['Small and easygoing',0,0,0,2,0,2]]}];
+const QCATS=['cats','dogs','birds','small','reptiles','aquatic'];
+let qStep=0,qScore=[0,0,0,0,0,0];
+function quizRender(){
+  const box=$('#quizBody');
+  if(qStep<QUIZ.length){
+    const q=QUIZ[qStep];
+    box.innerHTML='<span class="kick baloo" style="font-family:Caveat,cursive;font-size:24px;color:var(--gold)">Question '+(qStep+1)+' of '+QUIZ.length+'</span><h2 style="font-size:26px;margin-bottom:18px">'+q.q+'</h2>'
+    +'<div style="display:flex;flex-direction:column;gap:10px">'+q.a.map((a,i)=>'<button class="chip" style="text-align:left;padding:14px 20px;font-size:15px;border-radius:16px" data-act="quiz-ans" data-i="'+i+'">'+a[0]+'</button>').join('')+'</div>'
+    +'<div class="tipdots" style="margin-top:20px">'+QUIZ.map((_,i)=>'<span class="'+(i<=qStep?'on':'')+'"></span>').join('')+'</div>';
+  }else{
+    const best=qScore.indexOf(Math.max(...qScore));const cat=QCATS[best];
+    const names={cats:'Cats',dogs:'Dogs',birds:'Birds',small:'Small Pets',reptiles:'Reptiles',aquatic:'Aquatic Pets'};
+    const recs=PETS.filter(p=>p.cat===cat&&p.avail!=='Unavailable').slice(0,3);
+    box.innerHTML='<span class="kick baloo" style="font-family:Caveat,cursive;font-size:24px;color:var(--gold)">Your match</span><h2 style="font-size:28px;margin-bottom:8px">We think a '+names[cat].replace(/s$/,'')+' could be perfect for you</h2><p style="color:var(--muted);margin-bottom:18px">Based on your home, time and lifestyle, here are friends that fit beautifully.</p>'
+    +'<div class="relgrid" style="padding:0;margin-bottom:18px">'+recs.map(r=>'<div class="relcard" data-act="pet" data-id="'+r.id+'"><div class="ri" style="background:'+petBg(r)+'"><svg viewBox="0 0 200 160">'+ART[r.type](r.c)+'</svg></div><b>'+r.name+'</b><span>'+money(r.price)+'</span></div>').join('')+'</div>'
+    +'<div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-p sm" data-act="go" data-view="shop">See All '+names[cat]+'</button><button class="btn btn-o sm" data-act="quiz-restart">Retake Quiz</button></div>';
+  }
+}
+
+/* ================= KIT ================= */
+let kitType='Dog',kitSel={};
+function buildKitTypes(){$('#kitTypes').innerHTML=Object.keys(KIT).map(t=>'<button class="chip'+(t===kitType?' on':'')+'" data-act="kit-type" data-t="'+t+'">'+t+' Kit</button>').join('');}
+function renderKit(){
+  buildKitTypes();
+  $('#kitName').textContent=kitType+' Care Kit';
+  $('#kitSlots').innerHTML=KIT[kitType].map((slot,i)=>{
+    if(!kitSel[kitType+':'+i])kitSel[kitType+':'+i]=0;
+    const opts=slot[1];
+    return '<div class="kslot"><div class="klabel">'+ic('check')+' '+slot[0]+'</div><select data-kit="'+i+'">'+opts.map((o,x)=>'<option value="'+x+'">'+o[0]+'</option>').join('')+'</select><div class="kprice">'+money(opts[kitSel[kitType+':'+i]][1])+'</div></div>';}).join('');
+  $('#kitSlots').querySelectorAll('select').forEach(s=>{s.value=kitSel[kitType+':'+s.dataset.kit];s.addEventListener('change',()=>{kitSel[kitType+':'+s.dataset.kit]=+s.value;renderKit();});});
+  kitTotal();
+}
+function kitItems(){return KIT[kitType].map((slot,i)=>({slot:slot[0],name:slot[1][kitSel[kitType+':'+i]][0],price:slot[1][kitSel[kitType+':'+i]][1]}));}
+function kitTotal(){const it=kitItems();const t=it.reduce((a,c)=>a+c.price,0);$('#kitTotal').textContent=money(t);$('#kitList').innerHTML=it.map(c=>'<li><span>'+c.slot+': '+c.name+'</span><span>'+money(c.price)+'</span></li>').join('');}
+
+/* ================= SIZE GUIDE ================= */
+const SGTAB={Dog:[['XS','Under 2.5 kg','20 - 25 cm'],['S','2.5 - 5 kg','25 - 32 cm'],['M','5 - 10 kg','32 - 40 cm'],['L','10 - 22 kg','40 - 50 cm'],['XL','22 - 35 kg','50 - 60 cm'],['XXL','Over 35 kg','60 - 70 cm']],
+Cat:[['XS','Under 2 kg','20 - 25 cm'],['S','2 - 3.5 kg','25 - 30 cm'],['M','3.5 - 5.5 kg','30 - 35 cm'],['L','5.5 - 8 kg','35 - 40 cm'],['XL','Over 8 kg','40 - 45 cm'],['XXL','Over 8 kg','45 cm and up']],
+Rabbit:[['XS','Under 1 kg','15 - 20 cm'],['S','1 - 2 kg','20 - 25 cm'],['M','2 - 3 kg','25 - 30 cm'],['L','3 kg and up','30 - 35 cm'],['XL','-','-'],['XXL','-','-']]};
+function sgTable(hl){
+  const t=SGTAB[$('#sgType').value];
+  $('#sgTable tbody').innerHTML=t.map(r=>'<tr class="'+(r[0]===hl?'hl':'')+'"><td><b>'+r[0]+'</b></td><td>'+r[1]+'</td><td>'+r[2]+'</td></tr>').join('');
+}
+function sgFind(){
+  const type=$('#sgType').value;const kg=parseFloat($('#sgWeight').value);
+  sgTable();
+  const res=$('#sgResult');
+  if(!kg||kg<=0){res.classList.remove('show');toast('Please enter a valid weight.');return;}
+  const t=SGTAB[type];let idx=t.findIndex(r=>r[1].includes('Under')&&kg<parseFloat(r[1].replace(/[^\d.]/g,'')));
+  if(idx<0)idx=t.findIndex(r=>!r[1].includes('Under')&&!r[1].includes('Over')&&parseFloat(r[1].split(' - ')[0])<=kg&&kg<=parseFloat(r[1].split(' - ')[1].replace(/[^\d.]/g,'')));
+  if(idx<0)idx=t.findIndex(r=>r[1].includes('Over'));
+  if(idx<0)idx=3;
+  $('#sgSize').textContent=t[idx][0];$('#sgDesc').textContent='Best fit for a '+type+' around '+kg+' kg. '+t[idx][1];
+  res.classList.remove('show');setTimeout(()=>res.classList.add('show'),60);sgTable(t[idx][0]);
+}
+
+/* ================= INFO MODALS ================= */
+const POLICIES={
+shipping:['Shipping Policy','Hafao delivers products across Bangladesh in 1 to 3 working days with fees shown per city. Free delivery applies to Bangladesh orders over Tk 5,000 after discounts. International delivery of live animals is arranged only where species, destination laws, welfare requirements, health documents, airline rules, courier rules and permits all allow it. Each international request is reviewed individually and confirmed by our team before any payment for shipping.'],
+returns:['Returns Policy','Unopened food, unused accessories and clothing in original condition can be returned within 7 days of delivery with the receipt. For the health and safety of animals, live pets, opened food, grooming items and care products cannot be returned. If a live animal arrives with a documented health issue confirmed by a licensed veterinarian within 48 hours, contact us immediately and we will arrange appropriate care or replacement.'],
+privacy:['Privacy Policy','We collect only the information needed to complete your order: your name, contact details, address and order history. On this demo store all data stays on your own device. We never sell customer information. Newsletter emails are sent only with your consent and every email includes an unsubscribe option.'],
+terms:['Terms and Conditions','By placing an order you confirm you are 18 or older. Prices and availability may change without notice. Live pet sales depend on animal welfare rules, applicable laws and permits in the destination location. Placing an order for a live animal is a request that our team confirms manually. Product colors may vary slightly from photos. Payment gateways are integration ready and will follow all applicable regulations when activated.'],
+rpo:['Responsible Pet Ownership','A pet is a family member for its entire life, often 10 to 20 years. Before adopting, make sure you can provide proper food, space, veterinary care, daily attention and training for the animals whole life. Never buy on impulse or as a gift for someone unprepared. Verify that keeping your chosen species is legal in your area, and always use safe, humane transport. If you can no longer care for a pet, contact responsible rehoming services, never release animals into the street. Hafao is always ready to guide you.']};
+function openInfo(k){const p=POLICIES[k];$('#infoBody').innerHTML='<span class="kick baloo" style="font-family:Caveat,cursive;font-size:24px;color:var(--gold)">Hafao Pet Shop</span><h2 style="font-size:28px;margin-bottom:14px">'+p[0]+'</h2><p style="color:var(--muted);font-size:15px">'+p[1]+'</p>';openModal('infoModal');}
+
+/* ================= EVENTS ================= */
+document.addEventListener('click',e=>{
+  const t=e.target.closest('[data-act]');
+  if(!t)return;
+  const a=t.dataset.act;
+  const kind=t.dataset.kind,id=t.dataset.id;
+  if(a==='go'){go(t.dataset.view);return;}
+  if(a==='go-about'){go('about');return;}
+  if(a==='go-visit'){go('visit');return;}
+  if(a==='go-sizeguide'){go('home','sizeGuide');return;}
+  if(a==='open-menu'){$('#mmenu').classList.add('open');$('#backdrop').classList.add('on');return;}
+  if(a==='close-menus'){$('#mmenu').classList.remove('open');$('#backdrop').classList.remove('on');return;}
+  if(a==='open-cart'){openCart();return;}
+  if(a==='close-cart'){$('#cartDrawer').classList.remove('open');$('#backdrop').classList.remove('on');return;}
+  if(a==='open-search'){$('#searchOverlay').classList.add('open');setTimeout(()=>$('#searchInput').focus(),100);return;}
+  if(a==='close-search'){$('#searchOverlay').classList.remove('open');return;}
+  if(a==='close-all'){closeAll();return;}
+  if(a==='close-modal'){closeModals();return;}
+  if(a==='go-checkout'){if(!S.cart.length){toast('Your cart is empty.');return;}closeAll();go('checkout');return;}
+  if(a==='add-cart'){
+    let size=null;
+    const card=t.closest('.pcard');
+    if(card){const sel=card.querySelector('[data-size-for]');if(sel)size=sel.value;}
+    addToCart(kind,id,size);return;}
+  if(a==='buy-now'){addToCart(kind,id);closeModals();go('checkout');return;}
+  if(a==='wish'){toggleWish(kind,id);return;}
+  if(a==='wish-move'){const w=S.wish.findIndex(x=>x.kind===kind&&x.id===id);if(w>-1)S.wish.splice(w,1);save();addToCart(kind,id);renderBadges();renderWish();if($('#view-account').style.display==='block')renderAccount();return;}
+  if(a==='pet'){openPet(id);return;}
+  if(a==='pdthumb'){const i=+t.dataset.i;const main=$('#pdMain');const cur=main.getAttribute('style').match(/linear-gradient[^;]+/);main.style.background=['',''][0]||main.style.background;const tints=[petBg(petById(id)),'linear-gradient(140deg,#EFEAF7,#DDD2EE)','linear-gradient(140deg,#FBDFC9,#F4C9A8)','linear-gradient(140deg,#EAF0E2,#CBDCC0)'];main.style.background=tints[i];$$('.pdthumbs button').forEach((b,x)=>b.classList.toggle('on',x===i));return;}
+  if(a==='pd-contact'){$('#pdContact').classList.toggle('show');return;}
+  if(a==='shop-cat'){shopFilter=t.dataset.cat;buildShopChips();renderShop();return;}
+  if(a==='shop-cat-go'){shopFilter=t.dataset.cat;buildShopChips();renderShop();go('shop');return;}
+  if(a==='sec-chip'){const sec=t.dataset.sec;secSubs[sec]=t.dataset.sub;clothSize='all';$$('[data-act="size-chip"]').forEach(c=>c.classList.remove('on'));$$('[data-act="sec-chip"][data-sec="'+sec+'"]').forEach(c=>c.classList.toggle('on',c.dataset.sub===secSubs[sec]));renderSec(sec);return;}
+  if(a==='size-chip'){const s=t.dataset.size;clothSize=clothSize===s?'all':s;$$('[data-act="size-chip"]').forEach(c=>c.classList.toggle('on',c.dataset.size===clothSize));$$('[data-act="sec-chip"][data-sec="clothing"]').forEach(c=>c.classList.toggle('on',c.dataset.sub==='all'&&clothSize==='all'));renderSec('clothing');return;}
+  if(a==='qty'){const c=S.cart.find(x=>x.key===t.dataset.key);if(c){c.qty=Math.max(1,c.qty+ +t.dataset.d);save();renderCart();}return;}
+  if(a==='rm'){S.cart=S.cart.filter(x=>x.key!==t.dataset.key);save();renderCart();return;}
+  if(a==='apply-coupon'){const v=$('#couponInput').value.trim().toUpperCase();
+    if(COUPONS[v]){S.coupon=v;save();renderCart();toast('Coupon applied: '+COUPONS[v].label+'.');}
+    else{S.coupon=null;save();renderCart();toast('That coupon code is not valid.');}return;}
+  if(a==='car-prev'){document.getElementById(t.dataset.target).scrollBy({left:-300,behavior:'smooth'});return;}
+  if(a==='car-next'){document.getElementById(t.dataset.target).scrollBy({left:300,behavior:'smooth'});return;}
+  if(a==='city'){S.city=t.dataset.city;save();renderCart();$$('.cityc').forEach(c=>c.classList.toggle('on',c.dataset.city===S.city));$('#selCity').textContent=S.city;$('#selFee').textContent=money(DELIVERY_BD[S.city]);toast('Delivery city set to '+S.city+'.');if($('#view-checkout').style.display==='block')updateSummary();return;}
+  if(a==='quiz-start'){qStep=0;qScore=[0,0,0,0,0,0];quizRender();openModal('quizModal');return;}
+  if(a==='quiz-ans'){const q=QUIZ[qStep];q.a[+t.dataset.i].slice(1).forEach((v,i)=>qScore[i]+=v);qStep++;quizRender();return;}
+  if(a==='quiz-restart'){qStep=0;qScore=[0,0,0,0,0,0];quizRender();return;}
+  if(a==='kit-type'){kitType=t.dataset.t;renderKit();return;}
+  if(a==='add-kit'){const items=kitItems();const total=items.reduce((s,c)=>s+c.price,0);
+    S.cart.push({key:'kit-'+kitType+'-'+Date.now(),kind:'kit',id:'kit',name:kitType+' Care Kit by Hafao',price:total,qty:1,art:{type:'prod',c:null,ic:'bag',bg:['#FBEBDD','#FDF4EA']},meta:items.length+' items selected'});
+    save();renderBadges();renderCart();toast('Your '+kitType+' kit was added to the cart.');return;}
+  if(a==='tip-prev'){tipShow(tipI-1);return;}
+  if(a==='tip-next'){tipShow(tipI+1);return;}
+  if(a==='article'){const art=ARTICLES[+t.dataset.i];$('#infoBody').innerHTML='<span class="kick baloo" style="font-family:Caveat,cursive;font-size:24px;color:var(--gold)">'+art.cat+' - '+art.min+' min read</span><h2 style="font-size:28px;margin-bottom:14px">'+art.t+'</h2><p style="color:var(--muted);font-size:15px">'+art.body+'</p>';openModal('infoModal');return;}
+  if(a==='info'){openInfo(t.dataset.info);return;}
+  if(a==='directions'){window.open('https://www.google.com/maps/search/?api=1&query=Narayanganj+Bangladesh','_blank');return;}
+  if(a==='place-order'){placeOrder();return;}
+  if(a==='track-find'){trackFind();return;}
+  if(a==='track-this'){$('#tNo').value=t.dataset.no;closeAll();go('track');setTimeout(trackFind,80);return;}
+  if(a==='track2'){$('#tNo').value=$('#tNo2').value;$('#tContact').value=$('#tC2').value;trackFind();const html=$('#trackResult').innerHTML;$('#trackResult2').innerHTML=html;return;}
+  if(a==='acc-tab'){accTab=t.dataset.tab;renderAccount();return;}
+  if(a==='login'){const n=$('#aName').value.trim(),em=$('#aEmail').value.trim(),ph=$('#aPhone').value.trim();
+    if(n.length<3||!/^\S+@\S+\.\S+$/.test(em)||ph.replace(/\D/g,'').length<6){toast('Please enter your name, a valid email and phone.');return;}
+    S.user={name:n,email:em,phone:ph};save();renderAccount();toast('Welcome to the Hafao family, '+n.split(' ')[0]+'.');return;}
+  if(a==='logout'){S.user=null;save();accTab='profile';renderAccount();toast('You have been logged out.');return;}
+  if(a==='save-profile'){S.user.name=$('#pName').value.trim()||S.user.name;S.user.email=$('#pEmail').value.trim()||S.user.email;S.user.phone=$('#pPhone').value.trim()||S.user.phone;save();renderAccount();toast('Profile updated.');return;}
+  if(a==='toggle-order'){t.closest('.oitem').classList.toggle('open');return;}
+  if(a==='rm-addr'){S.addresses.splice(+t.dataset.i,1);save();renderAccount();return;}
+  if(a==='news'){const v=$('#newsEmail').value.trim();if(!/^\S+@\S+\.\S+$/.test(v)){toast('Please enter a valid email address.');return;}$('#newsEmail').value='';toast('Welcome to the Hafao family. Check your inbox soon.');return;}
+  if(a==='size-find'){sgFind();return;}
+  if(a==='search-go'){searchGo(t.dataset.kind,t.dataset.id);return;}
+});
+document.addEventListener('change',e=>{
+  if(e.target.id==='shopSort'){shopSortV=e.target.value;renderShop();}
+  if(e.target.id==='bdDivision')fillDivCities();
+  if(e.target.id==='bdCity'||e.target.id==='bdDivision'){const c=$('#bdCity').value;if(DELIVERY_BD[c]){S.city=c;save();$('#selCity').textContent=S.city;$('#selFee').textContent=money(DELIVERY_BD[c]);$$('.cityc').forEach(x=>x.classList.toggle('on',x.dataset.city===S.city));}updateSummary();}
+  if(e.target.id==='intlCountry')updateSummary();
+  if(e.target.name==='dmode'){const intl=e.target.value==='intl';$('#bdFields').style.display=intl?'none':'block';$('#intlFields').style.display=intl?'block':'none';$$('#dmodeSeg label').forEach(l=>l.classList.toggle('on',l.querySelector('input').checked));updateSummary();}
+  if(e.target.name==='pay'){$$('#paySeg label').forEach(l=>l.classList.toggle('on',l.querySelector('input').checked));}
+  if(e.target.id==='sgType')sgTable();
+});
+document.addEventListener('input',e=>{if(e.target.id==='searchInput')doSearch(e.target.value);});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAll();});
+window.addEventListener('scroll',()=>{$('#header').classList.toggle('scrolled',scrollY>10);});
+/* hero parallax */
+if(window.matchMedia('(hover:hover)').matches){
+  document.addEventListener('mousemove',e=>{
+    const hv=$('#heroVisual');if(!hv)return;
+    const r=hv.getBoundingClientRect();if(r.bottom<0)return;
+    const x=(e.clientX/r.width-.5),y=(e.clientY/r.height-.5);
+    hv.querySelectorAll('[data-depth]').forEach(el=>{const d=+el.dataset.depth;const base=el.classList.contains('hv-cat')?'rotate(-5deg)':el.classList.contains('hv-rab')?'rotate(4deg)':el.classList.contains('hv-bird')?'rotate(6deg)':'';
+      el.style.transform=base+' translate('+(x*d)+'px,'+(y*d)+'px)';});
+  });
+}
+/* header icons */
+function paintHeader(){
+  $('#searchBtn').innerHTML=ic('search');
+  $('#cartBtn').insertAdjacentHTML('beforeend',ic('cart'));
+  $('#wishBtn',0);
+  $('#badgeWish').parentElement.insertAdjacentHTML('beforeend',ic('heart'));
+  $('#cartBtn').querySelector('.bdg').insertAdjacentText('afterend','');
+  document.querySelector('[data-act="go"][data-view="account"]').innerHTML=ic('user');
+  $('#burgerBtn').innerHTML=ic('menu');
+  $('#mmClose').innerHTML=ic('close');$('#cdClose').innerHTML=ic('close');$('#sClose').innerHTML=ic('close');
+  document.querySelectorAll('.carbtn[data-act="car-prev"]').forEach(b=>b.innerHTML=ic('chd'));
+  document.querySelectorAll('.carbtn[data-act="car-next"]').forEach(b=>b.innerHTML=ic('chg'));
+  document.querySelectorAll('[data-ic]').forEach(el=>{el.innerHTML=el.dataset.ic==='stars'?stars(5):ic(el.dataset.ic);});
+  const acc=document.querySelector('.navact [data-act="go"][data-view="account"]');if(acc)acc.innerHTML=ic('user');
+  const wb=$('#badgeWish').parentElement;wb.innerHTML=ic('heart')+'<span class="bdg" id="badgeWish">0</span>';
+  const cb=$('#cartBtn');cb.innerHTML=ic('cart')+'<span class="bdg" id="badgeCart">0</span>';
+}
+
+/* ================= INIT ================= */
+function init(){
+  buildNav();paintHeader();
+  buildShopChips();buildSecChips();
+  renderShop();Object.keys(SECDEFS).forEach(renderSec);
+  renderHome();initCheckout();sgTable();
+  renderBadges();renderCart();
+  $('#year').textContent='Hafao Pet Shop, Narayanganj Bangladesh. All rights reserved. Demo store, payment gateway integration ready.';
+  markNav('home');go('home');rv();
+  window.addEventListener('load',()=>setTimeout(()=>$('#loader').classList.add('off'),900));
+  setTimeout(()=>$('#loader').classList.add('off'),3500);
+}
+init();
+</script>
+</body>
+</html>
